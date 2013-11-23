@@ -1,0 +1,13 @@
+Feature: In order to integrate giftshare with popular media sites
+  As a user
+  I should be able to add my facebook and twitter account to my giftshare profile
+
+  Scenario: User adds facebook to current profile
+    Given I am logged in
+    When I authenticate with Facebook through giftshare
+    Then my Facebook account should be added to my Giftshare profile
+
+  Scenario: User adds twitter to current profile
+    Given I am logged in
+    When I authenticate with Twitter through giftshare
+    Then my Twitter account should be added to my Giftshare profile

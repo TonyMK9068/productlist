@@ -1,0 +1,22 @@
+
+<div><h3>Create New List</h3></div>
+
+<%= render partial: "shared/error_messages", locals: {instance: @list} %>
+
+<div class="row col-lg-12">
+<%= form_for @list do |f| %>
+
+  <%= f.label :title, value: "List title"  %>
+  <%= f.text_field :title %>
+
+  <%= f.label :event, value: "What's the occasion?" %>
+  <%= f.text_field :event %>
+
+  <%= f.label :event_date, value: "Date of event(DD/MM/YYYY)" %>
+  <%= f.date_select "event_date", :order => [:day, :month, :year], start_year: Time.now.year, end_year: Time.now.year + 5 %>
+
+  <%= f.submit "Submit" %>
+
+<% end %>
+</div>
+

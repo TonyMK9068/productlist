@@ -1,0 +1,10 @@
+<% if instance.errors.any? %>
+<div>
+  <h3><%= pluralize(instance.errors.count, "error") %> occured while saving.</h3>
+  <ul>
+    <% instance.errors.full_messages.each do |output| %>
+      <li> <%= output %> </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
