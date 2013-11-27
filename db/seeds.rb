@@ -29,40 +29,40 @@ user = User.new(
 # user.skip_confirmation!
 user.save
 
-user = User.new(
-  # username: 'subscriber', 
-  email:    'subscriber@example.com', 
-  password: 'helloworld',
-  password_confirmation: 'helloworld')
-# user.skip_confirmation!
-user.save
+# user = User.new(
+#   # username: 'subscriber', 
+#   email:    'subscriber@example.com', 
+#   password: 'helloworld',
+#   password_confirmation: 'helloworld')
+# # user.skip_confirmation!
+# user.save
 
-user = User.new(
-  # username: 'test', 
-  email:    'test2@example.com', 
-  password: 'helloworld',
-  password_confirmation: 'helloworld')
-# user.skip_confirmation!
-user.save
+# user = User.new(
+#   # username: 'test', 
+#   email:    'test2@example.com', 
+#   password: 'helloworld',
+#   password_confirmation: 'helloworld')
+# # user.skip_confirmation!
+# user.save
 
-list = user.lists.build(name: 'Hello World').save
-
-
-user = User.new(
-  # username: 'test2', 
-  email:    'test3@example.com', 
-  password: 'helloworld',
-  password_confirmation: 'helloworld')
-# user.skip_confirmation!
-user.save
+# list = user.lists.build(name: 'Hello World').save
 
 
-list = user.lists.build(name: 'Test Title')
-list.save
+# user = User.new(
+#   # username: 'test2', 
+#   email:    'test3@example.com', 
+#   password: 'helloworld',
+#   password_confirmation: 'helloworld')
+# # user.skip_confirmation!
+# user.save
 
 
-product = list.products.build(name: 'helicopter')
-product.save
+# list = user.lists.build(name: 'Test Title')
+# list.save
+
+
+# product = list.products.build(name: 'helicopter')
+# product.save
 
 puts "Seed finished"
 puts "#{User.count} users created"

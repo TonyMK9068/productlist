@@ -38,7 +38,7 @@ Then /^I should see "([^"]*)" after saving$/ do |title|
 end
 
 
-Given /^I have a page titled "([^"]*)"$/ do |title|
+Given /^I have a list titled "([^"]*)" $/ do |title|
   user = User.create(
     email:    'member@example.com', 
     password: 'helloworld',
@@ -54,4 +54,31 @@ end
 Then /^I should see my index$/ do
   visit lists_path
   page.should have_content "In your profile you can"
+end
+
+Then /^I should see my page\'s detailed view$/ do
+  current_path.should == list_path(List.find_by_title(title))
+end
+
+Given /^I am at my personal index$/ do
+  click_on 'My Home'
+end
+
+When /^I click the "([^"]*)" link$/ do |url|
+  click_on url
+end
+
+Then /^I should see my page\'s detailed view$/ do
+  current_path.should = page_path
+end
+
+Given /^I am at the list detailed view$/ do
+  visit page_path
+end
+
+When /^I search for "([^"]*)" $/ do |item|
+  fill_in :    with: item
+end
+
+Then /^I should see a list of products related to "([^"]*)"
 end

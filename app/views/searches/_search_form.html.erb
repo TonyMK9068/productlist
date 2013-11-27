@@ -1,0 +1,33 @@
+<%  Nokogiri::HTML(open(node_list)) %>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-6">
+
+      <h3>Search by: Title, keyword or description.</h3>
+      <%= form_tag list_searches_path(list) do %>
+
+        <%= radio_button_tag(:option, "Keywords") %>
+        <%= label_tag(:search_keywords, "Keyword") %>
+        <%= radio_button_tag(:option, "Title") %>
+        <%= label_tag(:search_title, "Title") %>
+      <br>
+      <hr>
+        <%= hidden_field_tag(:operation, "ItemSearch") %>
+    </div>
+  </div><!-- row -->
+
+  <div class="row">
+
+    <div class="col-sm-6">
+      <%= text_field_tag :value, nil, placeholder: "Enter your search here...", class: "form-control", type: "search" %>
+    </div>
+
+    <div class="col-sm-6">
+      <%= submit_tag "Search!", class: "btn btn-default" %>
+    </div>
+    <% end %>
+  </div><!-- row -->
+
+</div><!-- containter -->

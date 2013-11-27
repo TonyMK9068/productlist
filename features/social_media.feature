@@ -1,4 +1,4 @@
-Feature: In order to allow users to share their activity
+guide Feature: In order to allow users to share their activity
 As a user
 I should be able to share my lists and products on popular social media sites
 

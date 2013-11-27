@@ -1,5 +1,13 @@
-<h2><%= current_user %>'s Profile </h2>
-
-<p> In your profile you can view products and lists you've added and also check up on your friends!</p>
-
+<h2><%= current_user.email %>'s Profile </h2>
+<br/>
+<p>Remember: In your profile you can view products and lists you've added and also check up on your friends!</p>
+<table class="table">
+<tr>
+  <th>Title</th>
+  <th>Event</th>
+  <th>Date</th>
+</tr>
 <%= render @lists  %>
+
+
+</table>

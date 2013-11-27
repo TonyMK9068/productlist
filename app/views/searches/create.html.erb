@@ -1,0 +1,39 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'searches' %>
+<% end %>
+
+<!-- Parsing Response -->
+<% @doc = Nokogiri::HTML(open(@search_request)) %>
+
+<!-- styling page -->
+<h6> Total Results <%= @doc.css('totalresults').text %></h6>
+
+<div class="container">
+<div class="row">
+  <%= @doc.css("item").each do |result| %>
+
+  <div class="col-sm-4 thumbnail-box">
+    <div class="thumbnail">
+    <% img = result.at_css("mediumimage url").text %>
+
+      <div class="thumbnail-image-container"><%= image_tag result.at_css("mediumimage url").text, class: "thumbnail-image" %></div>
+
+        <div class="caption">
+        <p><%= name = result.at_css("title").text %></p>
+        <h6>ASIN: <%= asin = result.at_css("asin").text %></h6>
+        <% category = result.at_css("productgroup").text %>
+        <h6>Category: <%= result.at_css("productgroup").text  %></h6>
+        <% link = result.at_css("detailpageurl").text %>
+        <p class="thumbnail-link"><%= link_to "See More Info", result.at_css("detailpageurl").text %></p>
+      
+        <!-- Link to Add product -->
+        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target= #<%= asin %> >
+          List it! <i class="glyphicon glyphicon-star"></i>
+        </button>
+        <%= render partial: 'products/product_form', locals: { name: name, product_number: asin, link: link, image: img, category: category } %>
+      </div>    
+    </div><!-- thumbnail -->
+  </div><!-- thumbnail-box -->
+  <% end %>  
+</div>
+</div>
