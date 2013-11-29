@@ -1,12 +1,12 @@
+
 module AmazonSearch
 
-require 'openssl'
-require 'uri'
-require 'time'
-require "base64" 
+  require 'openssl'
+  require 'uri'
+  require 'time'
+  require "base64" 
   
-
-  def set_defaults
+  def set_amazon_defaults
     @accesskey = "AKIAJZGGOUTXFENABOFQ"
     @associate = "giftshare-20"
     @secret ="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"
@@ -17,14 +17,14 @@ require "base64"
   end
 
   def combine_defaults_with_operation_values(operation_value)
-    set_defaults
+    set_amazon_defaults
     response_options = Hash["ResponseGroup" => "Small, Images", "SearchIndex" => "All"]
     @default_and_operation_value_hash = Hash["Operation" => operation_value].merge(response_options).merge(@default_values) 
   end
 
   def combine_defaults_with_node_lookup_values(node)
-    set_defaults
-    response_options = Hash["Operation" => "BrowseNodeLookup", "ResponseGroup" => "BrowseNodeInfo", "BrowseNodeId" => "1036592"]
+    set_amazon_defaults
+    response_options = Hash["Operation" => "BrowseNodeLookup", "ResponseGroup" => "BrowseNodeInfo", "BrowseNodeId" => node]
     @default_and_operation_value_hash = response_options.merge(@default_values) 
   end
 
@@ -68,7 +68,7 @@ require "base64"
             "1000", "301668", "4991425011", "195208011", "2625373011", "493964", "3580501", 
             "16310101", "3760931", "285080", "228239", "3880591", "133141011", "1063498", 
             "2972638011", "599872", "10304191", "2350149011", "195211011", "301668", 
-            11091801, 1084128, "1063498", "493964", "1063498", "493964", "409488", "3375251", 
-            468240, 493964, 404272, 130, "493964", "377110011", "508494", "13900851"]
+            "11091801", "1084128", "1063498", "493964", "1063498", "493964", "409488", "3375251", 
+            "468240", "493964", "404272", "130", "493964", "377110011", "508494", "13900851"]
   end
 end

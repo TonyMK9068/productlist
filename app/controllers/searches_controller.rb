@@ -1,13 +1,19 @@
-require './lib/amazonsearch'
+require './lib/etsysearch.rb'
+require './lib/amazonsearch.rb'
 
 class SearchesController < ApplicationController
-  include AmazonSearch
+  include EtsySearch, AmazonSearch
+
     respond_to :html, :xml, :json
   
   def create
     @list = List.find(params[:list_id])
-    @search_options = Hash[params["option"] => params["value"]]
+    user_input = params["value"]
+    @etsy_request = return_listings(user_input)
+
+    @search_options = Hash[params["option"] => user_input]
     @search_request = item_search(@search_options)
+
   end
 
 end

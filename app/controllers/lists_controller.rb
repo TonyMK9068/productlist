@@ -1,8 +1,8 @@
-require './lib/amazonsearch'
+require './lib/etsysearch.rb'
 
 class ListsController < ApplicationController
 
-  include AmazonSearch
+  include EtsySearch
     respond_to :html, :xml, :json
 
   def index
@@ -27,7 +27,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @products = @list.products.all
-    @node_list = node_lookup("1036682")
+#    @node_list = node_lookup("195208011")
 
   end
   

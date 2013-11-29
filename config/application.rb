@@ -17,8 +17,7 @@ module Giftshare
 
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
-
-
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
     #config.assets.precompile += %w(pages.css viewers.css welcome.css)
     
 

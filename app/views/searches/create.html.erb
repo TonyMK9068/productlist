@@ -3,14 +3,17 @@
 <% end %>
 
 <!-- Parsing Response -->
-<% @doc = Nokogiri::HTML(open(@search_request)) %>
+<!-- amazon request -->
+<% @amazon_doc = Nokogiri::HTML(open(@search_request)) %>
+<!-- etsy -->
+<% @etsy_doc = Nokogiri::HTML(open(@etsy_request)) %>
 
 <!-- styling page -->
-<h6> Total Results <%= @doc.css('totalresults').text %></h6>
+<h6> Total Amazon Results <%= @amazon_doc.css('totalresults').text %></h6>
 
 <div class="container">
 <div class="row">
-  <%= @doc.css("item").each do |result| %>
+  <% @amazon_doc.css("item").each do |result| %>
 
   <div class="col-sm-4 thumbnail-box">
     <div class="thumbnail">
@@ -34,6 +37,10 @@
       </div>    
     </div><!-- thumbnail -->
   </div><!-- thumbnail-box -->
-  <% end %>  
+  <% end %>
+
+<%= @etsy_doc.css("p").text.at("results") %>
+
+
 </div>
 </div>
