@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{:content => "text/html", :charset => "UTF-8", :http-equiv => "Content-Type"}
+
+%body
+  %h1= (@user.first_name || @user.username || @user.eamil) + " has shared their list," + @list.title + ", with you!"
+  %p
+    Click the link below to view it at GiftShare!
+    = link_to @list.title, list_path(@list)

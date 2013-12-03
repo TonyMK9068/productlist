@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
     user_input = params["value"]
     # @etsy_response = open_etsy_response
 
-    @search_options = Hash[params["option"] => user_input]
+    @search_options = Hash["Keywords" => user_input]
     @search_request = item_search(@search_options)
 
   end

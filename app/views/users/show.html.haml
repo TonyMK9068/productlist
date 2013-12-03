@@ -1,6 +1,6 @@
 .row
   .col-md-12
-    %h1 #{(@user.first_name.capitalize + " " + @user.last_name.capitalize)|| @user.username || @user.email }'s Profile
+    %h1= (@user.username ? @user.username : @user.email) + "'s Profile"
     = link_to('Edit Profile Settings', edit_registration_path(current_user))
 
 .row
@@ -27,4 +27,3 @@
           %th Date
 
         = render @lists
-      %table

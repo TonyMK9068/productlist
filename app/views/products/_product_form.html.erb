@@ -9,14 +9,15 @@
         <div class="thumbnail-image"><%= image_tag image %></div>
         <div class="caption">
           <h3><%= name %></h3>
+          <p><%= price %></p>
           <em><%= product_number %></em>
-          <p>Category: <%= category %></p>
-          <p class"thumnail-link"><%= link_to "See More Info", link %>
+          <h6>Category: <%= category %> |
+          <%= link_to "See More Info", link %></h6>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%= link_to "Add it!",  list_products_path(list_id: @list, product: Product.new, name: name, product_number: product_number, link: link), method: :post, class: "btn btn-primary" %>
+        <%= link_to "Add it!",  list_products_path(list_id: @list, product: Product.new, name: name, product_number: product_number, link: link, price: price), method: :post, class: "btn btn-primary" %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

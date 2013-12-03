@@ -1,6 +1,6 @@
 
 module AmazonSearch
-
+  
   def set_amazon_defaults
     @accesskey = ENV["AMAZON_KEY"]
     @associate = "giftshare-20"
@@ -13,7 +13,7 @@ module AmazonSearch
 
   def combine_defaults_with_operation_values(operation_value)
     set_amazon_defaults
-    response_options = Hash["ResponseGroup" => "Small, Images", "SearchIndex" => "All"]
+    response_options = Hash["ResponseGroup" => "Medium, Images", "SearchIndex" => "All"]
     @default_and_operation_value_hash = Hash["Operation" => operation_value].merge(response_options).merge(@default_values) 
   end
 
