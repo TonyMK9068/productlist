@@ -11,5 +11,13 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
-  
+
+  validates_length_of :first_name, minimum: 3, maximum: 30
+  validates_length_of :last_name, minimum: 3, maximum: 30
+  validates_uniqueness_of :email
+  validates_uniqueness_of :username
+  validates_format_of :username, with: /\A([^\W][a-zA-Z]\w+)\Z/i
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates_format_of :first_name, with: /\A([^\d\W]+)\Z/
+  validates_format_of :last_name, with: /\A([^\d\W]+)\Z/
 end
