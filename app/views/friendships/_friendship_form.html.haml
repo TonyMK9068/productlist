@@ -1,0 +1,11 @@
+- content_for :head do
+  = stylesheet_link_tag 'friendships'
+
+#row
+  .add-friend
+    = form_tag '/friendships', method: :post do
+      = label_tag :email, "Add a friend by entering their email here."
+      = email_field_tag :email
+
+      = submit_tag 'Add friend', class: 'btn btn-small'
+

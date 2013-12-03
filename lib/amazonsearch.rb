@@ -1,15 +1,10 @@
 
 module AmazonSearch
 
-  require 'openssl'
-  require 'uri'
-  require 'time'
-  require "base64" 
-  
   def set_amazon_defaults
-    @accesskey = "AKIAJZGGOUTXFENABOFQ"
+    @accesskey = ENV["AMAZON_KEY"]
     @associate = "giftshare-20"
-    @secret ="VdTWvfAlvYrbNa+1w5Rq7qeXbUYRRmZ4tdkKWJBG"
+    @secret = ENV["AMAZON_SECRET"]
     @timestamp = Time.parse("#{Time.now.utc}").iso8601
     @default_values = Hash["Service" => "AWSECommerceService", "Timestamp" => @timestamp, 
                           "AWSAccessKeyId" => @accesskey, "AssociateTag" => @associate, 
@@ -63,12 +58,12 @@ module AmazonSearch
     @request = ("http://webservices.amazon.com/onca/xml?" + @url_query + "&" + "Signature=" + @sig)
   end
 
-  def us_nodes
-    nodes = ["1036592", "2619525011", "2617941011", "15690151", "165796011", "11055981", 
-            "1000", "301668", "4991425011", "195208011", "2625373011", "493964", "3580501", 
-            "16310101", "3760931", "285080", "228239", "3880591", "133141011", "1063498", 
-            "2972638011", "599872", "10304191", "2350149011", "195211011", "301668", 
-            "11091801", "1084128", "1063498", "493964", "1063498", "493964", "409488", "3375251", 
-            "468240", "493964", "404272", "130", "493964", "377110011", "508494", "13900851"]
-  end
+  # def us_nodes
+  #   nodes = ["1036592", "2619525011", "2617941011", "15690151", "165796011", "11055981", 
+  #           "1000", "301668", "4991425011", "195208011", "2625373011", "493964", "3580501", 
+  #           "16310101", "3760931", "285080", "228239", "3880591", "133141011", "1063498", 
+  #           "2972638011", "599872", "10304191", "2350149011", "195211011", "301668", 
+  #           "11091801", "1084128", "1063498", "493964", "1063498", "493964", "409488", "3375251", 
+  #           "468240", "493964", "404272", "130", "493964", "377110011", "508494", "13900851"]
+  # end
 end

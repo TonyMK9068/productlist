@@ -1,0 +1,13 @@
+.panel.panel-success
+  .panel-headng
+    %h3.panel-title Friends
+  
+  .panel-body
+    = (@user == current_user ? 'You' : '#{@user.email}') + " have " + pluralize(@friends.count, 'only one friend', 'friends') + "!"
+
+  %ul.list-group
+    - user.friends.each do |friend|
+      %li.list-group-item
+        = link_to(friend.email, user_path(friend))
+        = link_to('Remove', friendship_path(friend), method: :delete, class: "btn btn-danger btn-xs")
+

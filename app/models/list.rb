@@ -4,7 +4,13 @@ class List < ActiveRecord::Base
   belongs_to :user, inverse_of: :lists
   has_many :products
 
-  validates :event_date, presence: true, event_date_format: { is: true, message: "Must be a future date." }
-  validates_presence_of :title, :event
+  validates_presence_of :title, :event, :event_date
+  validate :event_date_is_a_future_date
 
+
+  private
+
+    def event_date_is_a_future_date
+      errors.add(:event_date, "Must be a a future date.") if event_date < Date.today
+    end
 end

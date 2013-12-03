@@ -9,7 +9,7 @@ class SearchesController < ApplicationController
   def create
     @list = List.find(params[:list_id])
     user_input = params["value"]
-    @etsy_request = return_listings(user_input)
+    # @etsy_response = open_etsy_response
 
     @search_options = Hash[params["option"] => user_input]
     @search_request = item_search(@search_options)

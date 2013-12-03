@@ -29,21 +29,21 @@ user = User.new(
 # user.skip_confirmation!
 user.save
 
-# user = User.new(
-#   # username: 'subscriber', 
-#   email:    'subscriber@example.com', 
-#   password: 'helloworld',
-#   password_confirmation: 'helloworld')
-# # user.skip_confirmation!
-# user.save
+user = User.new(
+  # username: 'subscriber', 
+  email:    'subscriber@example.com', 
+  password: 'helloworld',
+  password_confirmation: 'helloworld')
+# user.skip_confirmation!
+user.save
 
-# user = User.new(
-#   # username: 'test', 
-#   email:    'test2@example.com', 
-#   password: 'helloworld',
-#   password_confirmation: 'helloworld')
-# # user.skip_confirmation!
-# user.save
+user = User.new(
+  # username: 'test', 
+  email:    'test2@example.com', 
+  password: 'helloworld',
+  password_confirmation: 'helloworld')
+# user.skip_confirmation!
+user.save
 
 # list = user.lists.build(name: 'Hello World').save
 
