@@ -25,6 +25,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bootstrap-sass', '~> 3.0.2.0'
   gem 'uglifier', '>= 1.0.3'
+  gem 'haml'
 end
 
 gem 'jquery-rails'
@@ -38,7 +39,6 @@ gem 'hoe'
 gem 'nokogirl'
 gem 'jquery-rails'
 gem 'twitter_oauth'
-gem 'haml'
 gem 'etsy'
 gem 'httparty'
 gem "friendly_id", "~> 4.0.10"
