@@ -47,6 +47,6 @@
                 %small #{store = 'Etsy.com'}: #{link_to 'See More Info', etsy_link}
 
                 %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "#{product_number}"} } List it! <i class='glyphicon glyphicon-star'></i>
-                = render partial: 'products/product_form', locals: { name: etsy_listing_title, product_number: product_number, link: etsy_link, category: etsy_category, price: etsy_price, store: store, image: '#' }
+                = render partial: 'products/product_form', locals: { name: etsy_listing_title, product_number: product_number, link: etsy_link, category: etsy_category, price: etsy_price, store: store, image: etsy_image}
             
 
