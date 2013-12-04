@@ -11,7 +11,6 @@ end
 
 module Giftshare
   class Application < Rails::Application
-        ActionController::Base.config.relative_url_root = ''
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
