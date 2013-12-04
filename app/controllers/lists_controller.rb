@@ -1,10 +1,4 @@
-require './lib/etsysearch.rb'
-
 class ListsController < ApplicationController
-
-  include EtsySearch
-    respond_to :html, :xml, :json
-
   def index
     @lists = current_user.lists.all
   end
@@ -27,8 +21,6 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @products = @list.products.all
-#    @node_list = node_lookup("195208011")
-
   end
   
   def edit
