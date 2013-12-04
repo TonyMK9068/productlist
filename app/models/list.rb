@@ -1,12 +1,18 @@
 class List < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged 
+  
   attr_accessible :event, :title, :event_date
-  #add description
+  
   belongs_to :user, inverse_of: :lists
   has_many :products
 
   validates_presence_of :title, :event, :event_date
   validate :event_date_is_a_future_date
 
+  def should_generate_new_friendly_id?
+    new_record?
+  end
 
   private
 

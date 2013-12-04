@@ -41,3 +41,4 @@ gem 'twitter_oauth'
 gem 'haml'
 gem 'etsy'
 gem 'httparty'
+gem "friendly_id", "~> 4.0.10"
