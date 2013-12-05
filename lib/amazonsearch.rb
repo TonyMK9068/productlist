@@ -3,7 +3,7 @@ module AmazonSearch
   
   def set_amazon_defaults
     @accesskey = ENV["AMAZON_KEY"]
-    @associate = "giftshare-20"
+    @associate = "gift0bd-20"
     @secret = ENV["AMAZON_SECRET"]
     @timestamp = Time.parse("#{Time.now.utc}").iso8601
     @default_values = Hash["Service" => "AWSECommerceService", "Timestamp" => @timestamp, 
