@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "GiftShare@noreply.com"
+  default from: "GiftShare@no-reply.com"
 
   def signup_confirmation(user)
     @user = user
