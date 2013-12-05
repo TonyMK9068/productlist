@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131204191344) do
+ActiveRecord::Schema.define(:version => 20131205082933) do
 
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20131204191344) do
     t.datetime "updated_at",     :null => false
     t.string   "link"
     t.string   "product_number"
+    t.string   "category"
+    t.string   "image_url"
   end
 
   add_index "products", ["list_id"], :name => "index_products_on_list_id"

@@ -8,7 +8,7 @@
       .thumbnail
 
         .thumbnail-image-container
-          = # image_tag product.image, class: "thumbnail-image"
+          = image_tag product.image_url, class: "thumbnail-image"
         .caption
           .panel.panel-default
             .panel-heading
@@ -16,8 +16,6 @@
             .panel-body
               = "Listing Number: " + product.product_number
               = "Price: " + product.price
-              = #Category: " + product.category
+              = "Category: " + product.category
             .panel-footer
               %small #{product.store}: #{link_to 'See More Info', product.link}
-
-

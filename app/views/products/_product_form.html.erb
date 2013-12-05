@@ -18,7 +18,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <%= link_to "Add it!",  list_products_path(list_id: @list, product: Product.new, name: name, product_number: product_number, link: link, price: price, store: store), method: :post, class: "btn btn-primary" %>
+        <%= link_to "Add it!",  list_products_path(:list_id => @list, :product => {name: name, product_number: product_number, link: link, price: price, store: store, image_url: image, category: category}), method: :post, class: "btn btn-primary" %>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
