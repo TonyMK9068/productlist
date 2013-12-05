@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    # @products = Find.
+    @products = Product.top_rated
   end
 
   def edit
