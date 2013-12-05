@@ -1,3 +1,34 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background-image:url('giftshare.jpg');
+  z-index: -1000;
+
+}
+
+.jumbotron {
+  background-color: rgba(70, 50, 101, .6);
+  color:white;
+}
+
+.container-full-viewport {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+section.panel {
+  background-color: #eeeeee;
+  position: absolute;
+  top: 70%;
+  left:0%;
+  right:0%;
+  height:30%;
+  
+}
+
+.jumbotron.special {
+  background-color: transparent;
+  color:black;
+  text-align:center;
+  font-family: "Sentinel SSm A","Sentinel SSm B","Georgia","Times New Roman";
+  margin-bottom:0;
+  padding-top:2%;
+}

@@ -6,6 +6,9 @@ class Product < ActiveRecord::Base
     message
   end  
 
-
+  # def self.top_rated
+  #   self.select('products.product_number').
+  #       select('COUNT(*) AS products_count').
+  # end
 
 end

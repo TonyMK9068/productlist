@@ -1,0 +1,27 @@
+.container-full-viewport {
+  margin-left: auto;
+  margin-right: auto;
+}
+.special {
+  background-color: #463265;
+  border-radius:none;
+}
+
+ul.nav.navbar-nav li a {
+  text-shadow: none;
+  color: white;
+}
+
+.navbar.special {
+  border-radius:0;
+}
+
+.center {
+  text-align:center;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

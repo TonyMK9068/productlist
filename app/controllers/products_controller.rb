@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @product = @list.products.build(link: params[:link], product_number: params[:product_number], name: params[:name], price: params[:price])
+    @product = @list.products.build(link: params[:link], product_number: params[:product_number], name: params[:name], price: params[:price], store: params[:store])
     if @product.save
       flash[:notice] = "Producted Added!"
       redirect_to @list
@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
   end
 
   def index
+    # @products = Find.
   end
 
   def edit

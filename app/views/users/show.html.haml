@@ -1,22 +1,15 @@
+-content_for :head do
+  = stylesheet_link_tag 'users'
+
 .row
-  .col-md-12
+  .col-md-12#profile-header
     %h1= (@user.username ? @user.username : @user.email) + "'s Profile"
     = link_to('Edit Profile Settings', edit_registration_path(current_user))
 
-.row
-  - if @user == current_user
-    .friend-add-form.col-md-6
-      = render partial: 'friendships/friendship_form', locals: {:user => current_user}
-
-  - if @user.friends.count > 0
-    .view-friend-list.col-md-4.col-md-offset-8
-      = render partial: 'friendships/friend_list', locals: {:user => current_user }
-
-  .col-md-7#profile-lists-table
+.row#profile-body
+  .col-md-6#profile-lists-table
     - if current_user == @user
-      %p 
-        You have #{pluralize(@lists.count, 'list')}
-
+      %p You have #{pluralize(@lists.count, 'list')}
     - else 
       %p #{@user.email} has #{pluralize(@lists.count, 'list')}
     - if @user.lists.count > 0
@@ -25,5 +18,11 @@
           %th Title
           %th Event
           %th Date
-
         = render @lists
+
+  - if @user == current_user
+    .view-friend-list.col-md-6
+      .friend-add-form
+        = render partial: 'friendships/friendship_form', locals: {:user => current_user}
+    - if @user.friends.count > 0
+      = render partial: 'friendships/friend_list', locals: {:user => current_user }

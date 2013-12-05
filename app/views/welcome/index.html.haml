@@ -1,8 +1,23 @@
-.row
-  .jumbotron
-    %h1 Welcome to GiftShare!
-    %p Your home for creating and sharing personalized wishlists for any occasion!
-  .col-md-6
-    %p Search through our massive database, including items from the Amazon.com webstore and Etsy.com!
-    %p As you find items you want, add them to your list
-    %p Make sure to share your lists with all your friends and family. 
+- content_for :head do 
+  = stylesheet_link_tag 'welcome'
+
+%header
+  .container
+    .row
+      .jumbotron
+        %h1 Welcome to GiftShare!
+        %p Your home for creating and sharing personalized wishlists for any occasion!
+
+%section.panel
+  .row
+    .jumbotron.special
+      %h2 Share your needs with everyone!
+      %span.glyphicon.glyphicon-minus
+      %span.glyphicon.glyphicon-minus
+      %span.glyphicon.glyphicon-minus
+      %span.glyphicon.glyphicon-minus
+      %span.glyphicon.glyphicon-minus
+      %span.glyphicon.glyphicon-minus
+      %p Search through our massive database, including items from the Amazon.com and Etsy.com!
+      %p As you find items you want, add them to your list.
+      %p Make sure to share your lists with all your friends and family.

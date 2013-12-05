@@ -19,9 +19,9 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username, :allow_nil => true
   validates_format_of :username, with: /\A([^\W][a-zA-Z]\w+)\Z/i, :allow_nil => true
   
-  validates_length_of :first_name, minimum: 3, maximum: 30, :allow_nil => true
-  validates_format_of :first_name, with: /\A([^\d\W]+)\Z/, :allow_nil => true
+  validates_length_of :first_name, minimum: 3, maximum: 30, :allow_nil => true, on: :update
+  validates_format_of :first_name, with: /\A([^\d\W]+)\Z/, :allow_nil => true, on: :update
 
-  validates_format_of :last_name, with: /\A([^\d\W]+)\Z/, :allow_nil => true
-  validates_length_of :last_name, minimum: 3, maximum: 30, :allow_nil => true
+  validates_format_of :last_name, with: /\A([^\d\W]+)\Z/, :allow_nil => true, on: :update
+  validates_length_of :last_name, minimum: 3, maximum: 30, :allow_nil => true, on: :update
 end

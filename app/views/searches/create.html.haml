@@ -40,7 +40,7 @@
                 %h3.panel-title= etsy_listing_title = item['title']
               .panel-body
                 = "Listing Number: " + (product_number = item['listing_id'].to_s)
-                = "Price: $" + (etsy_price = item['price'])
+                = "Price: " + (etsy_price = "$" + item['price'])
                 = "Category: " + (etsy_category = item['category_path'][0])
               .panel-footer
                 - etsy_link = item['url']
