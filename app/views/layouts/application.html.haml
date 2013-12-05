@@ -28,16 +28,19 @@
       - if flash[:error]
         .alert.alert-danger
           = flash[:error]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
       - elsif flash[:info]
-        .alert.alert-success
+        .alert.alert-info
           = flash[:info]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
       - elsif flash[:alert]
         .alert.alert-info
           = flash[:alert]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
-
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
+      - elsif flash[:notice]
+        .alert.alert-success
+          = flash[:notice]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
     .container
       = yield
 

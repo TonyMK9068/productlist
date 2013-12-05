@@ -7,7 +7,6 @@
 #     @recipient = recipient
     
 #     mail(to: @recipient,
-#         subject: "#{(@user.username || @user.email)} has shared a wish list with you!")
+#       subject: "#{(@user.username || @user.email)} has shared a wish list with you!")
 #   end
 # end
-

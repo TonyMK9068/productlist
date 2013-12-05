@@ -4,8 +4,6 @@ class CreateLists < ActiveRecord::Migration
       t.string :name
       t.string :event
       t.belongs_to :user
-      
-
       t.timestamps
     end
     add_index :lists, :user_id

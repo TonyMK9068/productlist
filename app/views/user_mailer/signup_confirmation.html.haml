@@ -1,0 +1,10 @@
+!!!
+.container
+  .row
+    .jumbotron
+      %h1= @user.email
+      %p Thank you for signing up at GiftShare.com
+
+    %div
+      %p View your lists here:
+      %span= link_to 'GiftShare Profile', user_path(@user)

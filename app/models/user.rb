@@ -24,4 +24,13 @@ class User < ActiveRecord::Base
 
   validates_format_of :last_name, with: /\A([^\d\W]+)\Z/, :allow_nil => true, on: :update
   validates_length_of :last_name, minimum: 3, maximum: 30, :allow_nil => true, on: :update
+
+  after_create :send_confirmation_email
+
+  private
+
+    def send_confirmation_email
+      UserMailer.signup_confirmation(self).deliver
+    end
+
 end

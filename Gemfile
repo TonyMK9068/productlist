@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 
 group :production do
   gem 'pg'
+  
 end
 
 group :development do

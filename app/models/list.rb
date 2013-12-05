@@ -10,10 +10,6 @@ class List < ActiveRecord::Base
   validates_presence_of :title, :event, :event_date
   validate :event_date_is_a_future_date
 
-  def should_generate_new_friendly_id?
-    new_record?
-  end
-
   private
 
     def event_date_is_a_future_date
