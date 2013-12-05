@@ -1,10 +1,9 @@
 !!! 5
-
 %html
   %head
     %title Giftshare
-    = stylesheet_link_tag    "application", :media => "all"
-    = stylesheet_link_tag    "custom", :media => "all"
+    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "custom", :media => "all"
     = yield :head
     = csrf_meta_tags
 
@@ -25,19 +24,19 @@
               %li= link_to 'Hot Products', "#"
               %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
       
-      .container
-        - if flash[:error]
-          .alert.alert-danger
-            = flash[:error]
-            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
-        - elsif flash[:info]
-          .alert.alert-success
-            = flash[:info]
-            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
-        - elsif flash[:alert]
-          .alert.alert-info
-            = flash[:alert]
-            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
+    .container
+      - if flash[:error]
+        .alert.alert-danger
+          = flash[:error]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
+      - elsif flash[:info]
+        .alert.alert-success
+          = flash[:info]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
+      - elsif flash[:alert]
+        .alert.alert-info
+          = flash[:alert]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria-hidden => "true"} &times;
 
     .container
       = yield
