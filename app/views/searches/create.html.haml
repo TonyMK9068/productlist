@@ -34,7 +34,6 @@
     - @etsy_response['results'].each do |item|
       .col-sm-4.thumbnail-box
         .thumbnail
-
           .thumbnail-image-container
             - etsy_image = (item['Images'][0]['url_170x135'])
             = image_tag(etsy_image, class: "thumbnail-image")
@@ -53,3 +52,12 @@
                 %small #{store = 'Etsy.com'}: #{ link_to 'See More Info', etsy_link, :target => "_blank" }
                 %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{product_number}"} } List it! <i class='glyphicon glyphicon-star'></i>
                 = render partial: 'products/product_form', locals: { name: etsy_listing_title, product_number: product_number, link: etsy_link, category: etsy_category, price: etsy_price, store: store, image: etsy_image }
+
+
+.row
+  .results_nav.col-md-6.col-md-offset-3
+    - if @page > 1
+      .col-md-6
+        %h2= link_to 'Previous Page', list_searches_path(list_id: @list.id, page: (@page - 1), value: @keyword), method: :post
+    .col-md-6
+      %h2= link_to 'Next Page', list_searches_path(list_id: @list.id, page: (@page + 1), value: @keyword), method: :post

@@ -41,3 +41,4 @@ gem 'etsy'
 gem 'httparty'
 gem "friendly_id", "~> 4.0.10"
 gem 'newrelic_rpm'
+gem 'kaminari'
