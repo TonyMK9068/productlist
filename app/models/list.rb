@@ -1,4 +1,7 @@
 class List < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked 
+  
   extend FriendlyId
   friendly_id :title, use: :slugged 
   

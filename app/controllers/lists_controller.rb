@@ -5,7 +5,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    authorize! :create, @list, message: "You need to be signed in to do that"
+    authorize! :create, List, message: "You need to be signed in to do that"
   end
 
   def create

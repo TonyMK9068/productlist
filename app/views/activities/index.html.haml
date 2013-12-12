@@ -1,0 +1,5 @@
+.container
+  .row
+    = @activities.each do |activity|
+      %p= activity.trackable_id
+      %p= activity.owner_id
