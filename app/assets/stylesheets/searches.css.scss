@@ -1,10 +1,26 @@
-.thumbnail-box {
+div.thumbnail-box {
   display:inline;
   margin:auto;
   height: 400px;
+
+	div.thumbnail {
+  		height:95%
+	}
 }
 
-.thumbnail {
-  height:95%
+div.row {
+	div.thumbnail-image-container.col-md-6 { padding-left: 5%; }
+
+	div.thumbnail-basic-info { padding-top: 2.5%; }
 }
 
+div.amazon.caption {
+	height:55%;
+	margin-top:2.5%;
+	padding:2.5%;
+
+	div.panel.panel-default {
+		height:100%;
+		width:100%;
+	}
+}

@@ -7,6 +7,7 @@ class Ability
       
       if user.createad_at
         can :manage, List, user_id: user.id
+        can :manage, Product, user_id: user.id
         can :manage, Friendship, user_id: user.id
       else
         can :read, :all
