@@ -7,17 +7,18 @@
     - @amazon_doc.css("item").each do |result|
       .col-sm-4.thumbnail-box
         .thumbnail
-          - ad_image = result.at_css("mediumimage url").text
+          - if result.at_css("mediumimage url").text
+            - ad_image = result.at_css("mediumimage url").text
           .thumbnail-image-container
             = image_tag(ad_image, class: "thumbnail-image")
-
           .caption
             .panel.panel-default
               .panel-heading
                 %h3.panel-title= name = result.at_css("title").text
               .panel-body
                 = "ASIN:" +  (asin = result.at_css("asin").text)
-                = "Price: " + (price = format_product_price(result.at_css("amount").text))
+                - if result.at_css("amount")
+                  = "Price: " + (price = format_product_price(result.at_css("amount").text))
                 = "Category: " + (category = result.at_css("productgroup").text)
                 - link = result.at_css('detailpageurl').text
               .panel-footer

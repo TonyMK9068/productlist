@@ -11,7 +11,10 @@ class SearchesController < ApplicationController
     
     search_input = params[:value]
     keyword_value = URI.encode_www_form_component(search_input)
-    @etsy_response = HTTParty.get("https://openapi.etsy.com/v2/listings/active?includes=Images&limit=10&keywords='#{keyword_value}'&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}")
+    unless @etsy_response = HTTParty.get("https://openapi.etsy.com/v2/listings/active?includes=Images&limit=10&keywords='#{keyword_value}'&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}")
+    	flash[:error] = 'No results. Please try another search'
+    	redirect_to @list
+    end
   end
 end
 
