@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def create
     @list = List.find(params[:list_id])
     @product = @list.products.build(params[:product])
+    authorize! :manage, @product, message: "You need have created the list to do that"
     if @product.save
       flash[:notice] = "Producted Added!"
       redirect_to @list
