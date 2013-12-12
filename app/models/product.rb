@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   belongs_to :list, inverse_of: :products
 
 
+
   def receive(message, params)
     message
   end  

@@ -1,3 +1,5 @@
+require 'amazonsearch'
+
 class SearchesController < ApplicationController
   include AmazonSearch
     respond_to :html, :xml, :json
@@ -13,4 +15,3 @@ class SearchesController < ApplicationController
     end
   end
 end
-
