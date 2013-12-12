@@ -25,6 +25,16 @@ class ProductsController < ApplicationController
     @products = Product.top_rated
   end
 
-  def edit
-  end
+  def destroy
+    @list = List.find(params[:list_id])
+    @product = Product.find(params[:id])
+    authorize! :manage, @product, message: "Not authorized to do that."
+    if @product.destroy
+      flash[:notice] = "Item removed successfully"
+      redirect_to :back
+    else
+      flash[:error] = "An error occured while deleting item from list."
+      redirect_to :back
+    end
+  end 
 end

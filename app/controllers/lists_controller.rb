@@ -5,17 +5,17 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    authorize! :create, @list, message: "You need be signed in to do that"
+    authorize! :create, @list, message: "You need to be signed in to do that"
   end
 
   def create
     @list = current_user.lists.build(params[:list])
-    authorize! :create, @list, message: "You need be signed in to do that"
+    authorize! :create, @list, message: "You need to be signed in to do that"
     if @list.save
       flash[:alert] = "List created!"
       redirect_to @list
     else
-      flash[:error] = "An error occured while saving your list :'("
+      flash[:error] = "This must be your list to do that"
       render :new
     end
   end
@@ -27,10 +27,29 @@ class ListsController < ApplicationController
   
   def edit
     @list = List.find(params[:id])
-    authorize! :manage, @list, message: "You must have created the list to do that"
+    authorize! :manage, @list, message: "This must be your list to do that"
   end
   
   def update
+    @list = List.find(params[:id])
+    authorize! :manage, @list, message: "This must be your list to do that"
+    if @list.update_attributes(params[:list])
+      redirect_to @list, notice: "List updated successfully"
+    else
+      flash[:error] = "This must be your list to do that"
+      render user_path(current_user)
+    end
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    authorize! :manage, @list, message: "Not authorized to do that."
+    if @list.destroy
+      flash[:notice] = "List deleted"
+      redirect_to user_path(current_user)
+    else
+      flash[:error] = "This must be your list to do that"
+      redirect_to :back
+    end
+  end
 end

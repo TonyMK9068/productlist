@@ -7,8 +7,7 @@ class UsersController < ApplicationController
     @friends = @user.friends.all
   end
 
-  def index
-    #return lists sorted by rank
-    #trending view
-  end
+  # def index
+  #   user leader board would go here
+  # end
 end
