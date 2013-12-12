@@ -21,10 +21,17 @@ module AmazonSearch
       sig = URI.encode_www_form_component(sig)
     end
 
-    def item_search(keyword_input)
-      search_options = Hash["ResponseGroup" => "Medium, Images", "SearchIndex" => "All", "Operation" => "ItemSearch", "Keywords" => keyword_input]
+    def item_search(keyword_input, item_page = 1)
+      search_options = Hash["ResponseGroup" => "Medium, Images", "SearchIndex" => "All", "Operation" => "ItemSearch", "Keywords" => keyword_input, "ItemPage" => item_page]
       url_query = (URI.encode_www_form((search_options.merge(@default_values)).sort)).gsub!('+', '%20')
       request = ("http://webservices.amazon.com/onca/xml?" + url_query + "&" + "Signature=" + "#{sig = request_sig(url_query)}")
+    end
+  end
+ 
+  class EtsyRequest
+    
+    def self.search(keyword, page = 1)
+      request_url = "https://openapi.etsy.com/v2/listings/active?includes=Images&limit=12&offerset='#{page}'&keywords='#{keyword}'&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}"
     end
   end
 end
