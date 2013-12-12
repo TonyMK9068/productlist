@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :name, :price, :store, :product_number, :link, :image_url, :category
+  attr_accessible :store, :category, :image_url, :name, :price, :product_number, :link
   belongs_to :list, inverse_of: :products
 
   def receive(message, params)

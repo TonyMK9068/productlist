@@ -45,8 +45,6 @@ user = User.new(
 # user.skip_confirmation!
 user.save
 
-# list = user.lists.build(name: 'Hello World').save
-
 
 # user = User.new(
 #   # username: 'test2', 

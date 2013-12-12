@@ -2,7 +2,7 @@ class List < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged 
   
-  attr_accessible :event, :title, :event_date
+  attr_accessible :event, :title, :event_date, :slug
   
   belongs_to :user, inverse_of: :lists
   has_many :products
