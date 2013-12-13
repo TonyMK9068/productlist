@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
 
 
   def self.top_rated
-    top_10 = self.select("id, COUNT(product_number) AS amount").
+    top_10 = self.select("products.id, COUNT(product_number) AS amount").
       group("product_number").
       order("amount DESC LIMIT 10").all
     instances = top_10.collect do |instance|
