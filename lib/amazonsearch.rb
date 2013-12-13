@@ -30,8 +30,8 @@ module AmazonSearch
  
   class EtsyRequest
     
-    def self.search(keyword, page = 0)
-      request_url = "https://openapi.etsy.com/v2/listings/active?includes=Images&limit=12&offerset='#{page}'&keywords='#{keyword}'&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}"
+    def search(keyword, page = 1)
+      request_url = "https://openapi.etsy.com/v2/listings/active?includes=Images&limit=12&offset='#{page}'&keywords='#{keyword}'&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}"
     end
   end
 end

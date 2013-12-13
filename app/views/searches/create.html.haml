@@ -3,26 +3,49 @@
 
 .container
   .row
+    = @etsy_response['results'].each do |item|
+      .col-sm-4.thumbnail-box
+        .thumbnail
+          .thumbnail-image-container
+            - (image = (item['Images'][0]['url_170x135'] || item['Images'][0]['url_75x75'] || "http://site.etsystatic.com/assets/dist/images/homepage/variations/v3/etsy-logo.20131106185933.png"))
+            = image_tag image, class: "thumbnail-image"
+
+          .caption
+            .panel.panel-default
+              .panel-heading
+                %h3.panel-title
+                  = title = item['title']
+
+              .panel-body
+                Listing Number: #{product_number = item['listing_id'].to_s}
+                - price = (item['price'] || "N/A")
+                Price: $#{item['price']}
+                Category: #{category = item['category_path'][0]}
+
+              .panel-footer
+                - link = item['url']
+                %small #{store = 'Etsy.com'}: #{link_to 'See More Info', link, :target => "_blank"}
+                %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{product_number}"} } List it! <i class='glyphicon glyphicon-star'></i>
+                = render partial: 'products/product_form', locals: { name: title, product_number: product_number, link: link, category: category, price: price, store: store, image: image }
+
     - @amazon_response["ItemSearchResponse"]["Items"]["Item"].each do |result|
       .col-sm-4.thumbnail-box
         .thumbnail
           .row
             .thumbnail-image-container.col-md-6
-              - if defined?(result['MediumImage']['URL'])
-                - ad_image = result['MediumImage']['URL']
-                = image_tag(ad_image, class: "thumbnail-image")
-              - else
-                - ad_image = "https://images-na.ssl-images-amazon.com/images/G/01/authportal/common/images/amazon_logo_no-org_mid._V153387053_.png"
-                = image_tag(ad_image, class: "thumbnail-image")
+              - (image = (defined?(result['MediumImage']['URL']) ? result['MediumImage']['URL'] : "https://images-na.ssl-images-amazon.com/images/G/01/authportal/common/images/amazon_logo_no-org_mid._V153387053_.png"))
+              = image_tag image, class: "thumbnail-image"
+
             .thumbnail-basic-info.col-md-5
               %p Category: #{category = result['ItemAttributes']['ProductGroup']}
               %p ASIN: #{asin = result['ASIN']}
-              - price = defined?(result['ItemAttributes']['ListPrice']['FormattedPrice']) ? result['ItemAttributes']['ListPrice']['FormattedPrice'] : "N/A"
+              - price = (defined?(result['ItemAttributes']['ListPrice']['FormattedPrice']) ? result['ItemAttributes']['ListPrice']['FormattedPrice'] : "Price not available")
               %p Price: #{price}
           .amazon.caption
             .panel.panel-default
               .panel-heading
-                %h3.panel-title= name = result['ItemAttributes']['Title']
+                %h3.panel-title 
+                  = name = result['ItemAttributes']['Title']
               .panel-body
                 .row
                   .col-md-6
@@ -33,30 +56,7 @@
                         = link_to 'See More Info', link, :target => "_blank"
                   .col-md-5
                     %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{asin}"} } List it! <i class='glyphicon glyphicon-star'></i>
-                    = render partial: 'products/product_form', locals: { name: name, product_number: asin, link: link, image: ad_image, category: category, price: price, store: store }
-
-    - @etsy_response['results'].each do |item|
-      .col-sm-4.thumbnail-box
-        .thumbnail
-          .thumbnail-image-container
-            - etsy_image = (item['Images'][0]['url_170x135'])
-            = image_tag(etsy_image, class: "thumbnail-image")
-
-          .caption
-            .panel.panel-default
-              .panel-heading
-                %h3.panel-title= (etsy_listing_title = item['title'])
-              .panel-body
-                = "Listing Number: " + (product_number = item['listing_id'].to_s)
-                - etsy_price = item['price']
-                = "Price: " + ("$" + item['price'])
-                = "Category: " + (etsy_category = item['category_path'][0])
-              .panel-footer
-                - etsy_link = item['url']
-                %small #{store = 'Etsy.com'}: #{ link_to 'See More Info', etsy_link, :target => "_blank" }
-                %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{product_number}"} } List it! <i class='glyphicon glyphicon-star'></i>
-                = render partial: 'products/product_form', locals: { name: etsy_listing_title, product_number: product_number, link: etsy_link, category: etsy_category, price: etsy_price, store: store, image: etsy_image }
-
+                    = render partial: 'products/product_form', locals: { name: name, product_number: asin, link: link, image: image, category: category, price: price, store: store }
 
 .row
   .results_nav.col-md-6.col-md-offset-3

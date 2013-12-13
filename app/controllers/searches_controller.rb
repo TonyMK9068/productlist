@@ -16,14 +16,11 @@ class SearchesController < ApplicationController
     else
       @page = 1
     end
-    esty_offset = @page * 12
+    esty_offset = ((@page * 12) - 12)
     @keyword = params[:value]
     encoded_input = URI.encode_www_form_component(@keyword)
     authorize! :manage, @list, message: "You need have created the list to do that"
-
-    if  !(@amazon_response = HTTParty.get(AmazonSearch::Request.new.item_search(@keyword, @page))) || !(@etsy_response = HTTParty.get(AmazonSearch::EtsyRequest::search(encoded_input, esty_offset)))
-    	flash[:error] = 'No results. Please try another search'
-    	redirect_to @list
-    end
+    @amazon_response = HTTParty.get(AmazonSearch::Request.new.item_search(@keyword, @page))
+    @etsy_response = HTTParty.get(AmazonSearch::EtsyRequest.new.search(encoded_input, esty_offset))
   end
 end
