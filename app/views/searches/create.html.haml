@@ -8,8 +8,11 @@
         .thumbnail
           .row
             .thumbnail-image-container.col-md-6
-              - ad_image = defined?(result['MediumImage']['URL']) ? result['MediumImage']['URL'] : "N/A"
-              = image_tag(ad_image, class: "thumbnail-image")
+              - if defined?(result['MediumImage']['URL'])
+                - ad_image = result['MediumImage']['URL']
+                = image_tag(ad_image, class: "thumbnail-image")
+              - else
+                - ad_image = "none"
             .thumbnail-basic-info.col-md-5
               %p Category: #{category = result['ItemAttributes']['ProductGroup']}
               %p ASIN: #{asin = result['ASIN']}
