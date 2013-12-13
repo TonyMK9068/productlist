@@ -7,7 +7,10 @@ class Product < ActiveRecord::Base
   end  
 
   def self.top_ten
-    duplicates = self.find(:all, :group => :product_number, :having => "count(*) > 1", :order => "count(*) DESC").first(10)
+    self.select('products.*').
+      select('COUNT(products.product_number) AS amount').
+      group('products.product_number').
+      order('amount DESC')
   end
 
 end
