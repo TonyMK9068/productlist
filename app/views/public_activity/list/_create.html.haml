@@ -1,2 +1,4 @@
-- if activity.owner
-  = activity.owner.email
+/ .activity
+/ - if activity.owner
+/   %p #{activity.owner.email} created a new list!
+/   = link_to activity.owner, user_path(activity.owner)

@@ -1,6 +1,5 @@
 class List < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  include PublicActivity::Common
   
   extend FriendlyId
   friendly_id :title, use: :slugged 

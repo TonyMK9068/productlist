@@ -1,1 +1,13 @@
-= activity.owner.email
+-content_for :head do
+  = stylesheet_link_tag 'activities'
+
+- if activity.recipient_id
+  .row
+    %li.media.activity
+      .media-body
+        .row
+          %h4.media-headng #{link_to activity.owner.email, user_path(activity.owner) } and #{link_to activity.recipient.email, user_path(activity.recipient)} are now friends
+        .col-md-12
+          .pull-left
+            .activity-icon.glyphicon.glyphicon-user 
+          %strong= activity.created_at.localtime.strftime('%D at %I:%M%p')

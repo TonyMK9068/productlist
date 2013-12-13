@@ -12,6 +12,7 @@ class ListsController < ApplicationController
     @list = current_user.lists.build(params[:list])
     authorize! :create, @list, message: "You need to be signed in to do that"
     if @list.save
+      @list.create_activity(:create, :owner => current_user)
       flash[:alert] = "List created!"
       redirect_to @list
     else

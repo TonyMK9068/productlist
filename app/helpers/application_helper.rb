@@ -5,4 +5,5 @@ module ApplicationHelper
     amount = price_in_cents.to_f/100.00
     formatted_usd = "$" + "#{amount}"
   end
+
 end

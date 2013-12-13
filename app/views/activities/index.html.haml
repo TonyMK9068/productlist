@@ -1,7 +1,4 @@
-- @activities.each do |activity|
-  = activity.recipient
 .container
-  .row
-    = render_activities @activities
-
-
+  .row.col-md-10
+    %ul.media-list
+      = render_activities(@activities)
