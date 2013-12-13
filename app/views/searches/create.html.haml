@@ -12,7 +12,7 @@
                 - ad_image = result['MediumImage']['URL']
                 = image_tag(ad_image, class: "thumbnail-image")
               - else
-                - ad_image = 'img1.jpg'
+                - ad_image = "https://images-na.ssl-images-amazon.com/images/G/01/authportal/common/images/amazon_logo_no-org_mid._V153387053_.png"
                 = image_tag(ad_image, class: "thumbnail-image")
             .thumbnail-basic-info.col-md-5
               %p Category: #{category = result['ItemAttributes']['ProductGroup']}
