@@ -1,7 +1,7 @@
 class Friendship < ActiveRecord::Base
   include PublicActivity::Model
-  tracked
-  
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+
   attr_accessible :friend_id, :user_id
   
   belongs_to :user
