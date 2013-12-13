@@ -6,9 +6,13 @@ class Product < ActiveRecord::Base
     message
   end  
 
+
   def self.top_rated
-    self.select("*, COUNT(product_number) AS amount").
+    top_10 = self.select("id, COUNT(product_number) AS amount").
       group("product_number").having("amount > 1").
-      order("amount DESC LIMIT 10")
+      order("amount DESC LIMIT 10").all
+    instances = top_10.collect do |instance|
+      Product.find(instance.id)
+    end
   end
 end
