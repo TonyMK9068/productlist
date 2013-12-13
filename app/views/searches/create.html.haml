@@ -12,7 +12,7 @@
                 - ad_image = result['MediumImage']['URL']
                 = image_tag(ad_image, class: "thumbnail-image")
               - else
-                - ad_image = "none"
+                - ad_image = 'img2.jpg'
             .thumbnail-basic-info.col-md-5
               %p Category: #{category = result['ItemAttributes']['ProductGroup']}
               %p ASIN: #{asin = result['ASIN']}
