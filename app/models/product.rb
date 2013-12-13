@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
   end  
 
   def self.top_rated
-    self.select("products.*, COUNT(products.id) AS amount").
+    self.select("*, COUNT(product_number) AS amount").
       group("product_number").having("amount > 1").
       order("amount DESC LIMIT 10")
   end

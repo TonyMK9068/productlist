@@ -4,7 +4,6 @@
 .row
   .page-header
     %h1 Most popular products!
-
 .container
   .row
     - @products.each do |product|
@@ -23,3 +22,4 @@
                 = "Category: " + product.category
               .panel-footer
                 %small #{product.store}: #{link_to 'See More Info', product.link, target: "_blank"}
+                = Product.where(product_number: product.product_number).count
