@@ -6,13 +6,8 @@ class Product < ActiveRecord::Base
     message
   end  
 
-
-  def self.top_rated
-    top_10 = self.select("products.id, COUNT(product_number) AS amount").
-      group("product_number").
-      order("amount DESC LIMIT 10").all
-    instances = top_10.collect do |instance|
-      Product.find(instance.id)
-    end
+  def self.top_ten
+    duplicates = self.find(:all, :group => :product_number, :having => "count(*) > 1", :order => "count(*) DESC").first(10)
   end
+
 end

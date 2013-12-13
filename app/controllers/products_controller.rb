@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.top_rated
+    @products = Product.top_ten
   end
 
   def destroy
