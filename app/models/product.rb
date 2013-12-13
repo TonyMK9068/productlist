@@ -7,10 +7,11 @@ class Product < ActiveRecord::Base
   end  
 
   def self.top_ten
-    self.select('products.*').
-      select('COUNT(products.product_number) AS amount').
-      group('products.product_number').
-      order('amount DESC')
+    self.select("COUNT(product_number) AS amount, product_number").
+      group(:product_number).
+      having("COUNT(product_number) > 1").
+      order("amount DESC").
+      collect { |product| Product.find_by_product_number(product.product_number) }
   end
 
 end
