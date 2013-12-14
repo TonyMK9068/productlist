@@ -3,7 +3,7 @@
 
 .container
   .row
-    = @etsy_response['results'].each do |item|
+    - @etsy_response['results'].each do |item|
       .col-sm-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
