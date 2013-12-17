@@ -5,14 +5,14 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    authorize! :create, List, message: "You need to be signed in to do that"
+    authorize! :manage, List, message: "You need to be signed in to do that"
   end
 
   def create
     @list = current_user.lists.build(params[:list])
-    authorize! :create, @list, message: "You need to be signed in to do that"
+    authorize! :manage, @list, message: "You need to be signed in to do that"
     if @list.save
-      @list.create(:create, :owner => current_user)
+      @list.create_activity(:create, :owner => current_user)
       flash[:alert] = "List created!"
       redirect_to @list
     else
