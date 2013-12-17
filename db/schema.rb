@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131212111138) do
+ActiveRecord::Schema.define(:version => 20131217060245) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -67,6 +67,15 @@ ActiveRecord::Schema.define(:version => 20131212111138) do
   end
 
   add_index "products", ["list_id"], :name => "index_products_on_list_id"
+
+  create_table "searches", :force => true do |t|
+    t.string   "keyword",    :null => false
+    t.string   "string",     :null => false
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "page"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -2,15 +2,14 @@
   = stylesheet_link_tag 'searches'
 
 .container
+
   .row
     .col-sm-6
-      = form_tag list_searches_path(list), class: "form-inline", role: "form" do
+      = form_for [list, Search.new], method: :post, class: "form-inline", role: "form" do
         .form-group
           %strong.h4 Search products by keyword: 
-          = hidden_field_tag :operation, "ItemSearch"
-          = hidden_field_tag :page, 1
         .form-group
-          = text_field_tag :value, nil, placeholder: "Enter your search here...", class: "form-control", type: "search"
+          = text_field_tag :keyword, nil, placeholder: "Enter your search here...", class: "form-control", type: "search"
         .form-group
           #search-button= submit_tag("Search!", class: "btn btn-small")
 
