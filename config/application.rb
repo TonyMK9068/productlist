@@ -20,7 +20,7 @@ module Giftshare
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     
-    config.assets.precompile += %w(friendships.css searches.css welcome.css custom.css users.css activites.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default)
+    config.assets.precompile += %w(pickadate.js/lib/legacy.js pickadate.js/lib/picker.date.js pickadate.js/lib/picker.js rondell/libs/jquery.mousewheel-3.0.6.min.js rondell/libs/modernizr-2.0.6.min.js friendships.css searches.css welcome.css custom.css users.css activites.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default rondell/dist/jquery.rondell.min.js)
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
