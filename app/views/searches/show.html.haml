@@ -3,7 +3,7 @@
 
 .container
   .row
-    - @search.etsy_response['results'].each do |item|
+    - @etsy_response['results'].each do |item|
       .col-sm-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
@@ -31,7 +31,7 @@
                 = render partial: 'products/product_form', locals: { name: title, product_number: product_number,
                   link: link, category: category, price: price, store: store, image: image }
 
-    - @search.amazon_response["ItemSearchResponse"]["Items"]["Item"].each do |result|
+    - @amazon_response["ItemSearchResponse"]["Items"]["Item"].each do |result|
       .col-sm-4.thumbnail-box
         .thumbnail
           .row
@@ -69,6 +69,6 @@
   .results_nav.col-md-6.col-md-offset-3
     - if @page > 1
       .col-md-6
-        %h2= link_to 'Previous Page', list_previous_page[@list, @search]
+        %h2= link_to 'Previous Page', list_previous_page[@list, @search], method: :post
     .col-md-6
-      %h2= link_to 'Next Page', list_next_page[@list, @search]
+      %h2= link_to 'Next Page', list_next_page[@list, @search], method: :post

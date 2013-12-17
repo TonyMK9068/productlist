@@ -4,11 +4,10 @@
 .container
   .row
     .col-sm-6
-      = form_for [list, search], method: :post, class: "form-inline", role: "form" do |f|
+      = form_for searches_path(search), html: {class: "form-inline", role: "form", method: :post} do |f|
         .form-group
           %strong.h4 Search products by keyword: 
         .form-group
           = f.text_field :keyword, placeholder: "Enter your search here...", class: "form-control", type: "search"
         .form-group
           #search-button.btn.btn-small= f.submit "Search!"
-

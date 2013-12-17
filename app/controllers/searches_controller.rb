@@ -18,6 +18,9 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
+    @etsy_response = @search.etsy_response
+    @amazon_response = @search.amazon_response
+    
     authorize! :manage, @list, message: "You need have created the list to do that"
   end
 

@@ -3,11 +3,10 @@ Giftshare::Application.routes.draw do
 
   resources :lists do
     resources :products, except: [:index]
-    resources :searches, only: [:create, :show]
-    get 'lists/:list_id/searches/:id/next' => 'search#next', :as => "next_page"
-    get 'lists/:list_id/searches/:id/previous' => 'search#previous', :as => "previous_page"
-
   end
+  resources :searches, only: [:create, :show]
+  post 'lists/:list_id/searches/:id/next' => 'search#next', :as => "next_page"
+  post 'lists/:list_id/searches/:id/previous' => 'search#previous', :as => "previous_page"
   resources :products, only: [:index]
   resources :friendships, only: [:create, :destroy]
   resources :users, controller: :users, only: :show
