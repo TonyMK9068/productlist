@@ -6,4 +6,10 @@ module ApplicationHelper
     formatted_usd = "$" + "#{amount}"
   end
 
+  # def check_value_and_assign(value)
+  #   if defined?(value)
+  #     self = value
+  #   else
+  #     self = 
+  # end
 end

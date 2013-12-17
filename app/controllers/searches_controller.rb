@@ -11,6 +11,7 @@ class SearchesController < ApplicationController
     esty_offset = ((@page * 12) - 12)
     @keyword = params[:search][:keyword]
     encoded_input = URI.encode_www_form_component(@keyword)
+    
     authorize! :manage, @list, message: "You need have created the list to do that"
     @amazon_response = HTTParty.get(GiftShareSearch::AmazonRequest.new.item_search(@keyword, @page))
     @etsy_response = HTTParty.get(GiftShareSearch::EtsyRequest.new.search(encoded_input, esty_offset))
