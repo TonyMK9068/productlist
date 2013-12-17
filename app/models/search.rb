@@ -1,15 +1,47 @@
 class Search < ActiveRecord::Base
+  include GiftShareSearch
+
+
   attr_accessible :keyword, :user, :page
   belongs_to :user
 
+  before_validation :encode_keyword, on: :create
+
   validates_format_of :keyword, with: /\A[a-zA-Z]([^;~@^*]*+)\z/i
   validates_length_of :keyword, maximum: 100
+  validates :page, numericality: true
+  validates_presence_of :user_id
 
+  def initialize
+    amazon_request
+    etsy_request
+  end
 
+  def etsy_request
+    @etsy_request ||= GiftShareSearch::EtsyRequest.new
+  end
 
+  def amazon_request
+    @amazon_request ||= GiftShareSearch::AmazonRequest.new
+  end
+  
+  def amazon_response(keyword, page)
+    HTTParty.get(@amazon_request.item_search(keyword, page))
+  end
+
+  def etsy_response(keyword, page)
+    page = (page * 12) - 12
+    HTTParty.get(@etsy_request.search(keyword, page))
+  end
+
+  private 
+  def encode_keyword
+    self.keyword = URI.encode_www_form_component(params[:search][:keyword])
+  end
 end
 
 module GiftShareSearch #AmazonSearch
+
   class AmazonRequest
     def initialize
       @secret = ENV["AMAZON_SECRET"]
@@ -44,5 +76,4 @@ module GiftShareSearch #AmazonSearch
       request_url = "https://openapi.etsy.com/v2/listings/active?includes=Images&limit=12&offset=#{page}&keywords=#{keyword}&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}"
     end
   end
-
 end

@@ -6,11 +6,8 @@ module ApplicationHelper
     formatted_usd = "$" + "#{amount}"
   end
 
-  # def check_value_and_assign(value)
-  #   if defined?(value)
-  #     self = value
-  #   else
-  #     self = "Not Available"
-  #   end
-  # end
+  def set_value_or_alt(input)
+    defined?(input) ? input : "Not available"
+  end
+
 end

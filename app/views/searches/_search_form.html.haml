@@ -2,14 +2,13 @@
   = stylesheet_link_tag 'searches'
 
 .container
-
   .row
     .col-sm-6
-      = form_for [list, Search.new], method: :post, class: "form-inline", role: "form" do |f|
+      = form_for [list, search], method: :post, class: "form-inline", role: "form" do |f|
         .form-group
           %strong.h4 Search products by keyword: 
         .form-group
           = f.text_field :keyword, placeholder: "Enter your search here...", class: "form-control", type: "search"
         .form-group
-          %btn#search-button.btn.btn-small= f.submit "Search!"
+          #search-button.btn.btn-small= f.submit "Search!"
 

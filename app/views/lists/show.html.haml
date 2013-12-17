@@ -5,7 +5,7 @@
     %p Created by: #{@list.user.email}
   - if can? :manage, @list
     .search-form
-      = render partial: 'searches/search_form', locals: {list: @list}
+      = render partial: 'searches/search_form', locals: {list: @list, search: Search.new}
 
   %div
     %table.table
