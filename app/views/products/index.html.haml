@@ -1,24 +1,30 @@
 -content_for :head do
   = stylesheet_link_tag 'searches'
+  = stylesheet_link_tag 'rondell/dist/jquery.rondell', :media => "all", :title => "Screen"
 
-.row
-  .page-header
-    %h1 Most popular products!
 .container
-  .row
-    - @products.each do |product|
-      .col-sm-4.thumbnail-box
+  #rondellPages
+    - Product.all.each do |product|
+      .thumbnail-box
         .thumbnail
-          .thumbnail-image-container
-            - if product.image_url
+          .row
+            .thumbnail-image-container.col-md-6
               = image_tag product.image_url, class: "thumbnail-image"
+            .thumbnail-basic-info.col-md-5
+              %p product.category
+              %p product.product_number
+              - if product.price.present?
+                %p Price: #{product.price}
           .caption
             .panel.panel-default
               .panel-heading
-                %h3.panel-title= (product.name || "N/A")     
+                %h3.panel-title 
+                  = name = product.name
               .panel-body
-                = "Listing Number: " + product.product_number
-                = "Price: " + product.price
-                = "Category: " + product.category
-              .panel-footer
-                %small #{product.store}: #{link_to 'See More Info', product.link, target: "_blank"}
+                .row
+                  .col-md-6
+                    %p product.store 
+                    %p
+                      %small
+                        - link = product.link
+                        = link_to 'See More Info', link, :target => "_blank"

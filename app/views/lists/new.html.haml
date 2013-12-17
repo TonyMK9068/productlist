@@ -1,0 +1,24 @@
+- content_for :head do
+  = stylesheet_link_tag 'pickadate.js/lib/themes/default'
+  = stylesheet_link_tag 'pickadate.js/lib/themes/default.date.css'
+%div
+  %h3 Create A New List
+
+= render partial: "shared/error_messages", locals: {instance: @list}
+
+.form-horizontal.col-sm-7.col-md-5{ :role => "form" }
+  = form_for @list do |f|
+
+    .form-group
+      = f.label :title, class: "control-label"
+      = f.text_field :title, class: "form-control", placeholder: "List Title"
+
+    .form-group
+      = f.label :event, class: "control-label"
+      = f.text_field :event, class: "form-control", placeholder: "What's the occasion?"
+
+    .datepicker-container
+      = f.text_field :event_date, readyonly: true, placeholder: "Select a date", class: "datepicker"
+
+    .form-group
+      = f.submit "Submit", class: "btn btn-default"

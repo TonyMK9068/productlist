@@ -1,0 +1,417 @@
+@import "compass";
+@import "mixins";
+
+/*
+ * SASS Base for Sebobo github projects.
+ * 01/27/2013
+ */
+
+// Base
+$baseFontSize: 13px;
+$baseLineHeight:    18px;
+$baseFontFamily:    "Lucida Grade", arial;
+
+// Links
+$linkColor:         #0069d6;
+$linkColorHover:    darken($linkColor, 15);
+
+// Grays
+$black:                 #000 !default;
+$grayDarker:            #222 !default;
+$grayDark:              #333 !default;
+$gray:                  #555 !default;
+$grayLight:             #999 !default;
+$grayLighter:           #eee !default;
+$white:                 #fff !default;
+
+// Accent colors
+$blue:                  #049cdb !default;
+$blueDark:              #0064cd !default;
+$green:                 #46a546 !default;
+$red:                   #9d261d !default;
+$yellow:                #ffc40d !default;
+$orange:                #f89406 !default;
+$pink:                  #c3325f !default;
+$purple:                #7a43b6 !default;
+
+// Reset
+html {
+  height: 100%;
+  font-size: $baseFontSize;
+  font-family: $baseFontFamily;
+  color: $grayDark;
+  background: $grayLighter;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+// Labels
+.label {
+  padding: 1px 3px 2px;
+  font-size: 0.75em;
+  font-weight: bold;
+  color: #fff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background-color: #ccc;
+  &.important { background-color: #c43c35; }
+  &.warning   { background-color: $orange; }
+  &.success   { background-color: $green; }
+  &.notice    { background-color: lighten($blue, 25%); }
+  &.inverse   { background-color: $black; }
+}
+.borderradius .label {
+  @include border-radius(3px);
+}
+
+// Basic stuff
+.clear {
+  clear: both;
+}
+
+.relative {
+  position: relative;
+}
+
+.centered {
+  margin: 0 auto;
+}
+
+.center {
+  text-align: center;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.clearfix {
+  zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    zoom: 1;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Buttons
+// Shared colors for buttons and alerts
+.btn,
+.alert-message {
+  // Set text color
+  &.danger,
+  &.danger:hover,
+  &.error,
+  &.error:hover,
+  &.success,
+  &.success:hover,
+  &.info,
+  &.info:hover {
+    color: $white
+  }
+
+    // Danger and error appear as red
+    &.danger,
+    &.error {
+      background-color: #c43c35;
+    }
+    // Success appears as green
+    &.success {
+      background-color: #57a957;
+    }
+    // Info appears as a neutral blue
+    &.info {
+      background-color: #339bb9;
+    }
+
+  // Sets the close button to the middle of message
+  .close{
+    font-family: Arial, sans-serif;
+    line-height: 18px;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 5px 14px 6px;
+  text-shadow: 0 1px 1px rgba(255,255,255,.75);
+  color: #333;
+  font-size: $baseFontSize;
+  line-height: normal;
+  border: 1px solid #ccc;
+  border-bottom-color: #bbb;
+  text-decoration: none;
+  background-color: darken(#ffffff, 10%);
+  @include border-radius(4px);
+  @include transition(.1s linear all);
+  @include background(linear-gradient(top, #ffffff, #ffffff 25%, darken(#ffffff, 10%)));
+  @include box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
+
+  &.active, &:active {
+    @include box-shadow(inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05));
+  }
+
+  &.large {
+    @include border-radius(6px);
+  }
+
+  &:hover {
+    background-position: 0 -15px;
+    color: #333;
+    text-decoration: none;
+  }
+
+  // Focus state for keyboard and accessibility
+  &:focus {
+    outline: 1px dotted #666;
+  }
+
+  // Primary Button Type
+  &.primary {
+    color: $white;
+    background-color: $blueDark;
+    @include gradient-bar($blue, $blueDark);
+  }
+
+  // Active and Disabled states
+  &.disabled, &[disabled] {
+    // disabled pseudo can't be included with .disabled
+    // def because IE8 and below will drop it ;_;
+    cursor: default;
+    background-image: none;
+    opacity: 0.65;
+    @include box-shadow(none);
+  }
+
+  // Button Sizes
+  &.large {
+    font-size: $baseFontSize + 2px;
+    line-height: normal;
+    padding: 9px 14px 9px;
+  }
+  &.small {
+    padding: 7px 9px 7px;
+    font-size: $baseFontSize - 2px;
+  }
+}
+
+.btn,
+.alert-message {
+  // Danger and error appear as red
+  &.danger,
+  &.error {
+    @include gradient-bar(#ee5f5b, #c43c35);
+  }
+  // Success appears as green
+  &.success {
+    @include gradient-bar(#62c462, #57a957);
+  }
+  // Info appears as a neutral blue
+  &.info {
+    @include gradient-bar(#5bc0de, #339bb9);
+  }
+}
+
+// Super jank hack for removing border-radius from IE9 so we can keep filter gradients on alerts and buttons
+:root .alert-message,
+:root .btn {
+  border-radius: 0 \0;
+}
+
+// Help Firefox not be a jerk about adding extra padding to buttons
+button.btn,
+input[type=submit].btn {
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}
+
+// Columns
+.column {
+  float: left;
+  overflow: hidden;
+}
+.column.last {
+  float: none;
+}
+.size1of2 {
+  width: 50%;
+}
+.size1of4 {
+  width: 25%;
+}
+.size3of4 {
+  width: 75%;
+}
+.size1of3 {
+  width: 33%;
+}
+.size2of3 {
+  width: 66%;
+}
+
+// Inline and block code styles
+code, pre {
+  padding: 0 3px 2px;
+  font-family: Monaco, Andale Mono, Courier New, monospace;
+  font-size: 12px;
+    @include border-radius(3px);
+}
+code {
+  background-color: lighten($orange, 40%);
+  color: rgba(0,0,0,.75);
+  padding: 1px 3px;
+}
+pre {
+  background-color: #f5f5f5;
+  display: block;
+  padding: ($baseLineHeight - 1) / 2;
+  margin: 0 0 $baseLineHeight;
+  line-height: $baseLineHeight;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.rgba pre {
+  border-color: rgba(0, 0, 0, .15);
+}
+
+// NAV BASE CLASS
+// ----------
+
+.nav {
+  margin: 0 0 $baseLineHeight;
+  list-style: none;
+  padding: 0;
+
+  // Make links block level
+  & > li > a {
+    display: block;
+
+    &:hover {
+      text-decoration: none;
+      background-color: $grayLighter;
+    }
+  }
+}
+
+// Common styles
+.nav-pills {
+  float: left;
+  padding-left: 14px;
+
+  & li {
+    float: left;
+    list-style: none;
+  }
+  // Links rendered as pills
+  & li a {
+    text-shadow: 0 1px 1px $grayLighter;
+    padding: 8px 12px;
+    margin: 2px;
+    line-height: 14px;
+    @include border-radius(5px);
+  }
+
+  // Active state
+  & li.active a,
+  & li.active a:hover {
+    text-shadow: 0 1px 1px $gray;
+    color: $white;
+    background-color: $linkColor;
+    @include box-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  }
+  & li a:hover {
+    background-color: $grayLighter;
+  }
+
+  .spacer {
+    padding: 4px 0;
+    margin: 2px 0;
+    color: #ccc;
+    display: block;
+  }
+}
+
+// WELLS
+// -----
+
+.well {
+  min-height: 20px;
+  padding: 8px 0;
+  margin-bottom: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0,0,0,.05);
+  @include border-radius(4px);
+  @include box-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+
+// Inline and block code styles
+code,
+pre {
+  padding: 0 3px 2px;
+  font-family: monospace;
+  font-size: $baseFontSize - 1;
+  color: $grayDark;
+  @include border-radius(3px);
+}
+
+// Inline code
+code {
+  padding: 3px 4px;
+  color: #d14;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+}
+
+// Blocks of code
+pre {
+  display: block;
+  padding: ($baseLineHeight - 1) / 2;
+  margin: 0 0 $baseLineHeight / 2;
+  font-size: 12px;
+  line-height: $baseLineHeight;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc; // fallback for IE7-8
+  border: 1px solid rgba(0,0,0,.15);
+  @include border-radius(4px);
+  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+
+  // Make prettyprint styles more spaced out for readability
+  &.prettyprint {
+    margin-bottom: $baseLineHeight;
+  }
+
+  // Account for some code outputs that place code tags in pre tags
+  code {
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+// Enable scrollable blocks of code
+.pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll;
+}
