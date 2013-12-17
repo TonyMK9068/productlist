@@ -7,8 +7,8 @@
       .col-sm-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
-            - (image = (item['Images'][0]['url_170x135'] || item['Images'][0]['url_75x75'] || "http://site.etsystatic.com/assets/dist/images/homepage/variations/v3/etsy-logo.20131106185933.png"))
-            = image_tag image, class: "thumbnail-image"
+            - (image = (item['Images'][0]['url_170x135'] || item['Images'][0]['url_75x75'] )
+            = image_tag image, alt: 'error.jpg', class: "thumbnail-image"
 
           .caption
             .panel.panel-default

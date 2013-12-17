@@ -10,6 +10,7 @@ module ApplicationHelper
   #   if defined?(value)
   #     self = value
   #   else
-  #     self = 
+  #     self = "Not Available"
+  #   end
   # end
 end
