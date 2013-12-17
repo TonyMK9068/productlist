@@ -1,14 +1,11 @@
 class Search < ActiveRecord::Base
-  include GiftShareSearch
   attr_accessible :keyword, :user, :page
   belongs_to :user
 
   validates_format_of :keyword, with: /\A[a-zA-Z]([^;~@^*]*+)\z/i
-  validates_length_of :keyword, max: 100
+  validates_length_of :keyword, maximum: 100
 
-  def initialize(keyword, page=1)
-    @keyword, @page = keyword, page
-  end
+
 
 end
 

@@ -1,9 +1,10 @@
 class SearchesController < ApplicationController
-
+  include GiftShareSearch
   respond_to :html, :xml, :json
   
   def create
-    @search = Search.new(params[:search])
+
+    @search = current_user.searches.build(params[:search])
     @page = params[:page] ||= 1
 
     @list = List.find(params[:list_id])

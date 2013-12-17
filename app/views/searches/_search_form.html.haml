@@ -5,11 +5,11 @@
 
   .row
     .col-sm-6
-      = form_for [list, Search.new], method: :post, class: "form-inline", role: "form" do
+      = form_for [list, Search.new], method: :post, class: "form-inline", role: "form" do |f|
         .form-group
           %strong.h4 Search products by keyword: 
         .form-group
-          = text_field_tag :keyword, nil, placeholder: "Enter your search here...", class: "form-control", type: "search"
+          = f.text_field :keyword, placeholder: "Enter your search here...", class: "form-control", type: "search"
         .form-group
-          #search-button= submit_tag("Search!", class: "btn btn-small")
+          %btn#search-button.btn.btn-small= f.submit "Search!"
 

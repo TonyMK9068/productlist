@@ -17,7 +17,7 @@ class ListsController < ApplicationController
       redirect_to @list
     else
       flash[:error] = "Error occured creating your list"
-      redirect_to :back
+      render user_path(current_user)
     end
   end
 
