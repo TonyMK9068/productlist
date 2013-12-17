@@ -1,6 +1,14 @@
-module AmazonSearch
-  class Request
+class Search < ActiveRecord::Base
+  include GiftShareSearch
+  attr_accessible :keyword, :user
 
+  validates_format_of :keyword, with: /\A[a-zA-Z]([^;~@^*]*+)\z/i
+  validates_length_of :keyword, max: 100
+
+end
+
+module GiftShareSearch #AmazonSearch
+  class AmazonRequest
     def initialize
       @secret = ENV["AMAZON_SECRET"]
       @timestamp = Time.parse("#{Time.now.utc}").iso8601
@@ -27,11 +35,12 @@ module AmazonSearch
       request = ("http://webservices.amazon.com/onca/xml?" + url_query + "&" + "Signature=" + "#{sig = request_sig(url_query)}")
     end
   end
- 
+
   class EtsyRequest
-    
+
     def search(keyword, page = 1)
       request_url = "https://openapi.etsy.com/v2/listings/active?includes=Images&limit=12&offset=#{page}&keywords=#{keyword}&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}"
     end
   end
+
 end
