@@ -13,7 +13,7 @@ class FriendshipsController < ApplicationController
     else
       @friendship = current_user.friendships.build(:friend_id => friend.id)
       if @friendship.save
-        @friendship.create_activity(:create, :recipient => friend, :owner => current_user)
+        @friendship.create(:create, :recipient => friend, :owner => current_user)
         flash[:info] = "Added friend successfully."
         redirect_to user_path(current_user)
       else 
