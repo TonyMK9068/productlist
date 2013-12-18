@@ -13,8 +13,7 @@
             .thumbnail-basic-info.col-md-5
               %p= product.category
               %p= product.product_number
-              - if product.price.present?
-                %p Price: #{product.price}
+              %p Price: #{product.price}
           .caption
             .panel.panel-default
               .panel-heading
@@ -23,8 +22,6 @@
               .panel-body
                 .row
                   .col-md-6
-                    %p product.store 
-                    %p
-                      %small
-                        - link = product.link
-                        = link_to 'See More Info', link, :target => "_blank"
+                    %p= product.store 
+                    %small
+                      = link_to 'See More Info', product.link, :target => "_blank"
