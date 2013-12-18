@@ -16,6 +16,8 @@ class Search < ActiveRecord::Base
   def etsy_response
     HTTParty.get(EtsyRequest.new.search(self.keyword, self.page))
   end
+
+  # price.is_a?("string")
 end
 
 class AmazonRequest

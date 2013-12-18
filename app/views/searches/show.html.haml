@@ -13,7 +13,7 @@
           .caption
             %h4= item[:name]
             %p Listing Number: #{item[:product_number]}
-            %p Price: #{item[:price]}
+            %p Price: #{format_price(item[:price])}
             %p Category: #{item[:category]}
 
           .panel-footer
@@ -30,7 +30,7 @@
           .caption
             %h4= item[:name]
             %p Listing Number: #{item[:product_number]}
-            %p Price: #{item[:price]}
+            %p Price: #{format_price item[:price]}
             %p Category: #{item[:category]}
 
           .panel-footer
