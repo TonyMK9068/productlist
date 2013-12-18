@@ -1,4 +1,9 @@
 module SearchesHelper
+  
+  def product_keys
+    %w(product_number image_url price name link category store).map! { |value| value.to_sym }
+  end
+
   def amazon_array_of_arrays
     @amazon_response.access("ItemSearchResponse.Items.Item").collect do |re|
         [
@@ -13,10 +18,6 @@ module SearchesHelper
     end
   end
  
-  def product_keys
-    %w(product_number image_url price name link category store).map! { |value| value.to_sym }
-  end
-  
   def amazon_response_arrays
     amazon_array_of_arrays.collect do |array|
       Hash[product_keys.zip array]
