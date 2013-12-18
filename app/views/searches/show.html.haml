@@ -35,9 +35,9 @@
               = item[:name]
 
           .panel-body
-            Listing Number: item[:product_number]
-            Price: $#{item[:price]}
-            Category: #{item[:category]}
+            %p Listing Number: #{item[:product_number]}
+            %p Price: #{item[:price]}
+            %p Category: #{item[:category]}
 
           .panel-footer
             %small #{item[:store]}: #{link_to 'See More Info', item[:link], :target => "_blank"}
