@@ -14,7 +14,7 @@ module SearchesHelper
   end
  
   def product_keys
-    %w(product_number image_url price title link category store).map! { |value| value.to_sym }
+    %w(product_number image_url price name link category store).map! { |value| value.to_sym }
   end
   
   def amazon_response_arrays
