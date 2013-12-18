@@ -24,7 +24,7 @@ class SearchesController < ApplicationController
     authorize! :manage, @list, message: "You need have created the list to do that"
   end
 
-  def next_page
+  def next
     @search = Search.find(params[:id])
     authorize! :manage, @list, message: "You need have created the list to do that"
     if @search.update_attributes(:page => @search.page += 1)
@@ -35,7 +35,7 @@ class SearchesController < ApplicationController
     end
   end
 
-  def previous_page
+  def previous
     @search = Search.find(params[:id])
     authorize! :manage, @list, message: "You need have created the list to do that"
     if @search.update_attributes(:page => @search.page -= 1)

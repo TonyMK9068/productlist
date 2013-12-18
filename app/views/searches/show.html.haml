@@ -43,10 +43,11 @@
             %small #{item[:store]}: #{link_to 'See More Info', item[:link], :target => "_blank"}
             %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{item[:product_number]}"} } List it! <i class='glyphicon glyphicon-star'></i>
             = render partial: 'products/product_form', locals: {product: item}
+            
 .row
   .results_nav.col-md-6.col-md-offset-3
     - if @search.page > 1
       .col-md-6
-        %h2= link_to 'Previous Page', list_previous_page_path(list_id: @list.id, id: @search), method: :post
+        %h2= link_to 'Previous Page', list_previous_path(list_id: @list.id, id: @search)
     .col-md-6
-      %h2= link_to 'Next Page', list_next_page_path(list_id: @list.id, id: @search), method: :post
+      %h2= link_to 'Next Page', list_next_path(list_id: @list.id, id: @search)

@@ -1,11 +1,12 @@
 Giftshare::Application.routes.draw do
   devise_for :users
 
+
   resources :lists do
     resources :products, except: [:index]
-    post '/searches/:id/next' => 'search#next', :as => "next_page", controller: :searches
-    post '/searches/:id/previous' => 'search#previous', :as => "previous_page", controller: :searches
-    resources :searches, except: [:update, :destroy, :edit, :index]
+    resources :searches, only: [:create, :show, :previous_page, :next_page]
+    get '/searches/:id/next' => 'searches#next', :as => :next
+    get '/searches/:id/previous' => 'searches#previous', :as => :previous
   end
   
   resources :products, only: [:index]
