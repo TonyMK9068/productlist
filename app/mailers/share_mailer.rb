@@ -1,5 +1,5 @@
 class ShareMailer < ActionMailer::Base
-  default from: '9324kmdfimjfl234@gmail.com'
+  default from: 'contact.me@anthonyjcorreia.com'
 
   def notify(sender, list, recipient)
     @user = sender
