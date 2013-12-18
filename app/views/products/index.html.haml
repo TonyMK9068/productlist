@@ -11,8 +11,8 @@
             .thumbnail-image-container.col-md-6
               = image_tag product.image_url, class: "thumbnail-image"
             .thumbnail-basic-info.col-md-5
-              %p product.category
-              %p product.product_number
+              %p= product.category
+              %p= product.product_number
               - if product.price.present?
                 %p Price: #{product.price}
           .caption
