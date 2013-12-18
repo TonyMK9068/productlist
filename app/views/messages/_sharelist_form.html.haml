@@ -1,0 +1,11 @@
+.col-sm-6#sharelist-form
+  %strong Want to share your list?
+  %p Input an email address to send them an email
+
+  = form_for Message.new, method: :post, role: "form" do |f|
+    = f.label :recipient, "Input their email here:"
+
+    = f.hidden_field :list_id, value: list.id
+
+    = f.email_field :recipient
+    = f.submit "Send", class: "btn"

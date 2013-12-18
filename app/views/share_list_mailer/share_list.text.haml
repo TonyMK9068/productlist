@@ -1,4 +1,4 @@
-= (@user.first_name || @user.username || @user.eamil) + " has shared their list," + @list.title + ", with you!"
+= @user.display_user_as("username") + " has shared their list," + @list.title + ", with you!"
 
 Click the link below to view it at GiftShare!
 

@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "Welcome@giftshare.com"
+  default from: '9324kmdfimjfl234@gmail.com'
 
   def signup_confirmation(user)
     @user = user

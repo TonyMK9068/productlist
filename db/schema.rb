@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131217211951) do
+ActiveRecord::Schema.define(:version => 20131218103621) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(:version => 20131217211951) do
 
   add_index "lists", ["slug"], :name => "index_lists_on_slug"
   add_index "lists", ["user_id"], :name => "index_lists_on_user_id"
+
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "recipient"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
 
   create_table "products", :force => true do |t|
     t.string   "name"

@@ -19,3 +19,6 @@
         %th Image
 
       = render partial: 'products/product', collection: @products, locals: {list: @list}
+
+  .mailer_options
+    = render partial: "messages/sharelist_form", locals: {list: @list}

@@ -12,9 +12,8 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :searches
+  has_many :messages
   
-
-
   validates_uniqueness_of :username
   validates_format_of :username, with: /\A([a-zA-Z0-9]{2,16}[-_]?[a-zA-Z0-9]{2,16})\z/, allow_blank: :true
   validates_length_of :username, in: 3..18, allow_blank: true
