@@ -1,0 +1,5 @@
+%tr
+  %td= link_to list.title, list
+  %td= list.event
+  %td= list.event_date
+  %td= button_to 'Delete', list, method: :delete, confirm: "Are you sure?"

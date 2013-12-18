@@ -228,6 +228,7 @@ GEM
     uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vine (0.0.2)
     warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -266,3 +267,4 @@ DEPENDENCIES
   thin
   twitter_oauth
   uglifier (>= 1.0.3)
+  vine

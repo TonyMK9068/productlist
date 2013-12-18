@@ -7,7 +7,11 @@ module ApplicationHelper
   end
 
   def set_value_or_alt(input)
-    defined?(input) ? input : "Not available"
+    if input.nil?
+      return "Not available"
+    else
+      input
+    end
   end
 
 end

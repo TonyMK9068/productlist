@@ -1,36 +1,22 @@
 class Search < ActiveRecord::Base
 
-  attr_accessible :keyword, :user, :page
+  attr_accessible :keyword, :user_id, :page, :list_id
   belongs_to :user
-
-  before_validation :encode_keyword, on: :create
-
+  belongs_to :list
+  
   validates_format_of :keyword, with: /\A[a-zA-Z]([^;~@^*]*+)\z/i
   validates_length_of :keyword, maximum: 100
   validates :page, numericality: true
   validates_presence_of :user_id
 
-  def initialize
-    @etsy_request = EtsyRequest.new
-    @amazon_request = AmazonRequest.new
-  end
-
   def amazon_response
-    HTTParty.get(@amazon_request.item_search(self.keyword, self.page))
+    HTTParty.get(AmazonRequest.new.item_search(self.keyword, self.page))
   end
 
-  def etsy_response(keyword, page)
-    page = (page * 12) - 12
-    HTTParty.get(@etsy_request.search(self.keyword, self.page))
-  end
-
-  private 
-  def encode_keyword
-    self.keyword = URI.encode_www_form_component(params[:search][:keyword])
+  def etsy_response
+    HTTParty.get(EtsyRequest.new.search(self.keyword, self.page))
   end
 end
-
-
 
 class AmazonRequest
   def initialize
@@ -63,7 +49,9 @@ end
 class EtsyRequest
 
   def search(keyword, page = 1)
-    request_url = "https://openapi.etsy.com/v2/listings/active?includes=Images&limit=12&offset=#{page}&keywords=#{keyword}&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}"
+    page_offset = (page * 12) - 12
+    encoded_keyword = URI.encode_www_form_component keyword
+    request_url = "https://openapi.etsy.com/v2/listings/active?includes=Images&limit=12&offset=#{page_offset}&keywords=#{encoded_keyword}&sort_on=created&sort_order=down&api_key=#{ENV['ETSY_KEY']}"
   end
 end
 

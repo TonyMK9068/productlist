@@ -24,6 +24,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @products = @list.products.all
+    @search = Search.new
   end
   
   def edit

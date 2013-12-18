@@ -13,17 +13,9 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap
-#= require rondell/dist/jquery.rondell.min.js
-#= require rondell/libs/modernizr-2.0.6.min.js
-#= require rondell/libs/jquery.mousewheel-3.0.6.min.js
 #= require pickadate.js/lib/picker.js
 #= require pickadate.js/lib/picker.date.js
 #= require pickadate.js/lib/legacy.js
 #= require_tree .
 #
 
-$ ->
-
-  $("div#rondellPages").rondell({
-    preset: "pages"
-  })

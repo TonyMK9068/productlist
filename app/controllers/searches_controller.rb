@@ -1,17 +1,17 @@
 class SearchesController < ApplicationController
-  before_filer :set_page
+  before_filter :set_page
   
   respond_to :html, :xml, :json
   
   def create
-    @search = current_user.searches.build(params[:search])
+    @search = current_user.searches.build(params[:search].merge(list_id: @list.id))
+    @search.page = 1 
 
     authorize! :manage, @list, message: "You need have created the list to do that"
-
-    if defined?(@amazon_response) && defined?(@etsy_response)
-      flash[:error] = "No items found. Try a new search"
+    if @search.save
       redirect_to [@list, @search]
     else
+      flash[:error] = "An error occurred while processing your request."
       render action: :show, controller: :lists
     end
   end
@@ -27,27 +27,26 @@ class SearchesController < ApplicationController
   def next_page
     @search = Search.find(params[:id])
     authorize! :manage, @list, message: "You need have created the list to do that"
-    if @search.update_attributes(:page => @search.page + 1)
-      redirect_to [@list, @search]
+    if @search.update_attributes(:page => @search.page += 1)
+      redirect_to list_search_path(list_id: @list, id: @search.id)
     else
       flash[:error] = "Sorry, an error occured while handling your request."
-      render action: :show, controller: :lists 
+      render :back
     end
   end
 
   def previous_page
     @search = Search.find(params[:id])
     authorize! :manage, @list, message: "You need have created the list to do that"
-    if @search.update_attributes(:page => @search.page - 1)
-      redirect_to [@list, @search]
+    if @search.update_attributes(:page => @search.page -= 1)
+      redirect_to list_search_path(list_id: @list, id: @search.id)
     else
       flash[:error] = "Sorry, an error occured while handling your request."
-      render action: :show, controller: :lists 
+      render :back
     end
   end
 
-  private
-
+  protected
   def set_page
     @list = List.find(params[:list_id])
   end

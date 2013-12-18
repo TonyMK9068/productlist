@@ -8,7 +8,8 @@ class List < ActiveRecord::Base
   
   belongs_to :user, inverse_of: :lists
   has_many :products
-
+  has_many :searches
+  
   validates_presence_of :title
   validates_presence_of :event
   validates_presence_of :event_date
