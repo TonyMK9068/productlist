@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 
     authorize! :manage, @list, message: "You can only share your own lists"
     if @message.save
-      ShareListMailer.share_list(@user, @list, @recipient).deliever
+      ShareMailer.notify(@user, @list, @recipient).deliver
       flash[:notice] = "Message sent"
       
       redirect_to list_path(@list)
