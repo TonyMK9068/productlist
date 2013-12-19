@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     user_path(current_user)
   end
 
+
+  force_ssl :host => "kagawa-9700.herokussl.com"
+
+
 end

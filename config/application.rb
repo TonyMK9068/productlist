@@ -19,7 +19,7 @@ module Giftshare
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
-    config.force_ssl
+    config.force_ssl = true
     config.assets.precompile += %w(rondell/dist/jquery.rondell.css pickadate.js/lib/themes/default.css pickadate.js/lib/legacy.js pickadate.js/lib/picker.date.js pickadate.js/lib/picker.js friendships.css rondell/libs/jquery.mousewheel-3.0.6.min.js rondell/libs/modernizr-2.0.6.min.js searches.css welcome.css custom.css users.css activites.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default rondell/dist/jquery.rondell.min.js)
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
