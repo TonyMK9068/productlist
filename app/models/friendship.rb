@@ -1,7 +1,7 @@
 class Friendship < ActiveRecord::Base
   include PublicActivity::Common
 
-  attr_accessible :friend_id, :user_id
+  attr_accessible :friend_id
   
   belongs_to :user
   belongs_to :friend, :class_name => "User"

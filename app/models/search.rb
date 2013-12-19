@@ -1,6 +1,6 @@
 class Search < ActiveRecord::Base
 
-  attr_accessible :keyword, :user_id, :page, :list_id
+  attr_accessible :keyword, :page, :list_id
   belongs_to :user
   belongs_to :list
   
@@ -8,6 +8,8 @@ class Search < ActiveRecord::Base
   validates_length_of :keyword, maximum: 100
   validates :page, numericality: true
   validates_presence_of :user_id
+  validates_presence_of :list_id
+  validates :ownership_of_list
 
   def amazon_response
     HTTParty.get(AmazonRequest.new.item_search(self.keyword, self.page))
@@ -16,6 +18,12 @@ class Search < ActiveRecord::Base
   def etsy_response
     HTTParty.get(EtsyRequest.new.search(self.keyword, self.page))
   end
+
+  # protected 
+
+    def ownership_of_list
+      errors.add(:list_id, "Not authorized to perform searches for this list") if user.lists.include? List.find(list_id) == false
+    end
 
   # price.is_a?("string")
 end
