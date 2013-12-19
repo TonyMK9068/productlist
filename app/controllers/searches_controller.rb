@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     @search = current_user.searches.build(params[:search].merge(list_id: @list.id))
     @search.page = 1 
 
-    authorize! :manage, @list, message: "You need have created the list to do that"
+    authorize! :create, Search, message: "You need have created the list to do that"
     if @search.save
       redirect_to [@list, @search]
     else
@@ -21,12 +21,12 @@ class SearchesController < ApplicationController
     @etsy_response = @search.etsy_response
     @amazon_response = @search.amazon_response
     
-    authorize! :manage, @list, message: "You need have created the list to do that"
+    authorize! :manage, @search, message: "You need have created the list to do that"
   end
 
   def next
     @search = Search.find(params[:id])
-    authorize! :manage, @list, message: "You need have created the list to do that"
+    authorize! :manage, @search, message: "You need have created the list to do that"
     if @search.update_attributes(:page => @search.page += 1)
       redirect_to list_search_path(list_id: @list, id: @search.id)
     else
@@ -37,7 +37,7 @@ class SearchesController < ApplicationController
 
   def previous
     @search = Search.find(params[:id])
-    authorize! :manage, @list, message: "You need have created the list to do that"
+    authorize! :manage, @search, message: "You need have created the list to do that"
     if @search.update_attributes(:page => @search.page -= 1)
       redirect_to list_search_path(list_id: @list, id: @search.id)
     else

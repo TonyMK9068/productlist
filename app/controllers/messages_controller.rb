@@ -6,8 +6,8 @@ class MessagesController < ApplicationController
     @recipient = params[:message][:recipient]
 
     @message = @user.messages.new(recipient: params[:message][:recipient])
+    authorize! :create, List, message: "Not authorized"
 
-    authorize! :manage, @list, message: "You can only share your own lists"
     if @message.save
       ShareMailer.notify(@user, @list, @recipient).deliver
       flash[:notice] = "Message sent"

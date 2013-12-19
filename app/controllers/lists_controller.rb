@@ -1,16 +1,13 @@
 class ListsController < ApplicationController
-  def index
-    @lists = current_user.lists.all
-  end
-
+  
   def new
     @list = List.new
-    authorize! :manage, List, message: "You need to be signed in to do that"
+    authorize! :create, List, message: "You need to be signed in to do that"
   end
 
   def create
     @list = current_user.lists.build(params[:list])
-    authorize! :manage, @list, message: "You need to be signed in to do that"
+    authorize! :create, @list, message: "You need to be signed in to do that"
     if @list.save
       @list.create_activity(:create, :owner => current_user)
       flash[:alert] = "List created!"
@@ -25,16 +22,17 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @products = @list.products.all
     @search = Search.new
+    authorize! :read, @list, message: "You need to be signed in to do that"
   end
   
   def edit
     @list = List.find(params[:id])
-    authorize! :manage, @list, message: "This must be your list to do that"
+    authorize! :update, @list, message: "This must be your list to do that"
   end
   
   def update
     @list = List.find(params[:id])
-    authorize! :manage, @list, message: "This must be your list to do that"
+    authorize! :update, @list, message: "This must be your list to do that"
     if @list.update_attributes(params[:list])
       redirect_to @list, notice: "List updated successfully"
     else
@@ -45,7 +43,7 @@ class ListsController < ApplicationController
 
   def destroy
     @list = List.find(params[:id])
-    authorize! :manage, @list, message: "Not authorized to do that."
+    authorize! :update, @list, message: "Not authorized to do that."
     if @list.destroy
       flash[:notice] = "List deleted"
       redirect_to user_path(current_user)

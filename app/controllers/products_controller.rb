@@ -1,13 +1,9 @@
 class ProductsController < ApplicationController
-  def new
-    @list= List.find(params[:list_id])
-    @product = Product.new
-  end
 
   def create
     @list = List.find(params[:list_id])
     @product = @list.products.build(params[:product])
-    authorize! :manage, @product, message: "You need have created the list to do that"
+    authorize! :create, @product, message: "You need have created the list to do that"
     if @product.save
       flash[:notice] = "Producted Added!"
       redirect_to @list
@@ -17,18 +13,15 @@ class ProductsController < ApplicationController
     end 
   end
 
-  def show
-    @list = List.find(params[:list_id])
-  end
-
   def index
     @products = Product.top_ten
+    authorize! :read, Product
   end
 
   def destroy
     @list = List.find(params[:list_id])
     @product = Product.find(params[:id])
-    authorize! :manage, @product, message: "Not authorized to do that."
+    authorize! :update, @product, message: "Not authorized to do that."
     if @product.destroy
       flash[:notice] = "Item removed successfully"
       redirect_to :back
