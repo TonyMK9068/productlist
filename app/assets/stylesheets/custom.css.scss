@@ -1,15 +1,23 @@
-.container-full-viewport {
+body {
+  background-color:#FDFFF7;
+}
+
+/****** Nav Bar ******/
+
+div.container-full-viewport {
   margin-left: auto;
   margin-right: auto;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.45);
 }
+
 .special {
-  background-color: #463265;
+  background-color:#F7F8F1;
   border-radius:none;
 }
 
 ul.nav.navbar-nav li a {
   text-shadow: none;
-  color: white;
+  color: #A61915;
 }
 
 .navbar.special {
@@ -24,4 +32,10 @@ ul.nav.navbar-nav li a {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+/****** Buttons ******/
+
+button.btn.btn-lg a {
+  color: #C90600;
 }

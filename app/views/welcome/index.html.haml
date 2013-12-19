@@ -4,9 +4,15 @@
 %header
   .container
     .row
-      .jumbotron
+      .jumbotron.welcome
         %h1 Welcome to GiftShare!
         %p Your home for creating and sharing personalized wishlists for any occasion!
+
+        .btn-toolbar{role: "toolbar"}
+          .btn-group
+            %button.btn.btn-default.btn-lg= link_to 'Sign Up', new_user_registration_path 
+          .btn-group
+            %button.btn.btn-default.btn-lg= link_to 'Sign In', new_user_session_path
 
 %section.panel
   .row
