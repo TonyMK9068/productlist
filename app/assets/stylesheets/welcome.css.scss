@@ -1,11 +1,11 @@
 body {
-  background-image:url('img2.jpg');
+
   z-index: -1000;
 
 }
 
 .jumbotron {
-  background-color: rgba(70, 50, 101, .6);
+  background-color: rgba(70, 50, 101, .85);
   color:white;
 }
 
@@ -15,7 +15,7 @@ body {
 }
 
 section.panel {
-  background-color: #eeeeee;
+  background-color: rgba(70, 50, 101, .85);
   position: absolute;
   top: 70%;
   left:0%;
