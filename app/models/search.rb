@@ -9,7 +9,7 @@ class Search < ActiveRecord::Base
   validates :page, numericality: true
   validates_presence_of :user_id
   validates_presence_of :list_id
-  validates :ownership_of_list
+  validate :ownership_of_list
 
   def amazon_response
     HTTParty.get(AmazonRequest.new.item_search(self.keyword, self.page))
