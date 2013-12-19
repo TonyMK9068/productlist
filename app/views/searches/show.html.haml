@@ -8,7 +8,7 @@
       .col-sm-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
-            = image_tag item[:image_url]
+            = link_to image_tag(item[:image_url]), item[:link], target: "_blank"
 
           .caption
             %h4= item[:name]
@@ -25,7 +25,7 @@
       .col-sm-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
-            = image_tag item[:image_url]
+            = link_to image_tag(item[:image_url]), item[:link], target: "_blank"
 
           .caption
             %h4= item[:name]
