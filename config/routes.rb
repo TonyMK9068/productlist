@@ -1,7 +1,6 @@
 Giftshare::Application.routes.draw do
   devise_for :users
-
-
+  
   resources :lists do
     resources :products, except: [:index]
     resources :searches, only: [:create, :show, :previous_page, :next_page]
