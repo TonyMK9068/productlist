@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :searches
   has_many :messages
   
-  validates_uniqueness_of :username
+  validates_uniqueness_of :username, allow_blank: :true
   validates_format_of :username, with: /\A([a-zA-Z0-9]{2,16}[-_]?[a-zA-Z0-9]{2,16})\z/, allow_blank: :true
   validates_length_of :username, in: 3..18, allow_blank: true
 

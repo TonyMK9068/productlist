@@ -3,16 +3,17 @@
 
 .row
   .col-md-12#profile-header
-    %h1= (@user.username ? @user.username : @user.email) + "'s Profile"
-    = link_to('Edit Profile Settings', edit_registration_path(current_user))
+    %h1= @profile_owner.display_user_as("username") + "'s Profile"
+    = link_to('Edit Profile Settings', edit_registration_path(@profile_owner))
 
 .row#profile-body
   .col-md-6#profile-lists-table
-    - if current_user == @user
+    - if @profile_viewer.id == @profile_owner.id
       %p You have #{pluralize(@lists.count, 'list')}
     - else 
-      %p #{@user.email} has #{pluralize(@lists.count, 'list')}
-    - if @user.lists.count > 0
+      %p #{@profile_owner.display_user_as("username")} has #{pluralize(@lists.count, 'list')}
+
+    - if @lists.count > 0
       %table.table
         %tr
           %th Title
@@ -21,9 +22,10 @@
           %th
         = render @lists
 
-  - if @user == current_user
+  - if @profile_owner == @profile_viewer
     .view-friend-list.col-md-6
       .friend-add-form
-        = render partial: 'friendships/friendship_form', locals: {:user => current_user}
-    - if @user.friends.count > 0
-      = render partial: 'friendships/friend_list', locals: {:user => current_user }
+        = render partial: 'friendships/friendship_form'
+        
+  - if @profile_owner.friends.count > 0
+    = render partial: 'friendships/friend_list', locals: {user: @profile_owner}

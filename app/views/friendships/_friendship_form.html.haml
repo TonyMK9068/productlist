@@ -8,6 +8,6 @@
         %h3="Find friends by email:"
       %div
         .col-md-6
-          = email_field_tag :email, '', class: 'form-control'
+          = email_field_tag :email, nil, placeholder: "Example@giftshare.com", class: 'form-control'
         = submit_tag 'Add friend', class: 'btn btn-small'
 

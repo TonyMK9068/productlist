@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
-    @lists = @user.lists.all
-    @products = @user.products.all
-    @friends = @user.friends.all
+    @profile_viewer = current_user
+    @profile_owner = User.find(params[:id])
+    @lists = @profile_owner.lists.all
+    @products = @profile_owner.products.all
+    @friends = @profile_owner.friends.all
   end
 
   # def index

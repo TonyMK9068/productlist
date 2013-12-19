@@ -3,7 +3,7 @@
     %h3.panel-title Friends
   
   .panel-body
-    = (@user == current_user ? 'You' : '#{@user.email}') + " have " + pluralize(@friends.count, 'only one friend', 'friends') + "!"
+    = (user == current_user ? "You have " : "#{user.email} has ") + pluralize(user.friends.count, "friend") + "!"
 
   %ul.list-group
     - user.friends.each do |friend|
