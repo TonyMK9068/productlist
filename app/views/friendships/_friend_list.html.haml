@@ -1,13 +1,6 @@
-.panel.panel-success
-  .panel-head
-    %h3.panel-title Friends
-  
-  .panel-body
-    = (user == current_user ? "You have " : "#{user.email} has ") + pluralize(user.friends.count, "friend") + "!"
-
-  %ul.list-group
-    - user.friends.each do |friend|
-      %li.list-group-item
-        = link_to(friend.email, user_path(friend))
-        = link_to('Remove', friendship_path(friend), method: :delete, class: "btn btn-danger btn-xs")
-
+%ul
+  - user.friends.each do |friend|
+    %li#friend-box
+      %span.badge= count_lists_by(friend)
+      = link_to(friend.email, user_path(friend))
+      = link_to('Remove', friendship_path(friend), method: :delete, class: "btn btn-default btn-xs pull-right")

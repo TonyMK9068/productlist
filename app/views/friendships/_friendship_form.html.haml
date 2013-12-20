@@ -1,13 +1,9 @@
 - content_for :head do
   = stylesheet_link_tag 'friendships'
 
-#row
-  .add-friend
-    = form_tag '/friendships', method: :post do
-      .col-md-12
-        %h3="Find friends by email:"
-      %div
-        .col-md-6
-          = email_field_tag :email, nil, placeholder: "Example@giftshare.com", class: 'form-control'
-        = submit_tag 'Add friend', class: 'btn btn-small'
-
+.row
+  = form_tag '/friendships', method: :post, class: "form-horizontal", role: "form" do
+    %h3="Find friends by email:"
+    .form-group.col-md-12
+      .col-md-6= email_field_tag :email, nil, placeholder: "Example@giftshare.com", id: "focusedInput", class: 'form-control'
+      .col-md-3= submit_tag 'Search', class: 'btn btn-small form-control'

@@ -11,16 +11,12 @@ end
 
 module Giftshare
   class Application < Rails::Application
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration should go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded.
-
-    # Custom directories with classes and modules you want to be autoloadable.
+    
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-
-    config.force_ssl = true
-    config.assets.precompile += %w(rondell/dist/jquery.rondell.css pickadate.js/lib/themes/default.css pickadate.js/lib/legacy.js pickadate.js/lib/picker.date.js pickadate.js/lib/picker.js friendships.css rondell/libs/jquery.mousewheel-3.0.6.min.js rondell/libs/modernizr-2.0.6.min.js searches.css welcome.css custom.css users.css activites.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default rondell/dist/jquery.rondell.min.js)
+    
+    config.assets.precompile += %w(pickadate.js/lib/themes/default.css pickadate.js/lib/legacy.js pickadate.js/lib/picker.date.js pickadate.js/lib/picker.js friendships.css rondell/libs/jquery.mousewheel-3.0.6.min.js rondell/libs/modernizr-2.0.6.min.js searches.css welcome.css custom.css users.css activites.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default)
+    
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
@@ -54,12 +50,12 @@ module Giftshare
     # This will create an empty whitelist of attributes available for mass-assignment for all models
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
+    
     config.active_record.whitelist_attributes = true
     config.assets.initialize_on_precompile = false
     # Enable the asset pipeline
     config.assets.enabled = true
 
-    # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end
 end

@@ -1,12 +1,41 @@
-#friend-list {
-  border: solid black 1px;
-}
+$alt-color: #1F57B1;
+$main-color: #8B312E;
 
-#profile-body {
-  padding-top: 5%;
+.panel#friendlist {
+  margin:0;
+  padding:0;
+  border: 1px solid $alt-color;
+
+  .panel-heading {
+	  background-color: $alt-color;
+
+  }
+  
+  .panel-body {
+    margin:0;
+    padding:0;
+  }
 }
 
 div.activity-icon.glyphicon {
   font-size: 2em;
   padding-right:130%;
+}
+
+#friend-box {
+  padding:10px 0 5px 0;
+  list-style-type:none;
+  .btn.btn-default.btn-xs.pull-right {
+  margin-right:20px;
+  }
+}
+
+.form-group.col-md-12 div.input {
+  margin: 0;
+  padding: 0;
+}
+
+form.form-horizontal h3 { 
+  padding: 5px;
+  margin: 5px; 
 }
