@@ -1,6 +1,6 @@
 - content_for :head do 
   = stylesheet_link_tag 'welcome'
-
+  = stylesheet_link_tag 'searches'
 %header
   .container
     .row
@@ -13,6 +13,7 @@
             %button.btn.btn-default.btn-lg= link_to 'Sign Up', new_user_registration_path 
           .btn-group
             %button.btn.btn-default.btn-lg= link_to 'Sign In', new_user_session_path
+
 
 %section.panel
   .row
@@ -27,3 +28,4 @@
       %p Search through our massive database, including items from the Amazon.com and Etsy.com!
       %p As you find items you want, add them to your list.
       %p Make sure to share your lists with all your friends and family.
+      

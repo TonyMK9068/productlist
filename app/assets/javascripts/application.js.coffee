@@ -18,4 +18,3 @@
 #= require pickadate.js/lib/legacy.js
 #= require_tree .
 #
-
