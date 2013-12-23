@@ -13,13 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require jquery.ui.all
 //= require pickadate.js/lib/picker.js
 //= require pickadate.js/lib/picker.date.js
 //= require pickadate.js/lib/legacy.js
 //= require typewriter-0.2/build/typewriter-bundle-sa.min.js
 //= require typewriter-0.2/build/typewriter-bundle.min.js
 //= require musclesoft-jquery-connections-7f76e46/jquery.connections.js
+//= jquery-ui.js
 //= require_tree .
 // 
 
