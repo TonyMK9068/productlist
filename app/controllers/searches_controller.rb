@@ -18,7 +18,7 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
-    @etsy_results = @search.combined_results
+    @etsy_results = @search.etsy_response_arrays
     @amazon_results = @search.amazon_response_arrays
     
     authorize! :manage, @search, message: "You need have created the list to do that"

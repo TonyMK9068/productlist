@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  respond_to :html, :js
   def create
     @list = List.find(params[:list_id])
     @product = @list.products.build(params[:product])
@@ -24,10 +24,13 @@ class ProductsController < ApplicationController
     authorize! :update, @product, message: "Not authorized to do that."
     if @product.destroy
       flash[:notice] = "Item removed successfully"
-      redirect_to :back
     else
       flash[:error] = "An error occured while deleting item from list."
-      redirect_to :back
+
+    end
+    
+    respond_with(@product) do |f|
+      f.html { redirect_to list_path(@list) }
     end
   end 
 end

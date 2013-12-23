@@ -11,9 +11,9 @@ class Search < ActiveRecord::Base
   validates_presence_of :list_id
   validate :ownership_of_list
 
-  def combined_results
-    etsy_response_arrays.merge(amazon_response_arrays)
-  end
+  # def combined_results
+  #   etsy_response_arrays.merge(amazon_response_arrays)
+  # end
   
   
   def amazon_response

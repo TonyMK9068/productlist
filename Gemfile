@@ -26,6 +26,7 @@ end
 
 group :assets do
   gem 'sass-rails',   '>= 3.2.6'
+  gem 'jquery-rails'
   gem 'jquery-ui-rails'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bootstrap-sass', '~> 3.0.2.0'
@@ -33,7 +34,6 @@ group :assets do
 end
 
 gem 'haml'
-gem 'jquery-rails'
 gem 'faker'
 gem 'thin'
 gem 'figaro'
@@ -48,3 +48,4 @@ gem 'newrelic_rpm'
 gem 'kaminari'
 gem 'public_activity'
 gem 'vine'
+gem 'omniauth-twitter'

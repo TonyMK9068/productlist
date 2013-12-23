@@ -1,4 +1,6 @@
-%tr
+
+%tr{ :id => "product-#{product.id}" }
+
   %td= product.name
   %td= link_to "link", product.link, target: "_blank"
   %td= product.price
@@ -6,3 +8,4 @@
   %td= product.product_number
   %td= product.store
   %td= image_tag product.image_url
+  %td= link_to 'Delete', "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: true, class: "btn btn-default"

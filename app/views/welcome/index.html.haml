@@ -14,9 +14,18 @@
           .btn-group
             %button.btn.btn-default.btn-lg= link_to 'Sign In', new_user_session_path
 
-
+  
+.container#search-example
+  .row.col-sm-8
+    .form-group
+      %strong
+        %h4 Find your favorite stuff
+      %span.form-control#typewriter
+      .col-sm-6
+        %button.btn.btn-default#search-box Search!  
+        
+        
 .container#welcome-results
   .row-liquid
     - @index_results.each do |item|
       = render partial: 'popover', locals: { item: item }
-  
