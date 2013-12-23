@@ -29,9 +29,11 @@ group :assets do
 end
 
 gem 'thin'
+gem 'haml'
+gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'faker'
 gem 'figaro'
 gem 'cancan'
