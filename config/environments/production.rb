@@ -9,7 +9,7 @@ Giftshare::Application.configure do
   config.action_controller.perform_caching = true
   config.action_mailer.default_url_options = { :host => 'giftshare.herokuapp.com' }
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -50,7 +50,7 @@ Giftshare::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
-
+  
   # Enable threaded mode
   # config.threadsafe!
 
