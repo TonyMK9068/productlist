@@ -22,7 +22,8 @@ class SearchesController < ApplicationController
     @products = @list.products
     etsy_results = @search.etsy_response_arrays
     amazon_results = @search.amazon_response_arrays
-    merged_results = etsy_results + amazon_results
+    
+    merged_results = (etsy_results || []) + (amazon_results || [])
     @sorted_results = merged_results.shuffle
     
     authorize! :manage, @search, message: "You need have created the list to do that"
