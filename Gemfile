@@ -6,12 +6,16 @@ group :production do
   gem 'pg'
   
 end
-
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
   gem 'meta_request'
+end
 
+group :assets do
+  gem 'sass-rails',   '>= 3.2.6'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.0.3'
 end
 
 group :development, :test do
@@ -24,16 +28,9 @@ group :development, :test do
   gem 'capybara'
 end
 
-group :assets do
-  gem 'sass-rails',   '>= 3.2.6'
-  gem 'jquery-rails'
-  gem 'jquery-ui-rails'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'bootstrap-sass', '~> 3.0.2.0'
-  gem 'uglifier', '>= 1.0.3'
-end
-
-gem 'haml'
+gem 'bootstrap-sass', '~> 3.0.2.0'
+gem 'jquery-ui-rails'
+gem 'jquery-rails'
 gem 'faker'
 gem 'thin'
 gem 'figaro'
