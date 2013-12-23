@@ -16,30 +16,6 @@
 //= require pickadate.js/lib/picker.js
 //= require pickadate.js/lib/picker.date.js
 //= require pickadate.js/lib/legacy.js
-//= require typewriter-0.2/build/typewriter-bundle-sa.min.js
-//= require typewriter-0.2/build/typewriter-bundle.min.js
 //= jquery-ui.js
 //= require_tree .
 // 
-
-var typewriter = require('typewriter');
-var twInput = document.getElementById('typewriter');
-var tw = typewriter(twInput).withAccuracy(95)
-                             .withMinimumSpeed(3)
-                             .withMaximumSpeed(12)
-                             .build();
-
-// 
-// });  
-  // $('.form-group').show(function() {
-  //     $(this).css('height', '400px');
-  //     $(this).css('width', '300px');
-  //   });
-
-  // tw.waitRange(600, 1000).type('Miley Cyrus');
-  // $(document).ready(function() {
-  //   $(".thumbnail-box").show("slide", "left", function() {
-  //     $(".connection").show(5000, "swing");
-  //   });
-    // $(".thumbnail-box").connections({ to: "#search-box"});
-    
