@@ -15,4 +15,5 @@ module SearchesHelper
     end
     string
   end
+
 end

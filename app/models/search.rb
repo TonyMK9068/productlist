@@ -11,10 +11,13 @@ class Search < ActiveRecord::Base
   validates_presence_of :list_id
   validate :ownership_of_list
 
-  # def combined_results
+
+
+  # def combined_results(amazon_response_arrays)
   #   etsy_response_arrays.merge(amazon_response_arrays)
   # end
   
+
   
   def amazon_response
     HTTParty.get(AmazonRequest.new.item_search(self.keyword, self.page))
@@ -42,13 +45,6 @@ class Search < ActiveRecord::Base
     end
   end
   
- 
-  def amazon_response_arrays
-    amazon_array_of_arrays.collect do |array|
-      Hash[product_keys.zip array]
-    end
-  end
-
   def etsy_array_of_array
     etsy_response.access("results").collect do |re|
       [
@@ -62,6 +58,14 @@ class Search < ActiveRecord::Base
       ]
     end
   end
+  
+  def amazon_response_arrays
+    amazon_array_of_arrays.collect do |array|
+      Hash[product_keys.zip array]
+    end
+  end
+
+
 
   def etsy_response_arrays
     etsy_array_of_array.collect do |array|

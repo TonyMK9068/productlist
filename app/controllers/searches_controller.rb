@@ -18,8 +18,10 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
-    @etsy_results = @search.etsy_response_arrays
-    @amazon_results = @search.amazon_response_arrays
+    etsy_results = @search.etsy_response_arrays
+    amazon_results = @search.amazon_response_arrays
+    merged_results = etsy_results + amazon_results
+    @sorted_results = merged_results.shuffle
     
     authorize! :manage, @search, message: "You need have created the list to do that"
   end
@@ -46,6 +48,19 @@ class SearchesController < ApplicationController
     end
   end
 
+  # def sort_results(result_array)
+  #   set = result_array.count / 4
+  #   @result_array = result_array
+  #   set.times do |num|
+  #     if num * set <= @result_array.count
+  #       @result_array[(num - 1) * set, 4].shuffle!
+  #     elsif (@result_array.count % 4) > 0
+  #       @result_array[(num - 1) * set, (num - 1) * set + (@result_array.count % 4)].shuffle!
+  #     end      
+  #   end
+  #   @result_array
+  # end
+  
   protected
   def set_page
     @list = List.find(params[:list_id])

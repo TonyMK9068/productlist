@@ -1,10 +1,11 @@
 - content_for :head do 
   = stylesheet_link_tag 'searches'
 
+
+
 .container
   .row
-
-    - @amazon_results.each do |item|
+    - @sorted_results.each do |item|
       .col-sm-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
@@ -21,22 +22,6 @@
             %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{item[:product_number]}"} } List it! <i class='glyphicon glyphicon-star'></i>
             = render partial: 'products/product_form', locals: {product: item}
 
-    - @etsy_results.each do |item|
-      .col-sm-4.thumbnail-box
-        .thumbnail
-          .thumbnail-image-container
-            = link_to image_tag(item[:image_url]), item[:link], target: "_blank"
-
-          .caption
-            %h5= item[:name]
-            %p Listing Number: #{item[:product_number]}
-            %p Price: #{format_price item[:price]}
-            %p Category: #{item[:category]}
-
-          .panel-footer
-            %small #{item[:store]}: #{link_to 'See More Info', item[:link], :target => "_blank"}
-            %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{item[:product_number]}"} } List it! <i class='glyphicon glyphicon-star'></i>
-            = render partial: 'products/product_form', locals: {product: item}
             
 .row
   .results_nav.col-md-6.col-md-offset-3
