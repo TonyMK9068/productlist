@@ -1,13 +1,13 @@
 - content_for :head do 
   = stylesheet_link_tag 'welcome'
   = stylesheet_link_tag 'searches'
+  
 %header
   .container
     .row
       .jumbotron.welcome
-        %h1 Welcome to GiftShare!
+        %h1 Welcome to GiftShare
         %p Your home for creating and sharing personalized wishlists for any occasion!
-
         .btn-toolbar{role: "toolbar"}
           .btn-group
             %button.btn.btn-default.btn-lg= link_to 'Sign Up', new_user_registration_path 
@@ -15,17 +15,8 @@
             %button.btn.btn-default.btn-lg= link_to 'Sign In', new_user_session_path
 
 
-%section.panel
-  .row
-    .jumbotron.special
-      %h2 Share your needs with everyone!
-      %span.glyphicon.glyphicon-minus
-      %span.glyphicon.glyphicon-minus
-      %span.glyphicon.glyphicon-minus
-      %span.glyphicon.glyphicon-minus
-      %span.glyphicon.glyphicon-minus
-      %span.glyphicon.glyphicon-minus
-      %p Search through our massive database, including items from the Amazon.com and Etsy.com!
-      %p As you find items you want, add them to your list.
-      %p Make sure to share your lists with all your friends and family.
-      
+.container#welcome-results
+  .row-liquid
+    - @index_results.each do |item|
+      = render partial: 'popover', locals: { item: item }
+  

@@ -7,9 +7,10 @@ body {
 div.jumbotron.welcome {
   h1 { font-family: mainFont;}
   @include main-style;
-  background-color: rgba(0,0,0,.0);
   position: relative;
-  top: 30%;
+  top: -5%;
+  left: -5%;
+   background-color: rgba(0,0,0,.0);
 }
 
 section.panel {
@@ -19,14 +20,45 @@ section.panel {
   left:0%;
   right:0%;
   height:30%;
-  
 }
 
 .jumbotron.special {
   background-color: transparent;
   color: white;
-  text-align:center;
+  text-align: center;
   font-family: "Sentinel SSm A","Sentinel SSm B","Georgia","Times New Roman";
-  margin-bottom:0;
-  padding-top:2%;
+  margin: 0;
+  padding: 0;
+  position:absolute;
+  top: 30px;
+  left: 30%;
+}
+
+div.container#welcome-results {
+  position: absolute;
+  top:50%;
+  left:0;
+  right:0;
+}
+
+.col-sm-4.thumbnail-box {
+  width: 260px;
+  height:95%;
+}
+
+.container#search-example {
+  display:none;
+  position: absolute;
+  top: 15%;
+  right: -25%;
+}
+
+.connection {
+  display: none;
+	border: 15px solid $main-color;
+	border-radius: 31px;
+}
+
+#welcome-info {
+  display:absolute;
 }

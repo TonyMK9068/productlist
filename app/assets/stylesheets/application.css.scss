@@ -21,3 +21,13 @@ $main-color: rgba(216, 32, 28, 1);
     color: $main-color;
   }
 }
+
+.container#example-container {
+  position: absolute;
+  top: 750px;
+  display: inline;
+}
+
+.navbar-brand {
+  color: $main-color;
+}

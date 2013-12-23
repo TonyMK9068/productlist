@@ -11,6 +11,7 @@
     .container-full-viewport
       %nav.navbar.special{:role => 'navigation'}
         .container
+          .navbar-left.navbar-brand GiftShare 
           %ul.nav.navbar-nav.pull-right
             - unless current_user
               %li= link_to 'Recent Activity', activities_path
@@ -23,7 +24,7 @@
               %li= link_to 'Recent Activity', activities_path
               %li= link_to 'Top Products', products_path
               %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
-      
+              
     .container
       - if flash[:error]
         .alert.alert-danger

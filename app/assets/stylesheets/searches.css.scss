@@ -1,31 +1,45 @@
+@import 'application';
+
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 div.thumbnail-box {
   display:inline;
   margin:auto;
   height: 400px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-family: mainFont;
 
-	div.thumbnail {
-  		height:95%
-	}
-}
+  .thumbnail {
+    box-shadow: 5px 5px 2px;
+    height:100%;
+    padding-left:2%;
+    padding-right:2%;
 
-.thumbnail-image-container { 
-  padding-left: 5%;
-  max-height: 45%;
-}
+    .thumbnail-image-container {
+      height: 45%;
+      a { img { @include center-block; }}
+    }
+    .caption{
+      padding: 0px;
+      margin:0px;
+      height:35%;
+      line-height:.8em;
+ 
+      vertical-align: baseline;
+    }
+    .panel-footer {
+      height: 15%;
+      margin-top: 1%;
+      padding-left: 2.5%;
 
-.caption{
-  max-height: 50%;
-}
-
-div.amazon.caption {
-	height:55%;
-	margin-top:2.5%;
-	padding:2.5%;
-
-	div.panel.panel-default {
-		height:100%;
-		width:100%;
-	}
+    }
+  }
 }
 
 .searches-panel {
