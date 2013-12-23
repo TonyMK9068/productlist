@@ -1,6 +1,10 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require "active_record/railtie"
+require "action_controller/railtie"
+require "action_mailer/railtie"
+require "active_resource/railtie"
+require "sprockets/railtie"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -11,9 +15,6 @@ end
 
 module Giftshare
   class Application < Rails::Application
-    
-    config.autoload_paths += %W(#{config.root}/lib)
-    config.autoload_paths += Dir["#{config.root}/lib/**/"]
     
     config.assets.precompile += %w(pickadate.js/lib/themes/default.css pickadate.js/lib/legacy.js pickadate.js/lib/picker.date.js pickadate.js/lib/picker.js friendships.css application.css searches.css welcome.css custom.css users.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default)
     
