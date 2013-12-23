@@ -12,12 +12,6 @@ group :development do
   gem 'meta_request'
 end
 
-group :assets do
-  gem 'sass-rails',   '>= 3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'uglifier', '>= 1.0.3'
-end
-
 group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
@@ -28,16 +22,21 @@ group :development, :test do
   gem 'capybara'
 end
 
-gem 'bootstrap-sass', '~> 3.0.2.0'
-gem 'jquery-ui-rails'
-gem 'jquery-rails'
-gem 'faker'
+group :assets do
+  gem 'sass-rails',   '>= 3.2.6'
+  gem 'coffee-rails', '~> 3.2.2'
+  gem 'uglifier', '>= 1.0.3'
+end
+
 gem 'thin'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'bootstrap-sass', '~> 3.0.2.0'
+gem 'faker'
 gem 'figaro'
 gem 'cancan'
 gem 'devise'
 gem 'nokogirl'
-gem 'twitter_oauth'
 gem 'etsy'
 gem 'httparty'
 gem "friendly_id", "~> 4.0.10"
@@ -45,4 +44,3 @@ gem 'newrelic_rpm'
 gem 'kaminari'
 gem 'public_activity'
 gem 'vine'
-gem 'omniauth-twitter'
