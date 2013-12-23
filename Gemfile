@@ -31,7 +31,7 @@ end
 gem 'thin'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass', '~> 3.0.2.1'
+gem 'bootstrap-sass'
 gem 'faker'
 gem 'figaro'
 gem 'cancan'
