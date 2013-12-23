@@ -1,8 +1,14 @@
 - content_for :head do 
   = stylesheet_link_tag 'searches'
 
-
-
+#mini_list.panel.panel-default
+  .panel-heading
+    %h3.panel-title= @list.title
+  .panel-body
+    %ol
+      = render partial: 'lists/mini_list', collection: @list.products, locals: { list: @list }, as: :product
+      .js-products
+      
 .container
   .row
     - @sorted_results.each do |item|
@@ -22,11 +28,15 @@
             %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{item[:product_number]}"} } List it! <i class='glyphicon glyphicon-star'></i>
             = render partial: 'products/product_form', locals: {product: item}
 
-            
-.row
-  .results_nav.col-md-6.col-md-offset-3
-    - if @search.page > 1
+.container
+  .row
+    .results_nav.col-md-6.col-md-offset-3
+      - if @search.page > 1
+        .col-md-6
+          %h2= link_to 'Previous Page', list_previous_path(list_id: @list.id, id: @search)
       .col-md-6
-        %h2= link_to 'Previous Page', list_previous_path(list_id: @list.id, id: @search)
-    .col-md-6
-      %h2= link_to 'Next Page', list_next_path(list_id: @list.id, id: @search)
+        %h2= link_to 'Next Page', list_next_path(list_id: @list.id, id: @search)
+        
+
+#search-form
+  = render partial: 'search_form', locals: { list: @list }

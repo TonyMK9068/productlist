@@ -45,3 +45,24 @@ div.thumbnail-box {
 .searches-panel {
   line-height:.50;
 }
+
+#mini_list {
+  position:fixed;
+  left:1%;
+  top:10%;
+  height: 750px;
+  overflow-y: scroll;
+}
+
+.bounding-box {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 75px;
+  width: auto;
+}
+
+#search-form {
+  position: fixed;
+  right:-45%;
+  top:10%;
+}

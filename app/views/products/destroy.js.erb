@@ -1,6 +1,6 @@
 <% if @product.destroyed? %>
-  $('tr#product-' +<%= @product.id %>).hide();
+  $('#product-' +<%= @product.id %>).hide();
   
 <% else %> 
-  $('tr#product-' +<%= @product.id %>.prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+  $('#product-' +<%= @product.id %>.prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
 <% end %>

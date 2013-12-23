@@ -11,7 +11,7 @@
     .container-full-viewport
       %nav.navbar.special{:role => 'navigation'}
         .container
-          .navbar-left.navbar-brand GiftShare 
+          .navbar-left.navbar-brand= link_to "GiftShare", root_path
           %ul.nav.navbar-nav.pull-right
             - unless current_user
               %li= link_to 'Recent Activity', activities_path

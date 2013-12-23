@@ -18,6 +18,8 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
+    @list = List.find(params[:list_id])
+    @products = @list.products
     etsy_results = @search.etsy_response_arrays
     amazon_results = @search.amazon_response_arrays
     merged_results = etsy_results + amazon_results

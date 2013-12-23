@@ -1,0 +1,21 @@
+.modal.fade{ :id => product[:product_number], :tabindex => "-1", :role => "dialog", :aria => { :labelledby => "myModalLabel", :hidden => "true" } }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button{ :type => "button", :class => "close", :data => { :dismiss => "modal" }, :aria => { :hidden => "true" } } &times;
+        %h4.modal-title Add item to #{@list.title} ?
+
+      .modal-body
+        .thumbnail-image= image_tag product[:image_url]
+        .caption
+          %h3= product[:name]
+          %p= product[:price]
+          %em= product[:product_number]
+          %h6 Category: #{product[:category]}
+          = link_to "See More Info", product[:link]
+          %p= product[:store]
+
+
+      .modal-footer
+        %button.btn.btn-default{ :type => "button", :data => { :dismiss => "modal" } } Cancel
+        = link_to "Add it!",  list_products_path(:list_id => @list, :product => product), method: :post, remote: :true, :data => { :dismiss => "modal" }, class: "btn btn-primary product-form"

@@ -1,0 +1,7 @@
+- content_for :head do 
+  = stylesheet_link_tag 'lists'
+  
+%li{ :id => "product-#{product.id}" }
+  %span= product.name[0,30]
+  .bounding-box{ :style => "background-image: url(#{product.image_url})" }= " "
+  = link_to "x", "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: :true, class: "btn btn-sm btn-danger"
