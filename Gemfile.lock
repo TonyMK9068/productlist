@@ -247,7 +247,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  bootstrap-sass (~> 3.0.2.0)
+  bootstrap-sass (~> 3.0.2.1)
   cancan
   capybara
   coffee-rails (~> 3.2.2)
