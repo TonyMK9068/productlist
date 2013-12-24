@@ -1,8 +1,8 @@
 - content_for :head do 
-  = stylesheet_link_tag 'searches'
   = stylesheet_link_tag 'welcome'
-
-.col-sm-4.thumbnail-box
+  = stylesheet_link_tag 'searches'
+  
+.col-sm-4.thumbnail-box#welcomepage
   .thumbnail
     .thumbnail-image-container
       = link_to image_tag(item[:image_url]), item[:link], target: "_blank"

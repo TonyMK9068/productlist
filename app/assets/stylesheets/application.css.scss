@@ -21,6 +21,4 @@ $main-color: rgba(216, 32, 28, 1);
   }
 }
 
-.navbar-brand {
-  color: $main-color;
-}
+.navbar-left.navbar-brand a { color: $main-color; }

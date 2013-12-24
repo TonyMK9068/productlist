@@ -24,6 +24,7 @@
 /       .col-sm-6
 /         %button.btn.btn-default#search-box Search!
 
-.row-liquid
+
+.row-liquid#support-info
   - @index_results.each do |item|
     = render partial: 'popover', locals: { item: item }
