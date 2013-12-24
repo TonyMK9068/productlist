@@ -1,4 +1,6 @@
 %li.list-group-item{ :id => "product-#{product.id}" }
   %span= product.name[0,30] 
   %span.bounding-box{ :style => "background-image: url(#{product.image_url})" }= " "
-  %span= link_to "delete", "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: :true, class: "btn btn-xs btn-danger pull-right"
+  %span= link_to "delete", "/lists/#{list.id}/products/#{product.id}", data: { text: "You sure?" }, method: :delete, remote: :true, class: "btn btn-xs btn-danger pull-right js-btn"
+  
+

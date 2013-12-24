@@ -1,8 +1,7 @@
-@mixin main-style {
-  font-family: mainFont;
-  color: $main-color;
-}
 
+$font-color: #22262f;
+$font-family: mainFont;
+$faded: #747c81;
 $main-color: rgba(216, 32, 28, 1);
 
 body {
@@ -10,16 +9,17 @@ body {
 }
 
 div.jumbotron.welcome {
-  h1 { font-family: mainFont;}
-  @include main-style;
+  h1 { font-family: $font-family;}
+  font-color: $faded;
+  font-family: $font-family;
   position: relative;
   top: -5%;
   left: -5%;
-   background-color: rgba(0,0,0,.0);
+  background-color: rgba(0,0,0,.0);
 }
 
 section.panel {
-  background-color: rgba(0, 0, 0, 0.82);
+  background-color: white;
   position: absolute;
   top: 70%;
   left:0%;
@@ -28,7 +28,7 @@ section.panel {
 }
 
 .jumbotron.special {
-  background-color: transparent;
+  background-color: white;
   color: white;
   text-align: center;
   font-family: "Sentinel SSm A","Sentinel SSm B","Georgia","Times New Roman";
@@ -42,14 +42,8 @@ section.panel {
 div#welcomepage.col-sm-4.thumbnail-box{
   width: 260px;
   height:360px;
-  box-shadow: 0px 0px 0px; 
-  .thumbnail { box-shadow: 0px 0px 0px; }
-}
 
-.connection {
-  display: none;
-	border: 15px solid $main-color;
-	border-radius: 31px;
+  .thumbnail {   box-shadow: none; }
 }
 
 #welcome-info {
@@ -67,3 +61,53 @@ div#welcomepage.col-sm-4.thumbnail-box{
   background-color: rgba(255, 255, 255, 0.9);
 
 }
+
+/************ Nav bar  /************/
+
+body {
+  background-color: white;
+}
+
+/****** Nav Bar ******/
+
+div.container-full-viewport {
+  padding-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.special {
+  background-color: white;
+  border-radius:none;
+
+}
+
+ul.nav.navbar-nav li a {
+  text-shadow: none;
+  color: $font-color;
+  font-size: 125%;
+}
+
+.navbar.special {
+  border-radius:0;
+}
+
+.center {
+  text-align:center;
+}
+
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/****** Buttons ******/
+
+button.btn.btn-lg a {
+  color: $font-color;
+ 
+}
+
+

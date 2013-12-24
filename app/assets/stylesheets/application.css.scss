@@ -2,7 +2,7 @@
 @import "bootstrap/theme";
 
 $main-color: rgba(216, 32, 28, 1);
-
+$font-color: rgba(216, 32, 28, 1);
 @font-face {
   font-family: mainFont;
   src: url(font1.ttf);
@@ -10,15 +10,17 @@ $main-color: rgba(216, 32, 28, 1);
 
 @mixin main-style {
   font-family: mainFont;
-  color: $main-color;
+  color: $font-color;
 }
 
 .container-full-viewport {
   margin-left: auto;
   margin-right: auto;
-  nav.navbar.special div.container ul li a {
-    color: $main-color;
-  }
+  nav.navbar.special div.container ul li a { color:  #22262f; }
 }
 
-.navbar-left.navbar-brand a { color: $main-color; }
+.navbar-left.navbar-brand a { 
+  color: $font-color;
+  font-size: 1.7em;
+  font-weight:bold;
+}
