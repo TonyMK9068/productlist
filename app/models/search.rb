@@ -10,14 +10,6 @@ class Search < ActiveRecord::Base
   validates_presence_of :user_id
   validates_presence_of :list_id
   validate :ownership_of_list
-
-
-
-  # def combined_results(amazon_response_arrays)
-  #   etsy_response_arrays.merge(amazon_response_arrays)
-  # end
-  
-
   
   def amazon_response
     HTTParty.get(AmazonRequest.new.item_search(self.keyword, self.page))
@@ -84,6 +76,23 @@ class Search < ActiveRecord::Base
   end
 
   # price.is_a?("string")
+  
+  # def combined_results(amazon_response_arrays)
+  #   etsy_response_arrays.merge(amazon_response_arrays)
+  # end
+  
+  # def sort_results(result_array)
+  #   set = result_array.count / 4
+  #   @result_array = result_array
+  #   set.times do |num|
+  #     if num * set <= @result_array.count
+  #       @result_array[(num - 1) * set, 4].shuffle!
+  #     elsif (@result_array.count % 4) > 0
+  #       @result_array[(num - 1) * set, (num - 1) * set + (@result_array.count % 4)].shuffle!
+  #     end      
+  #   end
+  #   @result_array
+  # end
 end
 
   

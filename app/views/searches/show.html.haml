@@ -1,13 +1,17 @@
 - content_for :head do 
   = stylesheet_link_tag 'searches'
 
-#mini_list.panel.panel-default
+#mini_list.panel.panel-default.col-sm-2
   .panel-heading
     %h3.panel-title= @list.title
   .panel-body
-    %ol
+    %ol.list-group
       = render partial: 'lists/mini_list', collection: @list.products, locals: { list: @list }, as: :product
       .js-products
+  .panel-footer
+    #search-form
+      = render partial: 'search_form', locals: { list: @list }
+      
       
 .container
   .row
@@ -38,5 +42,6 @@
         %h2= link_to 'Next Page', list_next_path(list_id: @list.id, id: @search)
         
 
-#search-form
-  = render partial: 'search_form', locals: { list: @list }
+
+  
+  

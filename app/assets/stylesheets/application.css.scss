@@ -1,7 +1,6 @@
 @import "bootstrap";
 @import "bootstrap/theme";
 
-
 $main-color: rgba(216, 32, 28, 1);
 
 @font-face {
@@ -20,12 +19,6 @@ $main-color: rgba(216, 32, 28, 1);
   nav.navbar.special div.container ul li a {
     color: $main-color;
   }
-}
-
-.container#example-container {
-  position: absolute;
-  top: 750px;
-  display: inline;
 }
 
 .navbar-brand {

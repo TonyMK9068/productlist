@@ -1,4 +1,9 @@
-@import 'application';
+@mixin main-style {
+  font-family: mainFont;
+  color: $main-color;
+}
+
+$main-color: rgba(216, 32, 28, 1);
 
 body {
   z-index: -1000;
@@ -34,20 +39,9 @@ section.panel {
   left: 30%;
 }
 
-div.container#welcome-results {
-  position: absolute;
-  top:50%;
-  left:0;
-  right:0;
-}
-
 .col-sm-4.thumbnail-box {
   width: 260px;
-  height:95%;
-}
-
-.container#search-example {
-  display:none;
+  height:360px;
 }
 
 .connection {
@@ -58,4 +52,13 @@ div.container#welcome-results {
 
 #welcome-info {
   display:absolute;
+}
+
+.row-liquid {
+  position:absolute;
+  margin-left: 0;
+  margin-right: 0;
+  left:0;
+  right:0;
+  bottom:5%;
 }
