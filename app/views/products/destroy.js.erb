@@ -1,5 +1,5 @@
 <% if @product.destroyed? %>
-  $('#product-' +<%= @product.id %>).hide();
+  $('#product-' +<%= @product.id %>).hide("slide");
   
 <% else %> 
   $('#product-' +<%= @product.id %>.prepend("<div class='alert alert-error'><%= flash[:error] %></div>");

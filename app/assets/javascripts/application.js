@@ -8,8 +8,9 @@
 //= require_tree .
 // 
 
+
 $(document).ready(function(){
-  $('li a').hover(
+  $('ul.nav.navbar-nav.pull-right li a').hover(
     function() {
       $(this).css('color', '#db3c14');
     }, function(){

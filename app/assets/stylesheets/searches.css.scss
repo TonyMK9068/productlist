@@ -9,9 +9,9 @@ $list-color: #274D9A;
 #mini_list.panel.panel-default {
   position:fixed;
   left:0px;
-  top:9%;
-  min-height: 90%;
-  height: 90%;
+  top:10%;
+  min-height: 80%;
+  height: 80%;
   margin:0;
   padding:0;
   .panel-heading {
@@ -36,10 +36,14 @@ $list-color: #274D9A;
     %ol { padding-left: 10px; }
   }
   .panel-footer {
-    height: 15%;
+    position:relative;
+    bottom: 0px;
+    height: 20%;
+    min-height:20%;
     margin-top: 1%;
     padding-left: 2.5%;
-    margin:0px;
+    margin-left:auto;
+    margin-right:auto;
     padding-top:15px;
     background-color: $list-color;
     color:white;
