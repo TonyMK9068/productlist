@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
       user = User.new(full_name: auth.info.name,
                       provider: auth.provider,
                       uid: auth.uid,
-                      username: nickname,
+                      username: auth.info.nickname,
                       password: pass,
                       password_confirmation: pass
                       )
