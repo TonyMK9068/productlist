@@ -66,8 +66,8 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       pass = Devise.friendly_token[0,20]
-      user = User.new(full_name: auth.extra.raw_info.name,
-                      provider: auth.provider,
+      user = User.new(full_name: auth.info.name,
+                      provider: auth.name,
                       uid: auth.uid,
                       email: auth.info.email,
                       password: pass,
