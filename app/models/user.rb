@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base 
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable, :timeoutable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   attr_accessible :email, :password, :password_confirmation, :username, :first_name, :last_name, :uid, :provider, :full_name
   
