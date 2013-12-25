@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
                       password: pass,
                       password_confirmation: pass
                       )
-                      
+      
       user.save
     end
     user
