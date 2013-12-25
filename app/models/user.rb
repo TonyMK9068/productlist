@@ -62,6 +62,23 @@ class User < ActiveRecord::Base
     user
   end
   
+  def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      pass = Devise.friendly_token[0,20]
+      user = User.new(full_name: auth.extra.raw_info.name,
+                      provider: auth.provider,
+                      uid: auth.uid,
+                      email: auth.info.email,
+                      password: pass,
+                      password_confirmation: pass
+                      )
+      
+      user.save
+    end
+    user
+  end
+  
   private
 
     def send_confirmation_email
