@@ -52,12 +52,14 @@ div#welcomepage.col-sm-4.thumbnail-box{
   
 .row-liquid#support-info {
   margin:auto;
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:5%;
+  position:relative;
+  margin-top:10%;
+  left:-32.5%;
+  width-min:165%;
+  width:165%;
+  
+
   border-top: 5px solid #dd3b2a;
-  z-index: 3;
   background-color: rgba(255, 255, 255, 0.9);
 
 }

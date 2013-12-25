@@ -15,6 +15,8 @@
             %button.btn.btn-default.btn-lg= link_to 'Sign In', new_user_session_path
           .btn-group
             %button.btn.btn-default.btn-lg= link_to 'Facebook', '/users/auth/facebook'
+          .btn-group
+            %button.btn.btn-default.btn-lg= link_to 'Twitter', '/users/auth/twitter'
   
 / .container#search-example
 /   .row.col-sm-8
@@ -26,6 +28,6 @@
 /         %button.btn.btn-default#search-box Search!
 
 
-.row-liquid#support-info
+.row-liquid#support-info.col-sm-12
   - @index_results.each do |item|
     = render partial: 'popover', locals: { item: item }
