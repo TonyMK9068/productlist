@@ -1,9 +1,9 @@
 class User < ActiveRecord::Base 
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable, :timeoutable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-  attr_accessible :email, :password, :password_confirmation, :username, :first_name, :last_name
+  attr_accessible :email, :password, :password_confirmation, :username, :first_name, :last_name, :uid, :provider, :full_name
   
   has_many :lists, dependent: :destroy
   has_many :products, :through => :lists
@@ -25,6 +25,14 @@ class User < ActiveRecord::Base
 
   after_create :send_confirmation_email
 
+  def full_name=(name)
+    self.first_name, self.last_name = name.split(' ')
+  end
+  
+  def full_name(name)
+    name = "#{self.first_name} #{self.last_name}"
+  end  
+  
   def has_friend?(user)
     self.friends.all.include?(user) ? true : false
   end
@@ -36,7 +44,24 @@ class User < ActiveRecord::Base
       self.email
     end
   end
-
+  
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      pass = Devise.friendly_token[0,20]
+      user = User.new(full_name: auth.extra.raw_info.name,
+                      provider: auth.provider,
+                      uid: auth.uid,
+                      email: auth.info.email,
+                      password: pass,
+                      password_confirmation: pass
+                      )
+                      
+      user.save
+    end
+    user
+  end
+  
   private
 
     def send_confirmation_email

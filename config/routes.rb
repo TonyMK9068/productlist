@@ -1,5 +1,5 @@
 Giftshare::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
   resources :lists, except: [:index] do
     resources :products, except: [:index]
