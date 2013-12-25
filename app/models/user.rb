@@ -15,13 +15,13 @@ class User < ActiveRecord::Base
   has_many :messages
   
   validates_uniqueness_of :username, allow_blank: :true
-  validates_format_of :username, with: /\A([a-zA-Z0-9]{2,16}[-_]?[a-zA-Z0-9]{2,16})\z/, allow_blank: :true
-  validates_length_of :username, in: 3..18, allow_blank: true
+  validates_format_of :username, with: /\A([a-zA-Z0-9]{2,16}[-_]?[a-zA-Z0-9]{2,16})\z/ , allow_blank: :true
+  validates_length_of :username, in: 3..30, allow_blank: true
 
   validates_format_of :email, with: /\A([-a-z0-9!\#$%&'*+\/=?^_`{|}~]+\.)*[-a-z0-9!\#$%&'*+\/=?^_`{|}~]+@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
 
   validates_format_of :first_name, :last_name, with: /\A([^\d\W]+)\z/, allow_blank: :true
-  validates_length_of :first_name, :last_name, in: 3..16, allow_blank: true
+  validates_length_of :first_name, :last_name, in: 1..16, allow_blank: true
 
   after_create :send_confirmation_email
 
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
       pass = Devise.friendly_token[0,20]
-      user = User.new(full_name: auth.extra.raw_info.name,
+      user = User.new(full_name: auth.info.raw_info.name,
                       provider: auth.provider,
                       uid: auth.uid,
                       email: auth.info.email,
@@ -70,6 +70,7 @@ class User < ActiveRecord::Base
                       provider: auth.provider,
                       uid: auth.uid,
                       username: auth.info.nickname,
+                      email: auth.info.nickname + '@twitter.com',
                       password: pass,
                       password_confirmation: pass
                       )
