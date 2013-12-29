@@ -7,9 +7,6 @@
 //= require_tree .
 // 
 
-
-
-
 $(document).ready(function(){
   $('ul.nav.navbar-nav.pull-right li a').hover(
     function() {
@@ -26,10 +23,17 @@ $(document).ready(function() {
   $('li.list-group-item').each(function() {
     var listItem = $(this);
     var itemId = $(this).data("item");
-    $('#js-item-delete-' + itemId).click(function() {
+    var initialButton = ('#js-item-delete-' + itemId);
+    var confimationButton = ('#js-btn-confirm-delete-' + itemId);
+    $(initialButton).click(function() {
       $(this).hide();
-      $('#js-btn-confirm-delete-' + itemId).show("slide", "right");
-
+      $(confimationButton).show("slide", "right");
+    });
+    $(document).on('click', '#js-item-delete-' + itemId, function() {
+      $(document).click(function() {
+        $(confimationButton).hide("slide", "left");
+        $(initialButton).show();
+      });
     });
   });
 });
