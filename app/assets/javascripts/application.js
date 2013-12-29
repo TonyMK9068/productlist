@@ -21,24 +21,23 @@ $(document).ready(function(){
 
 $(document).ready(function() {
   $('li.list-group-item').each(function() {
+
     var listItem = $(this);
-    var itemId = $(this).data("item");
+    var itemId = $(listItem).data('item');
     var initialButton = ('#js-item-delete-' + itemId);
-    var confimationButton = ('#js-btn-confirm-delete-' + itemId);
+    var confirmationButton = ('#js-btn-confirm-delete-' + itemId);
+
     $(initialButton).click(function() {
-      $(this).hide();
-      $(confimationButton).show("slide", "right");
-    });
-    $(document).on('click', '#js-item-delete-' + itemId, function() {
-      $(document).click(function() {
-        $(confimationButton).hide("slide", "left");
-        $(initialButton).show();
-      });
-    });
+        $(initialButton).hide();
+        $(confirmationButton).show("slide", "right"); 
+      }, function(location) {
+        $(location).click(function() {
+          if (location != confirmationButton) {
+            $(confirmationButton).hide("slide", "left");
+            $(initialButton).show();
+          }
+        });
+      }
+    );
   });
 });
-
-  
-  
-
-

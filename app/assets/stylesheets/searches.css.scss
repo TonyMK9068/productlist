@@ -96,20 +96,16 @@ div.thumbnail-box {
 
 .delete-confirm-box {
   background-color: #d9534f;
-  width: 30%;
-  display:none;
   a { color: white; }
+  display:none;
 }
-.btn.btn-xs.btn-danger.pull-left { display:none; }
 
 ol.list-group {
-
   li.list-group-item {
     padding:2.5px 5px 2.5px 5px;
     height: 73px;
     max-height: 73px;
     overflow: hidden;
     z-index: 50;
-    .mini-item-info { z-index: 2; }
   }
 }
