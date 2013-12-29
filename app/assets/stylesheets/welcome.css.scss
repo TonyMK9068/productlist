@@ -66,9 +66,7 @@ div#welcomepage.col-sm-4.thumbnail-box{
 
 /************ Nav bar  /************/
 
-body {
-  background-color: white;
-}
+body { background-color: white; }
 
 /****** Nav Bar ******/
 
@@ -76,13 +74,11 @@ div.container-full-viewport {
   padding-top: 20px;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .special {
   background-color: white;
   border-radius:none;
-
 }
 
 ul.nav.navbar-nav li a {
@@ -106,10 +102,12 @@ ul.nav.navbar-nav li a {
 }
 
 /****** Buttons ******/
+button.btn.btn-primary.btn-lg.btn-block a { color: #E5E5E5; }
 
 button.btn.btn-lg a {
   color: $font-color;
- 
+  text-decoration:none;
+  font-family: Arial, "MS Trebuchet", sans-serif;
 }
 
 
