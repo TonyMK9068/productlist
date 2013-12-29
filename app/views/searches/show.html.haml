@@ -8,6 +8,7 @@
     %ol.list-group
       = render partial: 'lists/mini_list', collection: @list.products, locals: { list: @list }, as: :product
       .js-products
+      
   .panel-footer
     #search-form
       = render partial: 'search_form', locals: { list: @list }

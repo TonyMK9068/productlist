@@ -33,7 +33,13 @@ $list-color: #274D9A;
     height:75%;
     overflow-y: scroll;
     padding:0;
-    %ol { padding-left: 10px; }
+    %ol { 
+      padding-left: 10px;
+      li { 
+        overflow: hidden;
+        display: inline;
+       }
+    }
   }
   .panel-footer {
     position:relative;
@@ -95,3 +101,10 @@ div.thumbnail-box {
 
 .searches-panel { line-height: 1em; }
 
+.delete-confirm-box {
+  background-color: red;
+  width: 30%;
+  display:none;
+  color: white;
+}
+.btn.btn-xs.btn-danger.pull-left { display:none; }

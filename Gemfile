@@ -48,3 +48,4 @@ gem 'public_activity'
 gem 'vine'
 gem 'omniauth-facebook', '~> 1.5.1'
 gem 'omniauth-twitter'
+gem "omniauth-google-oauth2"

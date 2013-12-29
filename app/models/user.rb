@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base 
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable
   devise :database_authenticatable, :registerable, :lockable, :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
@@ -69,8 +69,7 @@ class User < ActiveRecord::Base
       user = User.new(full_name: auth.info.name,
                       provider: auth.provider,
                       uid: auth.uid,
-                      username: auth.info.nickname,
-                      email: auth.info.nickname + '@twitter.com',
+                      email: auth.info.email,
                       password: pass,
                       password_confirmation: pass
                       )

@@ -1,12 +1,13 @@
 //= require jquery
+//= require jquery.ui.all
 //= require jquery_ujs
 //= require bootstrap
 //= require pickadate.js/lib/picker.js
 //= require pickadate.js/lib/picker.date.js
-//= require pickadate.js/lib/legacy.js
-//= jquery-ui.js
 //= require_tree .
 // 
+
+
 
 
 $(document).ready(function(){
@@ -18,4 +19,22 @@ $(document).ready(function(){
     }
   );
 });
+
+
+
+$(document).ready(function() {
+  $('li.list-group-item').each(function() {
+    var listItem = $(this);
+    var itemId = $(this).data("item");
+    $('#js-item-delete-' + itemId).click(function() {
+      $(this).hide();
+      $('#js-btn-confirm-delete-' + itemId).show("slide", "right");
+
+    });
+  });
+});
+
+  
+  
+
 

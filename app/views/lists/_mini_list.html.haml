@@ -1,6 +1,6 @@
-%li.list-group-item{ :id => "product-#{product.id}" }
+%li.list-group-item{ :id => "product-#{product.id}", data: { item: "#{product.id}" } }
   %span= product.name[0,30] 
   %span.bounding-box{ :style => "background-image: url(#{product.image_url})" }= " "
-  %span= link_to "delete", "/lists/#{list.id}/products/#{product.id}", data: { text: "You sure?" }, method: :delete, remote: :true, class: "btn btn-xs btn-danger pull-right js-btn"
-  
-
+  %span
+    %button.btn.btn-xs.btn-danger.pull-right{ id: "js-item-delete-#{product.id}",  } delete
+    .delete-confirm-box.pull-left{ id: "js-btn-confirm-delete-#{product.id}" }= link_to "Are you Sure?", "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: :true
