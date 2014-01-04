@@ -49,3 +49,5 @@ gem 'vine'
 gem 'omniauth-facebook', '~> 1.5.1'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
+gem 'devise_security_extension'
+gem "rails_email_validator"

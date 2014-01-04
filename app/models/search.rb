@@ -93,8 +93,6 @@ class Search < ActiveRecord::Base
   # end
 end
 
-  
-
 class AmazonRequest
   def initialize
     @secret = ENV["AMAZON_SECRET"]

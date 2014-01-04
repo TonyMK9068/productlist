@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base 
   # :confirmable
   devise :database_authenticatable, :registerable, :lockable, :timeoutable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
+         :recoverable, :rememberable, :trackable, :secure_validatable, :session_limitable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
   attr_accessible :email, :password, :password_confirmation, :username, :first_name, :last_name, :uid, :provider, :full_name
   
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates_format_of :username, with: /\A([a-zA-Z0-9]{2,16}[-_]?[a-zA-Z0-9]{2,16})\z/ , allow_blank: :true
   validates_length_of :username, in: 3..30, allow_blank: true
 
-  validates_format_of :email, with: /\A([-a-z0-9!\#$%&'*+\/=?^_`{|}~]+\.)*[-a-z0-9!\#$%&'*+\/=?^_`{|}~]+@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates :email, :email => true
 
   validates_format_of :first_name, :last_name, with: /\A([^\d\W]+)\z/, allow_blank: :true
   validates_length_of :first_name, :last_name, in: 1..16, allow_blank: true
