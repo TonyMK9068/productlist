@@ -17,8 +17,6 @@ $(document).ready(function(){
   );
 });
 
-
-
 $(document).ready(function(){
   $('li.list-group-item').each(function(){
 

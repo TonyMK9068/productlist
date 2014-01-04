@@ -11,9 +11,11 @@
     = csrf_meta_tags
 
   %body
+    .container= render partial: 'layouts/widgets'
     .container-full-viewport
       %nav.navbar.special{:role => 'navigation'}
         .container
+          .fb-share-button{ data: { href: "https://www.giftshare.io/", width: "50", type: "button"} }
           .navbar-left.navbar-brand= link_to "GiftShare", root_path
           %ul.nav.navbar-nav.pull-right
             - unless current_user
@@ -27,7 +29,9 @@
               %li= link_to 'Recent Activity', activities_path
               %li= link_to 'Top Products', products_path
               %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
-              
+                
+    
+    
     .container
       - if flash[:error]
         .alert.alert-danger
