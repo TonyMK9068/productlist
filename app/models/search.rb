@@ -119,7 +119,7 @@ class AmazonRequest
   def item_search(keyword_input, item_page = 1)
     search_options = Hash["ResponseGroup" => "Medium, Images", "SearchIndex" => "All", "Operation" => "ItemSearch", "Keywords" => keyword_input, "ItemPage" => item_page]
     url_query = (URI.encode_www_form((search_options.merge(@default_values)).sort)).gsub!('+', '%20')
-    request = ("http://webservices.amazon.com/onca/xml?" + url_query + "&" + "Signature=" + "#{sig = request_sig(url_query)}")
+    request = ("https://webservices.amazon.com/onca/xml?" + url_query + "&" + "Signature=" + "#{sig = request_sig(url_query)}")
   end
 end
 
