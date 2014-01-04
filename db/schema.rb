@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131224231031) do
+ActiveRecord::Schema.define(:version => 20140104114449) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -89,25 +89,26 @@ ActiveRecord::Schema.define(:version => 20131224231031) do
   add_index "searches", ["list_id"], :name => "index_searches_on_list_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                                :default => "", :null => false
+    t.string   "encrypted_password",                   :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0,  :null => false
+    t.integer  "sign_in_count",                        :default => 0,  :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "failed_attempts",        :default => 0,  :null => false
+    t.integer  "failed_attempts",                      :default => 0,  :null => false
     t.datetime "locked_at"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                           :null => false
+    t.datetime "updated_at",                                           :null => false
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "uid"
     t.string   "provider"
+    t.string   "unique_session_id",      :limit => 20
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
