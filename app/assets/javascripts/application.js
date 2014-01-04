@@ -19,25 +19,30 @@ $(document).ready(function(){
 
 
 
-$(document).ready(function() {
-  $('li.list-group-item').each(function() {
+$(document).ready(function(){
+  $('li.list-group-item').each(function(){
 
-    var listItem = $(this);
-    var itemId = $(listItem).data('item');
-    var initialButton = ('#js-item-delete-' + itemId);
-    var confirmationButton = ('#js-btn-confirm-delete-' + itemId);
-
-    $(initialButton).click(function() {
-        $(initialButton).hide();
-        $(confirmationButton).show("slide", "right"); 
-      }, function(location) {
-        $(location).click(function() {
-          if (location != confirmationButton) {
-            $(confirmationButton).hide("slide", "left");
-            $(initialButton).show();
-          }
+    var outerdiv = $(this);
+    var itemId = $(outerdiv).data('item');
+    var initialButton = $('#js-item-delete-' + itemId);
+    var confirmationButton = $('#js-btn-confirm-delete-' + itemId);
+    var $marginLefty = $(outerdiv);
+    
+    $(initialButton).click(function(){  
+      $marginLefty.animate({
+        marginLeft: parseInt($marginLefty.css('marginLeft'),10) == 0 ? 
+          $marginLefty.outerWidth() * 0.40 : 
+          0
+      });
+      $(confirmationButton).show('slide', 'right', 100);
+      $(document).on("click", initialButton, function(){
+        $("div").click(function(){
+          $marginLefty.animate({
+            marginLeft: '0px'
+          });
+          $(confirmationButton).show('slide', 'left', 100);
         });
-      }
-    );
+      });
+    });
   });
 });

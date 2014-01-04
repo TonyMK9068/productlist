@@ -57,8 +57,6 @@ class Search < ActiveRecord::Base
     end
   end
 
-
-
   def etsy_response_arrays
     etsy_array_of_array.collect do |array|
       Hash[product_keys.zip array]

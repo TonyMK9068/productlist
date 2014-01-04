@@ -1,6 +1,6 @@
-
+.delete-confirm-box{ id: "js-btn-confirm-delete-#{product.id}" }= link_to "Are you Sure?", "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: :true, class: "button #{product.id}"
 %li.list-group-item{ :id => "product-#{product.id}", data: { item: "#{product.id}" } }
-  .mini-item-info.delete-confirm-box.col-sm-5{ id: "js-btn-confirm-delete-#{product.id}" }= link_to "Are you Sure?", "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: :true
-  .mini-item-info.col-sm-6= product.name[0,30] 
-  .mini-item-info.bounding-box.col-sm-5{ :style => "background-image: url(#{product.image_url})" }= " "
-  %button.btn.btn-xs.btn-danger.col-sm-1.pull-right{ id: "js-item-delete-#{product.id}",  } x
+  .mini-item-info{ id: "js-item-info-#{product.id}" }
+    #list_name= product.name[0,30] 
+    .bounding-box{ :style => "background-image: url(#{product.image_url})" }= " "
+  %button.btn.btn-xs.btn-danger.pull-right{ id: "js-item-delete-#{product.id}",  } x
