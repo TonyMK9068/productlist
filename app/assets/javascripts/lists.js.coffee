@@ -4,7 +4,6 @@
 
 
 $ ->
-    
   input_open_focus = $( '.datepicker' ).pickadate()
   picker_open_focus = input_open_focus.pickadate( 'picker' )
   $(  '.datepicker' ).on( 'click', (event)->
