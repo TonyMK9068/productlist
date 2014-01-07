@@ -1,11 +1,12 @@
 - content_for :head do
   = stylesheet_link_tag 'friendships'
 
-%li.media.activity.well
-  .media-body
-    %h4.media-headng #{link_to activity.owner.display_user_as('username'), user_path(activity.owner) } added a list: #{link_to activity.trackable.title, list_path(activity.trackable)}
+- if activity.owner
+  %li.media.activity.well
+    .media-body
+      %h4.media-headng #{link_to activity.owner.display_user_as('username'), user_path(activity.owner) } added a list: #{link_to activity.trackable.title, list_path(activity.trackable)}
 
-  .col-md-12
-    .pull-left
-      .activity-icon.glyphicon.glyphicon-list
-    %strong= activity.created_at.localtime.strftime('at %I:%M%p %D')
+    .col-md-12
+      .pull-left
+        .activity-icon.glyphicon.glyphicon-list
+      %strong= activity.created_at.localtime.strftime('at %I:%M%p %D')
