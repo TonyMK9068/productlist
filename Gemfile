@@ -51,4 +51,4 @@ gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'devise_security_extension'
 gem 'rails_email_validator'
-gem "rack-google-analytics", "~> 1.0.0.pre1"
+gem 'social-share-button'

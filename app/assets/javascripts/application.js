@@ -4,6 +4,7 @@
 //= require bootstrap
 //= require pickadate.js/lib/picker.js
 //= require pickadate.js/lib/picker.date.js
+//= require social-share-button
 //= require_tree .
 // 
 
