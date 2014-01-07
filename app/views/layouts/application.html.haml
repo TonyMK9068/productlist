@@ -6,10 +6,9 @@
     = stylesheet_link_tag "custom", :media => "all"
     = yield :head
     = csrf_meta_tags
-
-  %body
     = render partial: 'layouts/widgets'
     = render partial: 'layouts/google'
+  %body
     .container-full-viewport
       %nav.navbar.special{:role => 'navigation'}
         .container
