@@ -8,7 +8,8 @@
     = csrf_meta_tags
 
   %body
-    .container= render partial: 'layouts/widgets'
+    = render partial: 'layouts/widgets'
+    = render partial: 'layouts/google'
     .container-full-viewport
       %nav.navbar.special{:role => 'navigation'}
         .container
