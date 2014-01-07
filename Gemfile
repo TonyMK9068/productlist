@@ -41,13 +41,13 @@ gem 'devise'
 gem 'nokogirl'
 gem 'httparty'
 gem 'etsy'
-gem "friendly_id", "~> 4.0.10"
+gem 'friendly_id', '~> 4.0.10'
 gem 'newrelic_rpm'
 gem 'kaminari'
 gem 'public_activity'
 gem 'vine'
 gem 'omniauth-facebook', '~> 1.5.1'
 gem 'omniauth-twitter'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 gem 'devise_security_extension'
-gem "rails_email_validator"
+gem 'rails_email_validator'
