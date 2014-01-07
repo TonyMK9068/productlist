@@ -16,7 +16,7 @@ end
 module Giftshare
   class Application < Rails::Application
     
-    config.assets.precompile += %w(pickadate.js/lib/themes/default.css pickadate.js/lib/legacy.js pickadate.js/lib/picker.date.js pickadate.js/lib/picker.js friendships.css application.css searches.css welcome.css custom.css users.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default)
+    config.assets.precompile += %w(google.js pickadate.js/lib/themes/default.css pickadate.js/lib/legacy.js pickadate.js/lib/picker.date.js pickadate.js/lib/picker.js friendships.css application.css searches.css welcome.css custom.css users.css pickadate.js/lib/themes/default.date.css pickadate.js/lib/themes/default)
     
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
