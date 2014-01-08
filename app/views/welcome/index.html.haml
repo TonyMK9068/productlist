@@ -1,6 +1,7 @@
-- content_for :head do 
-  = stylesheet_link_tag 'welcome'
+- content_for :head do
   = stylesheet_link_tag 'searches'
+  = stylesheet_link_tag 'welcome'
+
   
 %header
   #social-buttons= social_share_button_tag('Giftshare.io', :'data-title' => 'Giftshare')
@@ -14,6 +15,30 @@
           %button.btn.btn-default.btn-lg.btn-block= link_to "Sign in with Facebook", '/users/auth/facebook'
           %button.btn.btn-default.btn-lg.btn-block= link_to 'Sign in with Twitter', '/users/auth/twitter'
           
+
+.container.marketing
+  .row
+    %hr.featurette-divider
+    .row.featurette
+      .col-md-7
+        %h2.featurette-heading
+          Shop all your favorite stores
+          %span.text-muted Keep your wishlists all in one place
+        %p.lead Search your favorite stores including Amazon and Etsy marketplaces. Find something you like? List it and never have to worry about remembering it again.
+      .col-md-5
+        = image_tag "568.png", class: "featurette-img"
+
+  
+    %hr.featurette-divider
+    .row.featurette
+      .col-md-4
+        = image_tag "485.png", class: "featurette-img"
+      .col-md-8
+        %h2.featurette-heading
+          Share with your friends
+        %h2.text-muted Birthday coming up? Anniversary?
+        %p.lead Let your friend's and family to know exactly what to get you. At Giftshare, you can contact your friends through Facebook, Twitter, Google Plus and more! Send them your wishlist and make sure you get exactly what you want.
+
 .row-liquid#support-info.col-sm-12
   - Product.all.sample(6).each do |item|
     = render partial: 'popover', locals: { item: item }
