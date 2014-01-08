@@ -4,7 +4,7 @@ class List < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged 
   
-  attr_accessible :event, :title, :event_date, :slug
+  attr_accessible :event, :title, :event_date, :slug, :privacy
   
   belongs_to :user, inverse_of: :lists
   has_many :products
@@ -14,6 +14,19 @@ class List < ActiveRecord::Base
   validates_presence_of :event
   validates_presence_of :event_date
   validate :event_date_is_a_future_date, on: :create
+  validates_inclusion_of :privacy, in: %w(global friends private)
+  
+  def private?
+    privacy == "private"
+  end
+  
+  def public?
+    privacy != "private"
+  end
+  
+  def self.privacy_settings
+    %w(global friends private)
+  end
 
   private
 

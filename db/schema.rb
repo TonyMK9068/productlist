@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140104114449) do
+ActiveRecord::Schema.define(:version => 20140108025014) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(:version => 20140104114449) do
   create_table "friendships", :force => true do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "privacy",    :default => "global"
   end
 
   add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
@@ -43,11 +44,12 @@ ActiveRecord::Schema.define(:version => 20140104114449) do
   create_table "lists", :force => true do |t|
     t.string   "event"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "title"
     t.date     "event_date"
     t.string   "slug"
+    t.string   "privacy",    :default => "global"
   end
 
   add_index "lists", ["slug"], :name => "index_lists_on_slug"

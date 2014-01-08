@@ -2,7 +2,7 @@
   = stylesheet_link_tag 'pickadate.js/lib/themes/default'
   = stylesheet_link_tag 'pickadate.js/lib/themes/default.date.css'
 %div
-  %h3 Create A New List
+  %h1 Create A New Wish List
 
 = render partial: "shared/error_messages", locals: {instance: @list}
 
@@ -13,11 +13,15 @@
       = f.text_field :title, class: "form-control", placeholder: "List Title"
 
     .form-group
-      = f.label :event, class: "control-label"
-      = f.text_field :event, class: "form-control", placeholder: "What's the occasion?"
+      = f.label :event, 'Description', class: "control-label"
+      = f.text_field :event, class: "form-control", placeholder: "Description"
 
-    .datepicker-container.formgroup
+    .datepicker-container.form-group
       = f.text_field :event_date, readyonly: true, placeholder: "Select a date", class: "datepicker"
+    
+    .form-group
+      = f.label :privacy, 'Who would you like to share your list with?', class: "control-label"
+      = f.select :privacy, List.privacy_settings, class: "form-control"
 
     .form-group
       = f.submit "Submit", class: "btn btn-default"

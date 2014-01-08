@@ -1,7 +1,8 @@
 class Friendship < ActiveRecord::Base
   include PublicActivity::Common
 
-  attr_accessible :friend_id
+  attr_accessible :friend_id, :privacy
+   
   
   belongs_to :user
   belongs_to :friend, :class_name => "User"
@@ -9,6 +10,14 @@ class Friendship < ActiveRecord::Base
   validates_uniqueness_of :friend_id, :scope => :user_id
   validates_presence_of :friend_id, :user_id
   validate :cannot_add_self
+  
+  def private?
+    privacy == "private"
+  end
+  
+  def public?
+    privacy != "private"
+  end
 
   protected
 

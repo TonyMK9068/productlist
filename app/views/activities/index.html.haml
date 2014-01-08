@@ -1,5 +1,8 @@
-- if current_user
-  .container
-    .row.col-md-12
-      %ul.media-list
-        = render_activities(@activities)
+.btn-group
+  %button.btn.btn-default{ type: 'button' }= link_to 'Global', activities_path
+  %button.btn.btn-default{ type: 'button' }= link_to 'Friends', activities_path(scope: 'friends')
+
+.container
+  .row.col-sm-12
+    %ul.media-list
+      = render_activities(@activities)

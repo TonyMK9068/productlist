@@ -26,7 +26,6 @@
           .navbar-left.navbar-brand= link_to "GiftShare", root_path
           %ul.nav.navbar-nav.pull-right
             - unless current_user
-              
               %li= link_to 'Top Products', products_path
               %li= link_to 'Sign Up', new_user_registration_path
               %li= link_to 'Sign In', new_user_session_path
@@ -37,23 +36,23 @@
               %li= link_to 'Top Products', products_path
               %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
                 
-        .container
-      - if flash[:error]
-        .alert.alert-danger
-          = flash[:error]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
-      - elsif flash[:info]
-        .alert.alert-info
-          = flash[:info]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
-      - elsif flash[:alert]
-        .alert.alert-info
-          = flash[:alert]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
-      - elsif flash[:notice]
-        .alert.alert-success
-          = flash[:notice]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
+      .container
+        - if flash[:error]
+          .alert.alert-danger
+            = flash[:error]
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
+        - elsif flash[:info]
+          .alert.alert-info
+            = flash[:info]
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
+        - elsif flash[:alert]
+          .alert.alert-info
+            = flash[:alert]
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
+        - elsif flash[:notice]
+          .alert.alert-success
+            = flash[:notice]
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
     .container
       = yield
       
