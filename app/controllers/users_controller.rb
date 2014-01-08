@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def show
-    @profile_viewer = current_user
+    @user = current_user
+    @profile_viewer = @user
     @profile_owner = User.find(params[:id])
     @lists = @profile_owner.lists.all
     @products = @profile_owner.products.all

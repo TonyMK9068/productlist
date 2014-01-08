@@ -1,6 +1,6 @@
 %ul
   - user.friends.each do |friend|
-    %li#friend-box
+    %li#friend-box{ class: 'js-friends-#{friend.id}' }
       %span.badge= count_lists_by(friend)
       = link_to(friend.email, user_path(friend))
       = link_to('Remove', friendship_path(friend), method: :delete, class: "btn btn-default btn-xs pull-right")

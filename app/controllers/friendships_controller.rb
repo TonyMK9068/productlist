@@ -1,27 +1,26 @@
 class FriendshipsController < ApplicationController
-  
+  respond_to :html, :js
   def create
     @friend = User.find_by_email(params[:email])
     @user = current_user
-    if @friend.present? && @friend.id != @user.id
-      @friendship = @user.friendships.build(:friend_id => @friend.id)
-      authorize! :manage, Friendship, message: "Not authorized"
-      if @friendship.save
-        @friendship.create_activity(:create, :recipient => @friend, :owner => @user)
-        flash[:info] = "Friend added"
-        redirect_to user_path(@user)
-      else 
-        flash[:error] = "An error occured while adding new friend"
-        render "/users/#{@user.id}"
+    authorize! :manage, Friendship, message: "Not authorized"
+    if @friend.present?
+      if @friend.id != @user.id 
+        @friendship = @user.friendships.build(:friend_id => @friend.id)
+        if @friendship.save
+          @friendship.create_activity(:create, :recipient => @friend, :owner => @user)
+          flash[:info] = "Friend added"
+        else 
+          flash[:error] = "User not found"
+        end
+      else
+        flash[:error] = 'Get some real friends!'
       end
     else
-      if @friend.present? && @friend.id == @user.id
-        flash[:error] = "Get some real friends!"
-        render "/users/#{@user.id}"
-      else
-        flash[:error] = "No user with that email"
-        render "/users/#{@user.id}"
-      end
+      flash[:error] = 'User not found'
+    end
+    respond_with(@friend, @friendship) do |f|
+      f.html { redirect_to user_path(@user) }
     end
   end
 
@@ -33,7 +32,7 @@ class FriendshipsController < ApplicationController
       redirect_to :back
     else
       flash[:error] ="An error occured while trying to remove the friend"
-      render "/users/#{@user.id}"
+      render controller: 'users', action: :show
     end
   end
 
