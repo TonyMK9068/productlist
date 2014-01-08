@@ -63,6 +63,25 @@ div#welcomepage.col-sm-4.thumbnail-box{
 
 }
 
+.bounding-box-welcome {
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 250px;
+  width: 250px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.thumbnail-box#welcomepage {
+  margin:0px;
+  padding:0px;
+  max-width: 270px;
+  width: 270px;
+  #welcome-thumb {
+    width:100%;
+  }
+}
+
 /************ Nav bar  /************/
 
 body { background-color: white; }

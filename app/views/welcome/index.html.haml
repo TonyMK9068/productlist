@@ -8,27 +8,12 @@
     .row
       .jumbotron.welcome
         %h1 Welcome to GiftShare
-        %p Your home for creating and sharing personalized wishlists
+        %p All your wishlists from the world's top retailers in one place
         .btn-toolbar.col-sm-3{role: "toolbar"}
-          .btn-group
-            %button.btn.btn-default.btn-lg= link_to 'Sign Up', new_user_registration_path 
-          .btn-group
-            %button.btn.btn-default.btn-lg= link_to 'Sign In', new_user_session_path
-          %button.btn.btn-primary.btn-lg.btn-block= link_to "Sign in with Facebook", '/users/auth/facebook'
+          %button.btn.btn-default.btn-lg.btn-block= link_to 'Sign Up', new_user_registration_path 
+          %button.btn.btn-default.btn-lg.btn-block= link_to "Sign in with Facebook", '/users/auth/facebook'
+          %button.btn.btn-default.btn-lg.btn-block= link_to 'Sign in with Twitter', '/users/auth/twitter'
           
-          %button.btn.btn-primary.btn-lg.btn-block= link_to 'Sign in with Twitter', '/users/auth/twitter'
-          
-
-/ .container#search-example
-/   .row.col-sm-8
-/     .form-group
-/       %strong
-/         %h4 Find your favorite stuff
-/       %span.form-control#typewriter
-/       .col-sm-6
-/         %button.btn.btn-default#search-box Search!
-
-
 .row-liquid#support-info.col-sm-12
   - Product.all.sample(6).each do |item|
     = render partial: 'popover', locals: { item: item }
