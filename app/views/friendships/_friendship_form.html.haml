@@ -2,7 +2,7 @@
   = stylesheet_link_tag 'friendships'
 
 .row
-  = form_tag '/friendships', method: :post, class: "form-horizontal", role: "form" do
+  = form_tag '/friendships', method: :post, class: "form-horizontal", role: "form", remote: :true do
     %h3="Find friends by email:"
     .form-group.col-md-12
       .col-md-6= email_field_tag :email, nil, placeholder: "Example@giftshare.com", id: "focusedInput", class: 'form-control'
