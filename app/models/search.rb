@@ -38,36 +38,53 @@ class Search < ActiveRecord::Base
   end
   
   def etsy_array_of_array
-    if etsy_response.present?
-      etsy_response.access("results").collect do |re|
-        [
-          re.access("listing_id"),
-          re.access("Images.0.url_170x135"),
-          re.access("price"), #string, decimal precision 2, not formatted
-          re.access("title"),
-          re.access("url"),
-          re.access("category_path").last,
-          "Etsy.com"
-          ]
+    etsy_response.access("results").collect do |re|
+      [
+        re.access("listing_id"),
+        re.access("Images.0.url_170x135"),
+        re.access("price"), #string, decimal precision 2, not formatted
+        re.access("title"),
+        re.access("url"),
+        re.access("category_path").last,
+        "Etsy.com"
+        ]
+    end
+  end
+  
+  def amazon_response_arrays
+    if amazon_array_of_arrays.each { |i| false if i.blank? } == true
+            
+      amazon_array_of_arrays.collect do |array|
+        Hash[product_keys.zip array]
+      end
+    else
+      false
+    end
+  end
+
+  def etsy_response_arrays
+    if amazon_array_of_arrays.each { |i| false if i.blank? } == true
+      etsy_array_of_array.collect do |array|
+        Hash[product_keys.zip array]
       end
     else
       false
     end
   end
   
-  def amazon_response_arrays
-    amazon_array_of_arrays.collect do |array|
-      Hash[product_keys.zip array]
-    end
-  end
-
-  def etsy_response_arrays
-    if etsy_array_of_array.present?
-      etsy_array_of_array.collect do |array|
-        Hash[product_keys.zip array]
+  def combined_results
+    if etsy_response_arrays
+      if amazon_response_arrays
+        return results = etsy_response_arrays + amazon_response_arrays
+      else
+        return results = etsy_response_arrays
       end
     else
-      false
+      if amazon_response_arrays
+        return results = amazon_response_arrays
+      else
+        return false
+      end
     end
   end
 
@@ -80,25 +97,6 @@ class Search < ActiveRecord::Base
   def ownership_of_list
     errors.add(:list_id, "Not authorized to perform searches for this list") if user.lists.include? List.find(list_id) == false
   end
-
-  # price.is_a?("string")
-  
-  # def combined_results(amazon_response_arrays)
-  #   etsy_response_arrays.merge(amazon_response_arrays)
-  # end
-  
-  # def sort_results(result_array)
-  #   set = result_array.count / 4
-  #   @result_array = result_array
-  #   set.times do |num|
-  #     if num * set <= @result_array.count
-  #       @result_array[(num - 1) * set, 4].shuffle!
-  #     elsif (@result_array.count % 4) > 0
-  #       @result_array[(num - 1) * set, (num - 1) * set + (@result_array.count % 4)].shuffle!
-  #     end      
-  #   end
-  #   @result_array
-  # end
 end
 
 class AmazonRequest

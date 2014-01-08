@@ -19,16 +19,14 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])
     @list = List.find(params[:list_id])
     @products = @list.products
-    if @search.etsy_response_arrays.present?
-      etsy_results = @search.etsy_response_arrays
-      amazon_results = @search.amazon_response_arrays
-      merged_results = etsy_results + amazon_results
-      @sorted_results = merged_results.shuffle
-    else
-      amazon_results = @search.amazon_response_arrays
-      @sorted_results = amazon_results.shuffle
-    end
+
     authorize! :manage, @search, message: "You need have created the list to do that"
+    if @search.combined_results
+      @sorted_results = @search.combined_results.shuffle
+    else
+      flash[:error] = 'No results found'
+      render 'lists/show'
+    end
   end
 
   def next

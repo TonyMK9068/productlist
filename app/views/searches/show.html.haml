@@ -19,7 +19,7 @@
       .col-xs-12.col-sm-6.col-md-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
-            = link_to(image_tag(item[:image_url]), item[:link], target: "_blank").presence
+            = link_to(image_tag(item[:image_url]), item[:link], target: "_blank")
 
           .caption
             %h5= item[:name]
