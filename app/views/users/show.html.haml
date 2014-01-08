@@ -5,7 +5,7 @@
   .col-sm-12#profile-header
     %h1= @profile_owner.display_user_as("username") + "'s Profile"
     - if @profile_viewer.id == @profile_owner.id
-    = link_to('Edit Profile Settings', edit_registration_path(@profile_viewer))
+      = link_to('Edit Profile Settings', edit_registration_path(@profile_viewer))
 
 .row#profile-body
   .col-sm-6

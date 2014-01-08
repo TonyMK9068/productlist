@@ -39,10 +39,14 @@ class User < ActiveRecord::Base
 
   def display_user_as(title)
     if title == "username"
-      self.username.present? ? self.username : self.email
+      username.presence || mask_email
     else
-      self.email
+      mask_email
     end
+  end
+  
+  def mask_email
+    email.match(/(.*)@.*/)[1]
   end
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
