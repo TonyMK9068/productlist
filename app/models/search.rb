@@ -62,7 +62,7 @@ class Search < ActiveRecord::Base
   end
 
   def etsy_response_arrays
-    if etsy_array_of_array.present      
+    if etsy_array_of_array.present?
       etsy_array_of_array.collect do |array|
         Hash[product_keys.zip array]
       end

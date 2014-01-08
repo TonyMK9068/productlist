@@ -1,6 +1,5 @@
 class SearchesController < ApplicationController
   before_filter :set_page
-  
   respond_to :html, :xml, :json
   
   def create
@@ -20,7 +19,7 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])
     @list = List.find(params[:list_id])
     @products = @list.products
-    if etsy_response_arrays.present?
+    if @search.etsy_response_arrays.present?
       etsy_results = @search.etsy_response_arrays
       amazon_results = @search.amazon_response_arrays
       merged_results = etsy_results + amazon_results
