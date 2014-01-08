@@ -21,7 +21,7 @@
     
     .form-group
       = f.label :privacy, 'Who would you like to share your list with?', class: "control-label"
-      = f.select :privacy, List.privacy_settings, class: "form-control"
+      = f.collection_select :privacy, List.privacy_settings, :downcase, :capitalize, class: "form-control"
 
     .form-group
       = f.submit "Submit", class: "btn btn-default"
