@@ -1,7 +1,7 @@
 - content_for :head do 
   = stylesheet_link_tag 'searches'
 
-#mini_list.panel.panel-default.col-sm-2
+#mini_list.panel.panel-default.col-xs-4.col-sm-3.col-md-2
   .panel-heading
     %h3.panel-title= @list.title
   .panel-body
@@ -16,7 +16,7 @@
 .container
   .row
     - @sorted_results.each do |item|
-      .col-sm-4.thumbnail-box
+      .col-xs-12.col-sm-6.col-md-4.thumbnail-box
         .thumbnail
           .thumbnail-image-container
             = link_to(image_tag(item[:image_url]), item[:link], target: "_blank")

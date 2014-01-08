@@ -38,16 +38,20 @@ class Search < ActiveRecord::Base
   end
   
   def etsy_array_of_array
-    etsy_response.access("results").collect do |re|
-      [
-        re.access("listing_id"),
-        re.access("Images.0.url_170x135"),
-        re.access("price"), #string, decimal precision 2, not formatted
-        re.access("title"),
-        re.access("url"),
-        re.access("category_path").last,
-        "Etsy.com"
-      ]
+    if etsy_response.present?
+      etsy_response.access("results").collect do |re|
+        [
+          re.access("listing_id"),
+          re.access("Images.0.url_170x135"),
+          re.access("price"), #string, decimal precision 2, not formatted
+          re.access("title"),
+          re.access("url"),
+          re.access("category_path").last,
+          "Etsy.com"
+          ]
+      end
+    else
+      false
     end
   end
   
@@ -58,8 +62,12 @@ class Search < ActiveRecord::Base
   end
 
   def etsy_response_arrays
-    etsy_array_of_array.collect do |array|
-      Hash[product_keys.zip array]
+    if etsy_array_of_array.present      
+      etsy_array_of_array.collect do |array|
+        Hash[product_keys.zip array]
+      end
+    else
+      false
     end
   end
 
