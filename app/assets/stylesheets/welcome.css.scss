@@ -63,6 +63,45 @@ div#welcomepage.col-sm-4.thumbnail-box{
 
 }
 
+
+.thumbnail-box#welcomepage {
+  display: inline;
+  float: left;
+  width:170px;
+  max-width:170px;
+  margin-left:10px;
+  margin-right:10px;
+  padding:0px;
+  height:250px;
+  max-height:250px;
+  overflow:hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  #welcome-thumb.thumbnail {
+    margin:0px;
+    padding:0px;
+    width:100%;
+    .bounding-box-welcome {
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: auto;
+      width: 170px;
+      padding: 0;
+      overflow: hidden;
+      a {
+        img {
+          margin:0px;
+          padding:0px;     
+        }
+      }
+     .caption {
+       height:70px;
+       margin-left:10px;
+       padding-right:20px;
+     } 
+    }
+  }
+}
+
 /************ Nav bar  /************/
 
 body { background-color: white; }
@@ -109,6 +148,3 @@ button.btn.btn-lg a {
   font-family: Arial, "MS Trebuchet", sans-serif;
 }
 
-div#social-buttons div.social-share-buttons a {
-
-}
