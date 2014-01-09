@@ -1,11 +1,12 @@
 !!! 5
 %html
   %head
-    %title Giftshare
+    %title= content_for?(:title) ?  content_for?(:title) : 'Giftshare. Centralized wishlisting'
     = stylesheet_link_tag "application", :media => "all"
     = stylesheet_link_tag "custom", :media => "all"
     = stylesheet_link_tag 'social-share-button', media: "all"
     = yield :head
+    
     = csrf_meta_tags
     :javascript
       var _gaq = _gaq || [];

@@ -1,7 +1,7 @@
 Giftshare::Application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
-  resources :lists, except: [:index] do
+  resources :lists, except: [:index, :edit] do
     resources :products, except: [:index]
     resources :searches, only: [:create, :show, :previous_page, :next_page]
     get '/searches/:id/next' => 'searches#next', :as => :next
