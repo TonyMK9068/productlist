@@ -74,11 +74,13 @@
     .container#content-container
       = yield
    
-
-    .footer
-      .row
-        .col-lg-12
-          %ul.list-unstyled
-            %p
-              =link_to 'Privacy Policy', 
+    .container-full-viewport
+      .container
+        .footer
+          .row
+            .col-lg-12#footer
+              .col-lg-2
+                %span=link_to 'Privacy Policy', '/privacy'
+              .col-lg-2
+                %span=social_share_button_tag('Giftshare', url: 'https://www.giftshare.io')
     = javascript_include_tag "application"

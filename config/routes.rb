@@ -13,6 +13,7 @@ Giftshare::Application.routes.draw do
   resources :friendships, only: [:create, :destroy]
   resources :users, controller: :users, only: :show
   resources :activities, only: :index
+  get '/privacy' => 'welcome#privacy', as: :privacy
   
   root :to => "welcome#index"
 end
