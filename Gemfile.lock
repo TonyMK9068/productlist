@@ -34,8 +34,6 @@ GEM
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    bootstrap-sass (3.0.3.0)
-      sass (~> 3.2)
     builder (3.0.4)
     callsite (0.0.11)
     cancan (1.6.10)
@@ -297,7 +295,6 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
-  bootstrap-sass (~> 3.0.3.0)
   cancan
   capybara
   coffee-rails (~> 3.2.2)
