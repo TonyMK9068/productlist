@@ -19,7 +19,6 @@ class SearchesController < ApplicationController
     @search = Search.find(params[:id])
     @list = List.find(params[:list_id])
     @products = @list.products
-
     authorize! :manage, @search, message: "You need have created the list to do that"
     if @search.combined_results
       @sorted_results = @search.combined_results.shuffle

@@ -19,6 +19,10 @@ class Search < ActiveRecord::Base
     HTTParty.get(EtsyRequest.new.search(self.keyword, self.page))
   end
   
+  def commission_response
+    CommissionRequest.send_request(self.keyword, self.page)
+  end
+  
   def product_keys
     %w(product_number image_url price name link category store).map! { |value| value.to_sym }
   end
@@ -51,9 +55,33 @@ class Search < ActiveRecord::Base
     end
   end
   
+  def commission_array_of_array
+    commission_response.each do |response|
+      [
+        response.manufacturer_sku,
+        response.image_url,
+        response.price,
+        response.name,
+        response.advertiser_name,
+        response.buy_url,
+        response.advertiser_category,
+        response.advertiser_name
+      ]
+    end
+  end
+
+  def commission_response_arrays
+    if commission_array_of_array.each { |i| false if i.blank? } == true
+      commission_array_of_array.collect do |array|
+        Hash[product_keys.zip array]
+      end
+    else
+      false
+    end
+  end
+  
   def amazon_response_arrays
     if amazon_array_of_arrays.each { |i| false if i.blank? } == true
-            
       amazon_array_of_arrays.collect do |array|
         Hash[product_keys.zip array]
       end
@@ -75,15 +103,31 @@ class Search < ActiveRecord::Base
   def combined_results
     if etsy_response_arrays
       if amazon_response_arrays
-        return results = etsy_response_arrays + amazon_response_arrays
+        if commission_response_arrays
+          return etsy_response_arrays + amazon_response_arrays + commission_response_arrays
+        else
+          return etsy_response_arrays + amazon_response_arrays
+        end
       else
-        return results = etsy_response_arrays
+        if commission_response_arrays
+          return etsy_response_arrays + commission_response_arrays
+        else
+          return etsy_response_arrays
+        end
       end
     else
       if amazon_response_arrays
-        return results = amazon_response_arrays
-      else
-        return false
+        if commission_response_arrays
+          return amazon_response_arrays + commission_response_arrays
+        else
+          return amazon_response_arrays
+        end
+      else 
+        if commission_response_arrays
+        return results = commission_response_arrays
+        else
+          return false
+        end
       end
     end
   end
@@ -136,4 +180,13 @@ class EtsyRequest
   end
 end
 
-
+class CommissionRequest
+  COMM_JUNC_KEY = ENV['COMM_JUNC_KEY']
+  WEBSITE_ID = ENV['WEB_CODE']
+  
+  def self.send_request(keyword, page = 1)
+    cj = CommissionJunction.new(COMM_JUNC_KEY, WEBSITE_ID)
+    encoded_keyword = URI.encode_www_form_component keyword
+    cj.product_search('keywords' => encoded_keyword, 'advertiser-ids' => 'joined', 'serviceable-area' => 'us', 'currency' => 'usd', 'records-per-page' => '21', 'page-number' => page)
+  end
+end
