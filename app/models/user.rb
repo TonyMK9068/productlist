@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates_format_of :first_name, :last_name, with: /\A([^\d\W]+)\z/, allow_blank: :true
   validates_length_of :first_name, :last_name, in: 1..16, allow_blank: true
 
-  after_create :send_confirmation_email
+  after_create :send_confirmation_email, :send_sign_up_notification
 
   def full_name=(name)
     self.first_name, self.last_name = name.split(' ')
@@ -84,6 +84,9 @@ class User < ActiveRecord::Base
   end
   
   private
+    def send_sign_up_notification
+      SystemMailer.sign_up_notification.deliver
+    end
 
     def send_confirmation_email
       UserMailer.signup_confirmation(self).deliver
