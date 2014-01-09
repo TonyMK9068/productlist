@@ -54,6 +54,8 @@ $font-color: rgba(216, 32, 28, 1);
   padding-top: 7%;
 }
 
-.col-lg-12#footer {
-  padding-bottom:2%;
+.container#footer {
+  position:relative;
+  bottom:25px;
+  left:1%;
 }
