@@ -1,6 +1,8 @@
-@import "bootstrap";
-@import "bootstrap/theme";
+@import "bootstrap.min";
 
+$font-family-serif:       Georgia, "Times New Roman", Times, serif;
+$font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+$font-family-sans-serif:  "Open Sans", Calibri, Candara, Arial, sans-serif;
 $main-color: rgba(216, 32, 28, 1);
 $font-color: rgba(216, 32, 28, 1);
 @font-face {
@@ -19,8 +21,8 @@ $font-color: rgba(216, 32, 28, 1);
   nav.navbar.special div.container ul li a { color:  #22262f; }
 }
 
-.navbar-left.navbar-brand a { 
-  color: $font-color;
+.navbar-brand a { 
+  color: white;
   font-size: 1.7em;
   font-weight:bold;
   text-decoration:none;
@@ -28,4 +30,23 @@ $font-color: rgba(216, 32, 28, 1);
 
 .hide {
   display:none;
+}
+
+.navbar-collapse.collapse#navbar-main a {
+  color:white;
+}
+
+.btn.btn-primary.btn-block { 
+  background-color: white;
+  a {
+    color: black;
+    font-weight: bold;
+    font-decoration:none;
+    font-family: $font-family-sans-serif;
+    text-decoration: none;
+  }
+}
+
+.container#content-container {
+  padding-top: 7%;
 }

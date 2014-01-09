@@ -1,72 +1,22 @@
-$font-color: #22262f;
 $font-family: mainFont;
-$faded: #747c81;
-$main-color: rgba(216, 32, 28, 1);
 
-body {
-  z-index: -1000;
-}
-
-.container.marketing {
-  margin-top: 25%;
-}
-div.jumbotron.welcome {
-  h1 { font-family: $font-family;}
-  color: $faded;
-  font-family: $font-family;
-  position: relative;
-  top: -5%;
-  left: -5%;
-  background-color: rgba(0,0,0,.0);
-}
-
-section.panel {
+body { background-color: #e6e6e6 ;}
+.container-full-viewport { 
   background-color: white;
-  position: absolute;
-  top: 70%;
-  left:0%;
-  right:0%;
-  height:30%;
-}
-
-.jumbotron.special {
-  background-color: white;
-  color: white;
-  text-align: center;
-  font-family: "Sentinel SSm A","Sentinel SSm B","Georgia","Times New Roman";
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 30px;
-  left: 30%;
-}
-
-div#welcomepage.col-sm-4.thumbnail-box{
-  width: 260px;
-  height: 360px;
-
-  .thumbnail {   box-shadow: 0; }
-}
-
-#welcome-info {
-  display:absolute;
-}
+  position:relative;
+  top: 0px;
+  left: -50%;
+  margin-left:auto;
+  margin-right: auto;
+  width:200%;
+  height:100%;
+ }
   
-.row-liquid#support-info {
-  margin: auto;
-  position: relative;
-  margin-top: 10%;
-  left: -32.5%;
-  min-width: 165%;
-  width: 165%;
-  
-
-  border-top: 5px solid #dd3b2a;
-  background-color: rgba(255, 255, 255, 0.9);
-
+.page-header#banner {
+  background-color: #e6e6e6;
+  h1 { font-size: 60px;}
+  margin-bottom:20%;
 }
-
-
 .thumbnail-box#welcomepage {
   display: inline;
   float: left;
@@ -75,8 +25,8 @@ div#welcomepage.col-sm-4.thumbnail-box{
   margin-left:10px;
   margin-right:10px;
   padding:0px;
-  height:250px;
-  max-height:250px;
+  height:135px;
+  max-height:135px;
   overflow:hidden;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   #welcome-thumb.thumbnail {
@@ -105,49 +55,21 @@ div#welcomepage.col-sm-4.thumbnail-box{
   }
 }
 
-/************ Nav bar  /************/
-
-body { background-color: white; }
-
-/****** Nav Bar ******/
-
-div.container-full-viewport {
-  padding-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
+h2.featurette-heading {
+  font-size: 45px;
 }
 
-.special {
-  background-color: white;
-  border-radius:none;
+hr.featurette-divider {
+  margin-top: 5%;
+  margin-bottom:5%;
 }
 
-ul.nav.navbar-nav li a {
-  text-shadow: none;
-  color: $font-color;
-  font-size: 125%;
+.row.featurette#featurette-one {
+  margin-top: 10%;
 }
 
-.navbar.special {
-  border-radius:0;
+.row-liquid#support-info.col-sm-12 {
+  position: relative;
+  right: -70%;
+  bottom: 5%;
 }
-
-.center {
-  text-align:center;
-}
-
-.center-block {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/****** Buttons ******/
-button.btn.btn-primary.btn-lg.btn-block a { color: #E5E5E5; }
-
-button.btn.btn-lg a {
-  color: $font-color;
-  text-decoration:none;
-  font-family: Arial, "MS Trebuchet", sans-serif;
-}
-

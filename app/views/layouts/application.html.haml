@@ -3,7 +3,6 @@
   %head
     %title= content_for?(:title) ?  content_for(:title) : 'Giftshare. Centralized wishlisting'
     = stylesheet_link_tag "application", :media => "all"
-    = stylesheet_link_tag "custom", :media => "all"
     = stylesheet_link_tag 'social-share-button', media: "all"
     = yield :head
     
@@ -30,23 +29,31 @@
 
   %body
     .container-full-viewport
-      %nav.navbar.special{:role => 'navigation'}
+      %nav.navbar.navbar-default.navbar-fixed-top.special{:role => 'navigation'}
         .container
-          .fb-share-button{ data: { href: "https://www.giftshare.io/", width: "50", type: "button"} }
-          .navbar-left.navbar-brand= link_to "GiftShare", root_path
-          %ul.nav.navbar-nav.pull-right
+          .navbar-header
+            .navbar-brand= link_to "GIFT SHARE", root_path
+            %btn.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '#navbar-main' } } 
+              %span.icon-bar
+              %span.icon-bar
+              %span.icon-bar
+          .navbar-collapse.collapse#navbar-main
             - unless current_user
-              %li= link_to 'Top Products', products_path
-              %li= link_to 'Sign Up', new_user_registration_path
-              %li= link_to 'Sign In', new_user_session_path
+              %ul.nav.navbar-nav
+                %li= link_to 'Top Products', products_path
+              %ul.nav.navbar-nav.navbar-right
+                %li= link_to 'Sign Up', new_user_registration_path
+                %li= link_to 'Sign In', new_user_session_path
             -else
-              %li.active= link_to 'My Profile', user_path(current_user)
-              %li= link_to 'Create List', new_list_path       
-              %li= link_to 'Recent Activity', activities_path
-              %li= link_to 'Top Products', products_path
-              %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
-                
-      .container
+              %ul.nav.navbar-nav
+                %li.active= link_to 'My Profile', user_path(current_user)
+                %li= link_to 'Create List', new_list_path       
+                %li= link_to 'Recent Activity', activities_path
+                %li= link_to 'Top Products', products_path
+              %ul.nav.navbar-nav.navbar-right
+                %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+
+      .container#flash-messages
         - if flash[:error]
           .alert.alert-danger
             = flash[:error]
@@ -63,8 +70,8 @@
           .alert.alert-success
             = flash[:notice]
             %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
-    .container
+
+    .container#content-container
       = yield
-      
     = javascript_include_tag "application"
 
