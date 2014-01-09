@@ -32,7 +32,7 @@ class Search < ActiveRecord::Base
     amazon_response.access("ItemSearchResponse.Items.Item").collect do |re|
         [
           re.access("ASIN"),
-          re.access("MediumImage.URL"),
+          re.access("LargeImage.URL") || re.access("MediumImage.URL") ,
           re.access("ItemAttributes.ListPrice.FormattedPrice"),
           re.access("ItemAttributes.Title"),
           re.access("DetailPageURL"),
@@ -46,7 +46,7 @@ class Search < ActiveRecord::Base
     etsy_response.access("results").collect do |re|
       [
         re.access("listing_id"),
-        re.access("Images.0.url_170x135"),
+        re.access("Images.0.url_570xN") || re.access("Images.0.url_570xN"),
         re.access("price"), 
         re.access("title"),
         re.access("url"),
