@@ -73,5 +73,12 @@
 
     .container#content-container
       = yield
-    = javascript_include_tag "application"
+   
 
+    .footer
+      .row
+        .col-lg-12
+          %ul.list-unstyled
+            %p
+              =link_to 'Privacy Policy', 
+    = javascript_include_tag "application"
