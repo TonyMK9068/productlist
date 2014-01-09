@@ -1,4 +1,5 @@
-= title("Giftshare Wishlist: #{@list.title}")
+- content_for :title do
+  = page_title("Giftshare Wishlist: #{@list.title}")
 .row
   .jumbotron
     %h1= @list.title

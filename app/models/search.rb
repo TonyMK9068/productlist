@@ -42,12 +42,12 @@ class Search < ActiveRecord::Base
     end
   end
   
-  def etsy_array_of_array
+  def etsy_array_of_arrays
     etsy_response.access("results").collect do |re|
       [
         re.access("listing_id"),
         re.access("Images.0.url_170x135"),
-        re.access("price"), #string, decimal precision 2, not formatted
+        re.access("price"), 
         re.access("title"),
         re.access("url"),
         re.access("category_path").last,
@@ -56,7 +56,7 @@ class Search < ActiveRecord::Base
     end
   end
   
-  def commission_array_of_array
+  def commission_array_of_arrays
     commission_response.collect do |response|
       [
         (response.manufacturer_sku || 'N/A'),
@@ -71,42 +71,25 @@ class Search < ActiveRecord::Base
   end
 
   def commission_response_arrays
-    # if commission_array_of_array.each { |i| false if i.blank? } == true
-      commission_array_of_array.collect do |array|
-        Hash[product_keys.zip array]
-       end
-    # else
-    #   false
-    # end
+    commission_array_of_arrays.collect do |array|
+      Hash[product_keys.zip array]
+    end
   end
   
   def amazon_response_arrays
-    if amazon_array_of_arrays.each { |i| false if i.blank? } == true
-      amazon_array_of_arrays.collect do |array|
-        Hash[product_keys.zip array]
-      end
-    else
-      false
+    amazon_array_of_arrays.collect do |array|
+      Hash[product_keys.zip array]
     end
   end
 
   def etsy_response_arrays
-    if amazon_array_of_arrays.each { |i| false if i.blank? } == true
-      etsy_array_of_array.collect do |array|
-        Hash[product_keys.zip array]
-      end
-    else
-      false
+    etsy_array_of_arrays.collect do |array|
+      Hash[product_keys.zip array]
     end
   end
   
   def combined_results
-    if etsy_response_arrays && amazon_response_arrays && commission_response_arrays
-      etsy_response_arrays + amazon_response_arrays + commission_response_arrays
-    else
-      false
-    end
-      
+     results = etsy_response_arrays + amazon_response_arrays + commission_response_arrays
   end
 
   def etsy_count
