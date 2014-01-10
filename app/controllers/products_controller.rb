@@ -29,9 +29,7 @@ class ProductsController < ApplicationController
       flash[:notice] = "Item removed successfully"
     else
       flash[:error] = "An error occured while deleting item from list."
-
     end
-    
     respond_with(@product) do |f|
       f.html { redirect_to list_path(@list) }
     end

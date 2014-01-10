@@ -2,10 +2,10 @@
 %html
   %head
     %title= content_for?(:title) ?  content_for(:title) : 'Giftshare. Centralized wishlisting'
-    = stylesheet_link_tag "application", :media => "all"
-    = stylesheet_link_tag 'social-share-button', media: "all"
+    = stylesheet_link_tag 'bootstrap.min', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'social-share-button', media: 'all'
     = yield :head
-    
     = csrf_meta_tags
     :javascript
       var _gaq = _gaq || [];
@@ -17,22 +17,13 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-    :javascript
-
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-46903772-1', 'giftshare.io');
-      ga('send', 'pageview');
 
   %body
     .container-full-viewport
       %nav.navbar.navbar-default.navbar-fixed-top.special{:role => 'navigation'}
         .container
           .navbar-header
-            .navbar-brand= link_to "GIFT SHARE", root_path
+            .navbar-brand= link_to 'GIFT SHARE', root_path
             %btn.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '#navbar-main' } } 
               %span.icon-bar
               %span.icon-bar
@@ -53,23 +44,23 @@
               %ul.nav.navbar-nav.navbar-right
                 %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
 
-      .container#flash-messages
-        - if flash[:error]
-          .alert.alert-danger
-            = flash[:error]
-            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
-        - elsif flash[:info]
-          .alert.alert-info
-            = flash[:info]
-            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
-        - elsif flash[:alert]
-          .alert.alert-info
-            = flash[:alert]
-            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
-        - elsif flash[:notice]
-          .alert.alert-success
-            = flash[:notice]
-            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}, :aria => {:hidden => "true"}} &times;
+    .container#flash-messages
+      - if flash[:error]
+        .alert.alert-danger.alert-dismissable
+          = flash[:error]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+      - elsif flash[:info]
+        .alert.alert-info.alert-dismissable
+          = flash[:info]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+      - elsif flash[:alert]
+        .alert.alert-info.alert-dismissable
+          = flash[:alert]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+      - elsif flash[:notice]
+        .alert.alert-success.alert-dismissable
+          = flash[:notice]
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
 
     .container#content-container
       = yield
@@ -82,4 +73,5 @@
                 %span=link_to 'Privacy Policy', '/privacy'
               .col-lg-2
                 %span= social_share_button_tag('Giftshare', url: 'https://www.giftshare.io')
+
     = javascript_include_tag "application"

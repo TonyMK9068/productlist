@@ -1,4 +1,4 @@
-.delete-confirm-box{ class: "js-btn-confirm-delete-#{product.id}" }= link_to "Are you Sure?", "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: :true, class: "button #{product.id}"
+.delete-confirm-box{ class: "js-btn-confirm-delete-#{product.id}" }= link_to "Are you Sure?", "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: :true
 %li.list-group-item{ :id => "product-#{product.id}" }
   .mini-item-info{ id: "js-item-info-#{product.id}" }
     #list_name= product.name[0,30] 

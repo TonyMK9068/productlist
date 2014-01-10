@@ -3,7 +3,7 @@
     .modal-content
       .modal-header
         %button{ :type => "button", :class => "close", :data => { :dismiss => "modal" }, :aria => { :hidden => "true" } } &times;
-        %h4.modal-title Add item to #{@list.title} ?
+        %h4.modal-title Add item to #{list.title} ?
 
       .modal-body
         .thumbnail-image= image_tag product[:image_url]
@@ -18,4 +18,4 @@
 
       .modal-footer
         %button.btn.btn-default{ :type => "button", :data => { :dismiss => "modal" } } Cancel
-        = link_to "Add it!",  list_products_path(:list_id => @list, :product => product), method: :post, remote: :true, :data => { :dismiss => "modal" }, class: "btn btn-primary product-form"
+        = link_to "Add it!",  list_products_path(:list_id => list, :product => product), method: :post, remote: :true, :data => { :dismiss => "modal" }, class: "btn btn-primary product-form"

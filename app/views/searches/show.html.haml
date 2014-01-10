@@ -32,7 +32,7 @@
           .panel-footer
             %small #{item[:store]}: #{link_to 'See More Info', item[:link], :target => "_blank"}
             %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{item[:product_number]}"} } List it! <i class='glyphicon glyphicon-star'></i>
-            = render partial: 'products/product_form', locals: {product: item}
+            = render partial: 'products/product_form', locals: {product: item, list: @list}
 
 .container
   .row
