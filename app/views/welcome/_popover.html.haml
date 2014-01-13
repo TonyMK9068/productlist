@@ -1,9 +1,16 @@
-.thumbnail-box#welcomepage
-  #welcome-thumb.thumbnail
-    .bounding-box-welcome
-      = link_to image_tag(item[:image_url]), item[:link], target: "_blank"
-    / .caption
-    /   %h6= (item[:name])[0..50]
-    /   Price: #{format_price(item[:price])}
-    /   %span.pull-right= item[:store]
-//%button.btn.btn-primary.btn-sm List it! <i class='glyphicon glyphicon-star'></i>
+- content_for :head do
+  = stylesheet_link_tag 'searches'
+
+.col-xs-12.col-sm-6.col-md-4.thumbnail-box
+  .thumbnail
+    .bounding-box-show
+      = link_to(image_tag(item[:image_url]), item[:link], target: "_blank")
+
+    .caption
+      %h5= item[:name][0..38]
+      %p Listing Number: #{item[:product_number]}
+      %p Price: #{format_price(item[:price])}
+      %p Category: #{item[:category]}
+
+    .panel-footer
+      %small Listed at: #{item[:store]}

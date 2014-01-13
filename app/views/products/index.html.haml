@@ -6,16 +6,16 @@
 .container
   .row
     - Product.all.each do |item|
-      .col-sm-4.thumbnail-box
+      .col-xs-12.col-sm-6.col-md-4.thumbnail-box
         .thumbnail
-          .thumbnail-image-container
-            = link_to image_tag(item[:image_url]), item[:link], target: "_blank"
+          .bounding-box-show
+            = link_to(image_tag(item[:image_url]), item[:link], target: "_blank")
 
           .caption
-            %h4= item[:name]
+            %h5= item[:name][0..38]
             %p Listing Number: #{item[:product_number]}
             %p Price: #{format_price(item[:price])}
             %p Category: #{item[:category]}
 
           .panel-footer
-            %small #{item[:store]}: #{link_to 'See More Info', item[:link], :target => "_blank"}
+            %small Listed at: #{item[:store]}
