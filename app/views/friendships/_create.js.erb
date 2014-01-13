@@ -1,3 +1,0 @@
-<% if @friendship.valid? %>
-  $('.js-friends-' + <%= @friend.id %>).prepend("<%= raw escape_javascript(render :partial => 'friendships/friend_list', :locals => { friend: @friend }) %>");
-<% end %>
