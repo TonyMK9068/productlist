@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end  
   
   def has_friend?(user)
-    self.friends.all.include?(user) ? true : false
+    friends.all.include?(user) ? true : false
   end
 
   def display_user_as(title)
@@ -60,7 +60,6 @@ class User < ActiveRecord::Base
                       password: pass,
                       password_confirmation: pass
                       )
-      
       user.save
     end
     user
@@ -77,7 +76,6 @@ class User < ActiveRecord::Base
                       password: pass,
                       password_confirmation: pass
                       )
-      
       user.save
     end
     user
