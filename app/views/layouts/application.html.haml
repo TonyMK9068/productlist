@@ -63,7 +63,7 @@
 
       .container#content-container
         = yield
-        = javascript_include_tag "application"
+        
     #push
     #footer.navbar.navbar-default
       .container
@@ -73,3 +73,4 @@
               %span= link_to 'Privacy Policy', '/privacy'
             .col-lg-2
               %span= social_share_button_tag('Giftshare', :'data-title' => 'Giftshare', url: 'https://www.giftshare.io')
+    = javascript_include_tag "application"

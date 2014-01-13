@@ -6,7 +6,7 @@
 //= require pickadate.js/lib/picker.js
 //= require pickadate.js/lib/picker.date.js
 //= require social-share-button
-// 
+//= require_tree .
 
 $(document).ready(function() {
   $('ul.nav.navbar-nav.pull-right li a').hover(
