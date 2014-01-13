@@ -8,11 +8,9 @@
     - Product.all.each do |item|
       .col-xs-12.col-sm-6.col-md-4.thumbnail-box
         .thumbnail
-          .bounding-box-show
-            = link_to(image_tag(item[:image_url]), item[:link], target: "_blank")
-
+          .bounding-box-show{ :style => "background-image: url(#{item[:image_url]})" }
           .caption
-            %h5= item[:name][0..38]
+            %h5= link_to item[:name][0..38], item[:link], target: "_blank"
             %p Listing Number: #{item[:product_number]}
             %p Price: #{format_price(item[:price])}
             %p Category: #{item[:category]}

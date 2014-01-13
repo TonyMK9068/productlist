@@ -37,6 +37,6 @@
 
 .container-liquid
   .row-liquid#support-info.col-sm-12
-    - Product.all.sample(10).each do |item|
+    - featured_user.products.all.sample(9).each do |item|
       = render partial: 'popover', locals: { item: item }
   

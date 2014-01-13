@@ -70,7 +70,7 @@ class Search < ActiveRecord::Base
     if commission_response
       response = commission_response.collect do |response|
         [
-          response.ad_id || '',
+          response.ad_id.to_s || '',
           response.image_url || '',
           response.price.to_s,
           response.name,
