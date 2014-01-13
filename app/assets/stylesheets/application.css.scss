@@ -1,3 +1,7 @@
+@import 'yeti/loader';
+@import 'yeti/bootswatch';
+@import 'yeti/base';
+
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-sans-serif:  "Open Sans", Calibri, Candara, Arial, sans-serif;
@@ -30,7 +34,7 @@ $font-color: rgba(216, 32, 28, 1);
   display:none;
 }
 
-.navbar-collapse.collapse#navbar-main a {
+nav.navbar.navbar-default.special .container .navbar-header a {
   color:white;
 }
 

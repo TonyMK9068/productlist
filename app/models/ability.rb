@@ -11,7 +11,7 @@ class Ability
       can :manage, List, user_id: user.id
       
       user.lists.all.each do |list|
-        list.products.all.each { |product| can :manage, product }
+        can :manage, Product, list_id: list.id
       end
 
       can :manage, Friendship, user_id: user.id

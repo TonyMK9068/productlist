@@ -1,11 +1,11 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
-//= require bootstrap
+//= require yeti/bootswatch.js
+//= require yeti/loader.js
 //= require pickadate.js/lib/picker.js
 //= require pickadate.js/lib/picker.date.js
 //= require social-share-button
-//= require_tree .
 // 
 
 $(document).ready(function() {

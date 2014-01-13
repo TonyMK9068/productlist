@@ -1,10 +1,13 @@
 !!! 5
 %html
   %head
-    %title= content_for?(:title) ?  content_for(:title) : 'Giftshare. Centralized wishlisting'
-    = stylesheet_link_tag 'bootstrap.min', media: 'all'
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : 'Giftshare. Centralized wishlisting'
     = stylesheet_link_tag 'application', media: 'all'
     = stylesheet_link_tag 'social-share-button', media: 'all'
+    = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = yield :head
     = csrf_meta_tags
     :javascript
@@ -20,15 +23,10 @@
 
   %body
     .container-full-viewport
-      %nav.navbar.navbar-default.navbar-fixed-top.special{:role => 'navigation'}
+      %nav.navbar.navbar-default.special{:role => 'navigation'}
         .container
           .navbar-header
             .navbar-brand= link_to 'GIFT SHARE', root_path
-            %btn.navbar-toggle{ type: 'button', data: { toggle: 'collapse', target: '#navbar-main' } } 
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-          .navbar-collapse.collapse#navbar-main
             - unless current_user
               %ul.nav.navbar-nav
                 %li= link_to 'Top Products', products_path
@@ -44,26 +42,27 @@
               %ul.nav.navbar-nav.navbar-right
                 %li= link_to 'Sign Out', destroy_user_session_path, method: :delete
 
-    .container#flash-messages
+    .container
       - if flash[:error]
-        .alert.alert-danger.alert-dismissable
+        .alert.alert-danger
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
           = flash[:error]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
       - elsif flash[:info]
-        .alert.alert-info.alert-dismissable
+        .alert.alert-info
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
           = flash[:info]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
       - elsif flash[:alert]
-        .alert.alert-info.alert-dismissable
+        .alert.alert-info
+          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
           = flash[:alert]
-          %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
       - elsif flash[:notice]
-        .alert.alert-success.alert-dismissable
-          = flash[:notice]
+        .alert.alert-success
           %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+          = flash[:notice]
 
     .container#content-container
       = yield
+      = javascript_include_tag "application"
     .container-full-viewport
       .container#footer
         .footer
@@ -73,5 +72,3 @@
                 %span=link_to 'Privacy Policy', '/privacy'
               .col-lg-2
                 %span= social_share_button_tag('Giftshare', url: 'https://www.giftshare.io')
-
-    = javascript_include_tag "application"

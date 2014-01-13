@@ -31,6 +31,9 @@ end
 gem 'thin'
 gem 'haml'
 gem 'haml-rails'
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootswatch-rails', '~> 3.0.2'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'faker'
