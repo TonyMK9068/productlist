@@ -29,71 +29,108 @@ class Search < ActiveRecord::Base
   end
   
   def amazon_array_of_arrays
-    amazon_response.access("ItemSearchResponse.Items.Item").collect do |re|
+    response = amazon_response.access("ItemSearchResponse.Items.Item").collect do |re|
         [
           re.access("ASIN"),
-          re.access("LargeImage.URL") || re.access("MediumImage.URL") ,
+          re.access("LargeImage.URL") || re.access("MediumImage.URL") || re.access("SmallImage.URL") || '',
           re.access("ItemAttributes.ListPrice.FormattedPrice"),
           re.access("ItemAttributes.Title"),
           re.access("DetailPageURL"),
           re.access("ItemAttributes.ProductGroup"),
-          "Amazon.com",
+          "Amazon.com"
         ]
+      end
+    response = response.collect do |array|      
+      array.delete_if do |x|
+       x == '' || x == nil
+      end
     end
+    response
   end
   
   def etsy_array_of_arrays
-    etsy_response.access("results").collect do |re|
-      [
-        re.access("listing_id"),
-        re.access("Images.0.url_570xN") || re.access("Images.0.url_570xN"),
-        re.access("price"), 
-        re.access("title"),
-        re.access("url"),
-        re.access("category_path").last,
-        "Etsy.com"
-        ]
+    if self.etsy_count > 0
+      response = etsy_response.access("results").collect do |re|
+        [
+          re.access("listing_id"),
+          re.access("Images.0.url_570xN") || re.access("Images.0.url_170x135"),
+          re.access("price"), 
+          re.access("title"),
+          re.access("url"),
+          re.access("category_path").last,
+          "Etsy.com"
+          ]
+      end
+    else
+      false
     end
   end
   
   def commission_array_of_arrays
-    commission_response.collect do |response|
-      [
-        (response.manufacturer_sku || 'N/A'),
-        response.image_url,
-        response.price.to_s,
-        response.name,
-        (response.buy_url),
-        (response.advertiser_category || 'N/A'),
-        (response.advertiser_name || 'N/A')
-      ]
+    if commission_response
+      response = commission_response.collect do |response|
+        [
+          response.ad_id || '',
+          response.image_url || '',
+          response.price.to_s,
+          response.name,
+          response.buy_url || '',
+          response.advertiser_category || '',
+          response.advertiser_name || ''
+        ]
+      end
+    
+      response = response.collect do |array|      
+        array.delete_if do |x|
+         x == '' || x == nil
+        end
+      end
+      response
+    else
+      false
     end
   end
 
   def commission_response_arrays
-    commission_array_of_arrays.collect do |array|
-      Hash[product_keys.zip array]
+    if commission_array_of_arrays
+      commission_array_of_arrays.collect do |array|
+        Hash[product_keys.zip array]
+      end
     end
   end
   
   def amazon_response_arrays
-    amazon_array_of_arrays.collect do |array|
-      Hash[product_keys.zip array]
+    if amazon_array_of_arrays
+      amazon_array_of_arrays.collect do |array|
+        Hash[product_keys.zip array]
+      end
     end
   end
 
   def etsy_response_arrays
-    etsy_array_of_arrays.collect do |array|
-      Hash[product_keys.zip array]
+    if etsy_array_of_arrays
+      etsy_array_of_arrays.collect do |array|
+        Hash[product_keys.zip array]
+      end
     end
   end
   
   def combined_results
-     results = etsy_response_arrays + amazon_response_arrays + commission_response_arrays
+     results = []
+     results = (etsy_response_arrays if etsy_response_arrays) + (amazon_response_arrays if amazon_response_arrays) + (commission_response_arrays if commission_response_arrays)
+     if results.present?
+       results
+     else
+       false
+     end
   end
 
   def etsy_count
-    etsy_response.body.access("count")
+    etsy_response.access("count")
+  end
+  
+  def amazon_count
+    amazon_response.access("ItemSearchResponse.Items.Request.TotalResults")
   end
   
   protected 
