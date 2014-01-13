@@ -10,7 +10,7 @@
         .caption
           %h3= product[:name]
           %p= product[:price]
-          %em= product[:product_number]
+          %em= product[:product_number].to_s
           %h6 Category: #{product[:category]}
           = link_to "See More Info", product[:link]
           %p= product[:store]
