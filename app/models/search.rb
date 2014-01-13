@@ -32,7 +32,7 @@ class Search < ActiveRecord::Base
     response = amazon_response.access("ItemSearchResponse.Items.Item").collect do |re|
         [
           re.access("ASIN"),
-          re.access("LargeImage.URL") || re.access("MediumImage.URL") || re.access("SmallImage.URL") || '',
+          re.access("LargeImage.URL") || re.access("MediumImage.URL") || re.access("SmallImage.URL") || '/568.png',
           re.access("ItemAttributes.ListPrice.FormattedPrice"),
           re.access("ItemAttributes.Title"),
           re.access("DetailPageURL"),
@@ -116,10 +116,11 @@ class Search < ActiveRecord::Base
   end
   
   def combined_results
-     results = []
-     results = (etsy_response_arrays if etsy_response_arrays) + (amazon_response_arrays if amazon_response_arrays) + (commission_response_arrays if commission_response_arrays)
-     if results.present?
-       results
+     results = [etsy_response_arrays, amazon_response_arrays, commission_response_arrays]
+     results.delete_if { |x| x.blank? }
+     count = results.length
+     if count > 0
+       results = results.inject{ |sum, x| sum + x }
      else
        false
      end
