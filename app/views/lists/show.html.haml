@@ -1,5 +1,8 @@
 - content_for :title do
   = page_title("Giftshare Wishlist: #{@list.title}")
+- content_for :head do
+  =stylesheet_link_tag 'searches'
+
 .row
   .jumbotron
     %h1= @list.title

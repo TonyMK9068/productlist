@@ -1,0 +1,5 @@
+<% if @friendship.destroyed? %> 
+  $('.js-friends-' + <%= @friend_id %>).hide();
+<% else %> 
+  $('.js-friends-' + <%= @friend_id %>.prepend("<div class='alert alert-error'><%= flash[:error] %></div>");
+<% end %>

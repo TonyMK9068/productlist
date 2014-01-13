@@ -7,5 +7,5 @@
   %td= product.category
   %td= product.product_number
   %td= product.store
-  %td= image_tag product.image_url
+  %td.bounding-box-show= image_tag product.image_url
   %td= link_to 'Delete', "/lists/#{list.id}/products/#{product.id}", method: :delete, remote: true, class: "btn btn-default"

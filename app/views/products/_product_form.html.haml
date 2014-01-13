@@ -6,7 +6,7 @@
         %h4.modal-title Add item to #{list.title} ?
 
       .modal-body
-        .thumbnail-image= image_tag product[:image_url]
+        .thumbnail-image.bounding-box-show= image_tag product[:image_url]
         .caption
           %h3= product[:name]
           %p= product[:price]

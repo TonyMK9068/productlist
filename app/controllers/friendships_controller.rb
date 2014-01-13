@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   respond_to :html, :js
+  
   def create
     @friend = User.find_by_email(params[:email])
     @user = current_user
@@ -19,21 +20,24 @@ class FriendshipsController < ApplicationController
     else
       flash[:error] = 'User not found'
     end
+
     respond_with(@friend, @friendship) do |f|
       f.html { redirect_to user_path(@user) }
     end
   end
 
   def destroy
-    @friendship = current_user.friendships.find_by_friend_id(params[:id])
+    @user = current_user
+    @friendship =  Friendship.find(params[:id])
+    @friend_id = User.find @friendship.friend_id
     authorize! :manage, @friendship, message: "Not your friendship to destroy"
     if @friendship.delete
       flash[:info] = "Friend removed successfully"
-      redirect_to :back
     else
       flash[:error] ="An error occured while trying to remove the friend"
-      render controller: 'users', action: :show
+    end
+    respond_with(@friendship) do |f|
+      f.html { redirect_to user_path(@user) }
     end
   end
-
 end
