@@ -17,25 +17,38 @@ $font-color: rgba(216, 32, 28, 1);
   color: $font-color;
 }
 
-.container-full-viewport {
-  margin-left: auto;
-  margin-right: auto;
-  nav.navbar.special div.container ul li a { color:  #22262f; }
+
+/**************************  layout **************************/
+html,body {
+  height: 100%;
 }
+
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -60px;
+}
+
+#push,#footer {
+  height: 60px;
+}
+
+#footer {
+  margin-top:5%;
+  background-color: rgba(1, 1, 1, 0.0);
+}
+
+
+
+
+/**************************  navbar **************************/
 
 .navbar-brand a { 
   color: white;
   font-size: 1.7em;
   font-weight:bold;
   text-decoration:none;
-}
-
-.hide {
-  display:none;
-}
-
-nav.navbar.navbar-default.special .container .navbar-header a {
-  color:white;
 }
 
 .btn.btn-primary.btn-block { 
@@ -49,15 +62,16 @@ nav.navbar.navbar-default.special .container .navbar-header a {
   }
 }
 
-.thumbnail-box#welcomepage {
-  padding-top: 7%;
-}
-.container#content-container {
-  padding-top: 7%;
+nav.navbar.navbar-default.special .container .navbar-header a {
+  color:white;
 }
 
-.container#footer {
-  position:relative;
-  bottom:25px;
-  left:1%;
+/**************************  other **************************/
+
+.hide {
+  display:none;
+}
+
+.thumbnail-box#welcomepage,.container#content-container {
+  padding-top: 7%;
 }

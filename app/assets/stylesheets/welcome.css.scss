@@ -2,17 +2,6 @@ $font-family: mainFont;
 
 body { background-color: white ;}
 
-.container-full-viewport { 
-  background-color: white;
-  position:relative;
-  top: 0px;
-  left: -50%;
-  margin-left:auto;
-  margin-right: auto;
-  width:200%;
-  height:100%;
- }
-  
 .page-header#banner {
   background-color: white;
   h1 { font-size: 60px;}
@@ -78,4 +67,5 @@ hr.featurette-divider {
 
 .thumbnail-box {
   margin-top:15%;
+  margin-bottom:40px;
 }

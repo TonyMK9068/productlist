@@ -35,7 +35,8 @@
           %h2.text-muted Birthday coming up? Anniversary?
           %p.lead Let your friend's and family to know exactly what to get you. At Giftshare, you can contact your friends through Facebook, Twitter, Google Plus and more! Send them your wishlist and make sure you get exactly what you want.
 
+.container-liquid
   .row-liquid#support-info.col-sm-12
     - Product.all.sample(10).each do |item|
       = render partial: 'popover', locals: { item: item }
-  #social-buttons= social_share_button_tag('Giftshare.io', :'data-title' => 'Giftshare')
+  
