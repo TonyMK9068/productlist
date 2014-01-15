@@ -3,34 +3,32 @@
 - content_for :title do
   = page_title('Giftshare search results')
 
-#mini_list.panel.panel-default.col-xs-4.col-sm-3.col-md-2
+#mini_list.panel.panel-default
   .panel-heading
     %h3.panel-title= @list.title
   .panel-body
     %ol.list-group
       = render partial: 'lists/mini_list', collection: @list.products, locals: { list: @list }, as: :product
       .js-products
-      
   .panel-footer
     #search-form
       = render partial: 'search_form', locals: { list: @list }
-      
-.container
-  .row
-    - @sorted_results.each do |item|
-      .col-xs-12.col-sm-6.col-md-4.thumbnail-box
-        .thumbnail
-          .bounding-box-show{ :style => "background-image: url(#{item[:image_url]})" }
-          .caption
-            %h5= link_to item[:name][0..38], item[:link], target: "_blank"
-            %p Listing Number: #{item[:product_number]}
-            %p Price: #{format_price(item[:price])}
-            %p Category: #{item[:category]}
 
-          .panel-footer
-            %small Listed at: #{item[:store]}
-            %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{item[:product_number]}"} } List it! <i class='glyphicon glyphicon-star'></i>
-            = render partial: 'products/product_form', locals: {product: item, list: @list}
+#results_container
+  - @sorted_results.each do |item|
+    .thumbnail-box.col-xs-12.col-sm-6.col-lg-4
+      .thumbnail
+        .bounding-box-show{ :style => "background-image: url(#{item[:image_url]})" }
+        .caption
+          %h5= link_to item[:name][0..38], item[:link], target: "_blank"
+          %p Listing Number: #{item[:product_number]}
+          %p Price: #{format_price(item[:price])}
+          %p Category: #{item[:category]}
+
+        .panel-footer
+          %small Listed at: #{item[:store]}
+          %button.btn.btn-primary.btn-sm{:data => {:toggle => "modal", :target => "##{item[:product_number]}"} } List it! <i class='glyphicon glyphicon-star'></i>
+          = render partial: 'products/product_form', locals: {product: item, list: @list}
 
 .container
   .row

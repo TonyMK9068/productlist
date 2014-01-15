@@ -13,13 +13,16 @@ $list-color: #274D9A;
 
 /***********  Product Results ***********/
 
-  div.thumbnail-box {
+
+.thumbnail-box {
+  float:left;
   display:inline;
   height: 32%;
+  max-height: 32%;
   min-height: 32%;
   width:340px;
-  max-height:32%;
-
+  max-width: 340px;
+  margin:5px;
 
   .thumbnail {
     box-shadow: 5px 5px 2px;
@@ -37,7 +40,6 @@ $list-color: #274D9A;
       padding: 0;
       overflow: hidden;
     }
-
     .caption{
       padding: 0px;
       margin:0px;
@@ -60,7 +62,9 @@ $list-color: #274D9A;
   min-height: 80%;
   height: 80%;
   padding:0px;
-
+  min-width:360px;
+  width:360px;
+  margin-right:360px;
 
   .panel-heading {
     background-image: none;

@@ -19,10 +19,10 @@ class Search < ActiveRecord::Base
     HTTParty.get(EtsyRequest.new.search(self.keyword, self.page))
   end
   
-  def commission_response
-    test = CommissionRequest.new.send_request(self.keyword, self.page)
-    test
-  end
+  # def commission_response
+  #   test = CommissionRequest.new.send_request(self.keyword, self.page)
+  #   test
+  # end
   
   def product_keys
     %w(product_number image_url price name link category store).map! { |value| value.to_sym }
@@ -116,7 +116,7 @@ class Search < ActiveRecord::Base
   end
   
   def combined_results
-     results = [etsy_response_arrays, amazon_response_arrays, commission_response_arrays]
+     results = [etsy_response_arrays, amazon_response_arrays]
      results.delete_if { |x| x.blank? }
      count = results.length
      if count > 0
