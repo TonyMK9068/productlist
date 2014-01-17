@@ -1,0 +1,70 @@
+!!! 5
+%html
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %title= content_for?(:title) ? yield(:title) : 'Giftshare. Centralized wishlisting'
+    = stylesheet_link_tag 'welcome', media: 'all'
+    = stylesheet_link_tag 'social-share-button', media: 'all'
+    = yield :head
+    = csrf_meta_tags
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-46903772-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+  %body
+    #wrap
+      #nav-container
+        .navbar.navbar-default{:role => 'navigation'}
+          .container
+            = link_to 'GIFT SHARE', root_path, class: 'navbar-brand js-brand'
+            .nav.navbar-nav
+            - unless current_user
+              = link_to 'Top Products', products_path, class: 'btn js-navy'
+              = link_to 'Sign Up', new_user_registration_path, class: 'btn navbar-right js-navy'
+              = link_to 'Sign In', new_user_session_path, class: 'btn navbar-right js-navy'
+            - else
+              .active= link_to 'My Profile', user_path(current_user), class: 'btn js-navy'
+              = link_to 'Create List', new_list_path, class: 'btn js-navy'
+              = link_to 'Recent Activity', activities_path, class: 'btn js-navy'
+              = link_to 'Top Products', products_path, class: 'btn js-navy'
+              = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn navbar-right js-navy'
+
+      .container
+        - if flash[:error]
+          .alert.alert-danger
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+            = flash[:error]
+        - elsif flash[:info]
+          .alert.alert-info
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+            = flash[:info]
+        - elsif flash[:alert]
+          .alert.alert-info
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+            = flash[:alert]
+        - elsif flash[:notice]
+          .alert.alert-success
+            %button{:type => "button", :class => "close", :data => {:dismiss => "alert"}} &times;
+            = flash[:notice]
+
+      
+      = yield
+        
+      #push
+      #footer.navbar.navbar-default
+        .container
+          .row
+            .col-lg-12
+              .col-lg-2
+                %span= link_to 'Privacy Policy', '/privacy'
+              .col-lg-2
+                %span= social_share_button_tag('Giftshare', :'data-title' => 'Giftshare', url: 'https://www.giftshare.io')
+      = javascript_include_tag "application"

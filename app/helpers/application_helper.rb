@@ -1,4 +1,6 @@
 module ApplicationHelper
+  
+  
 
   #convert amount in cents to USD $xx.xx
   def format_product_price(price_in_cents)
@@ -24,3 +26,4 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 end
+
