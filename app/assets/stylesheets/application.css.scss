@@ -1,6 +1,6 @@
 @import 'yeti/loader';
 @import 'yeti/bootswatch';
-@import 'yeti/base';
+@import 'yeti/font-awesome';
 
 $font-family-serif:       Georgia, "Times New Roman", Times, serif;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
@@ -67,6 +67,9 @@ nav.navbar.navbar-default.special .container .navbar-header a {
 }
 
 /**************************  other **************************/
+.spacer {
+  margin-top:7%;
+}
 
 .hide {
   display:none;

@@ -1,41 +1,58 @@
 - content_for :head do
-  = stylesheet_link_tag 'searches'
   = stylesheet_link_tag 'welcome'
+  = stylesheet_link_tag 'searches'
 
-.page-header#banner
+#banner.container
   .row
     .col-lg-6
       %h1 Welcome to GiftShare
       %p All your wishlists from the world's top retailers in one place
     .col-lg-6
       .col-lg-offset-7.col-lg-5      
-        .btn.btn-primary.btn-block= link_to 'Sign Up', new_user_registration_path 
-        .btn.btn-primary.btn-block= link_to "Sign in with Facebook", '/users/auth/facebook'
-        .btn.btn-primary.btn-block= link_to 'Sign in with Twitter', '/users/auth/twitter'
+        = link_to 'Sign Up', new_user_registration_path, class: 'btn-lg btn-welcome btn btn-block'
+        = link_to "Sign in with Facebook", '/users/auth/facebook', class: 'btn-lg btn-welcome btn btn-block'
+        = link_to 'Sign in with Twitter', '/users/auth/twitter', class: 'btn-lg btn-welcome btn btn-block'
 
-.container-full-viewport
-  .container.marketing
-    .row
-      .row.featurette#featurette-one
-        .col-md-7
-          %h2.featurette-heading
-            Shop all your favorite stores
-            %span.text-muted Keep your wishlists all in one place
-          %p.lead Search your favorite stores including Amazon and Etsy marketplaces. Find something you like? List it and never have to worry about remembering it again.
-        .col-md-5
-          = image_tag "568.png", class: "featurette-img"
+#social-row
+  .col-md-offset-2.col-md-8.centered.text-center.fade3
+    .col-lg-3.text-center.icon-box
+      = link_to "#", target: "_blank" do
+        %i.fa.fa-instagram.fa-3x
+    .col-lg-3.text-center.icon-box
+      = link_to "#", target: "_blank" do
+        %span
+          %i.fa.fa-twitter.fa-3x
+    .col-lg-3.text-center.icon-box
+      = link_to "#", target: "_blank" do
+        %span
+          %i.fa.fa-facebook.fa-3x
+    .col-lg-3.text-center.icon-box
+      = link_to "#", target: "_blank" do
+        %span
+          %i.fa.fa-pinterest.fa-3x
 
-      %hr.featurette-divider
-      .row.featurette
-        .col-md-4
-          = image_tag "485.png", class: "featurette-img"
-        .col-md-8
-          %h2.featurette-heading
-            Share with your friends
-          %h2.text-muted Birthday coming up? Anniversary?
-          %p.lead Let your friend's and family to know exactly what to get you. At Giftshare, you can contact your friends through Facebook, Twitter, Google Plus and more! Send them your wishlist and make sure you get exactly what you want.
+.container.marketing
+  .row
+    .row.featurette#featurette-one
+      .col-md-7
+        %h2.featurette-heading
+          Shop all your favorite stores
+          %span.text-muted Keep your wishlists all in one place
+        %p.lead Search your favorite stores including Amazon and Etsy marketplaces. Find something you like? List it and never have to worry about remembering it again.
+      .col-md-5
+        = image_tag "568.png", class: "featurette-img"
 
-.container-liquid
+    %hr.featurette-divider
+    .row.featurette
+      .col-md-4
+        = image_tag "485.png", class: "featurette-img"
+      .col-md-8
+        %h2.featurette-heading
+          Share with your friends
+        %h2.text-muted Birthday coming up? Anniversary?
+        %p.lead Let your friend's and family to know exactly what to get you. At Giftshare, you can contact your friends through Facebook, Twitter, Google Plus and more! Send them your wishlist and make sure you get exactly what you want.
+
+.container
   .row-liquid#support-info.col-sm-12
     - featured_user.products.all.sample(9).each do |item|
       = render partial: 'popover', locals: { item: item }
