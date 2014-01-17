@@ -21,7 +21,7 @@
 
   %body
     #wrap
-      #nav-container
+      #nav-container.hidden-xs
         .navbar.navbar-default{:role => 'navigation'}
           .container
             = link_to 'GIFT SHARE', root_path, class: 'navbar-brand js-brand'
@@ -36,6 +36,12 @@
               = link_to 'Recent Activity', activities_path, class: 'btn js-navy'
               = link_to 'Top Products', products_path, class: 'btn js-navy'
               = link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn navbar-right js-navy'
+      
+      #nav-container-mobile.container.col-xs-12.hidden-sm.hidden-md.hidden-lg
+        .navbar.navbar-default{:role => 'navigation'}
+          .container
+            .col-xs-6= link_to 'GIFT SHARE', root_path, class: 'navbar-brand js-brand'
+            .col-xs-6= link_to 'Sign Up', new_user_registration_path, class: 'btn navbar-right js-navy'
 
       .container
         - if flash[:error]

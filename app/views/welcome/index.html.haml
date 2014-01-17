@@ -1,17 +1,22 @@
 #banner.container
   .row
-    .col-lg-12
+    .col-sm-12.col-md-offset-2.col-md-8.hidden-xs
+      %h1 Welcome to GiftShare
+      %h3 All your wishlists from the world's top retailers in one place
+    #banner-mobile.col-xs-12.visible-xs.hidden-sm.hidden-md.hidden-lg
       %h1 Welcome to GiftShare
       %h3 All your wishlists from the world's top retailers in one place
 
-
 #get-started
-  #invite-buttons
-    = link_to 'Get started now', new_user_registration_path, class: 'btn-lg btn-welcome btn'
-    = link_to "Sign in with Facebook", '/users/auth/facebook', class: 'btn-lg btn-welcome btn'
-    = link_to 'Sign in with Twitter', '/users/auth/twitter', class: 'btn-lg btn-welcome btn'
+  .container
+    .row
+      .col-xs-12.col-md-offset-2.col-md-8
+        #invite-buttons.col-md-12
+          = link_to 'Get started now', new_user_registration_path, class: 'btn-lg btn-welcome btn col-md-4 col-sm-12'
+          = link_to "Sign in with Facebook", '/users/auth/facebook', class: 'btn-lg btn-welcome btn col-md-4 col-sm-12'
+          = link_to 'Sign in with Twitter', '/users/auth/twitter', class: 'btn-lg btn-welcome btn col-md-4 col-sm-12'
 
-#social-row
+#social-row.hidden-xs
   .col-md-offset-2.col-md-8.centered.text-center.fade3
     .col-lg-3.text-center.icon-box
       = link_to "#", target: "_blank" do
@@ -30,27 +35,36 @@
           %i.fa.fa-pinterest.fa-3x
 
 #content-container.container
-  .row.featurette#featurette-one.col-md-offset-1.col-md-10
-    .col-md-7
-      %h2.featurette-heading
-        Shop all your favorite stores
-        %h2.text-muted All your wishlists, one location
-      %p.lead Search your favorite stores including Amazon and Etsy marketplaces. Find something you like? List it and never have to worry about remembering it again.
-    .col-md-5
-      = image_tag "568.png", class: "featurette-img"
+  .row.featurette#featurette-one
+    .col-md-offset-1.col-md-10.col-xs-12
+      .col-md-7
+        %h2.featurette-heading
+          Shop all your favorite stores
+          %h2.text-muted All your wishlists, one location
+        %p.lead Search your favorite stores including Amazon and Etsy marketplaces. Find something you like? List it and never have to worry about remembering it again.
+      .col-md-5
+        = image_tag "568.png", class: "featurette-img"
 
   %hr.featurette-divider
-  .row.featurette#featurette-two.col-md-offset-1.col-md-10
-    .col-md-5
-      = image_tag "485.png", class: "featurette-img"
-    .col-md-7
-      %h2.featurette-heading
-        Share with your friends
-        %h2.text-muted Birthday coming up? Anniversary?
-      %p.lead Let your friend's and family to know exactly what to get you. Send your wishlist to friends and family through through Facebook, Twitter, Google Plus and more!
+  .row.featurette#featurette-two
+    .col-md-offset-1.col-md-10.col-xs-12
+      .col-md-5
+        = image_tag "485.png", class: "featurette-img"
+      .col-md-7
+        %h2.featurette-heading
+          Share with your friends
+          %h2.text-muted Birthday coming up? Anniversary?
+        %p.lead Let your friend's and family to know exactly what to get you. Send your wishlist to friends and family through through Facebook, Twitter, Google Plus and more!
 
-.container#products-container
-  .row-liquid#support-info.col-sm-12
-    - featured_user.products.all.sample(9).each do |item|
-      = render partial: 'popover', locals: { item: item }
+.container#products-container.visible-lg
+  .row.visible-lg
+    #support-info.col-lg-12.visible-lg
+      - featured_user.products.all.sample(9).each do |item|
+        = render partial: 'popover', locals: { item: item }
+        
+.container#products-container.visible-md
+  .row.visible-md
+    #support-info.col-md-12.visible-md
+      - featured_user.products.all.sample(4).each do |item|
+        = render partial: 'popover', locals: { item: item }
   
